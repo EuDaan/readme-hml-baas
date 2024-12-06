@@ -16,12 +16,12 @@
     "version": "1.0"
   },
   "paths": {
-    "/v1/pix/send/teste-assentuacao": {
+    "/v1/pix/send/TESTE_ALTERA√á√ÉO": {
       "post": {
         "tags": [
           "Pix"
         ],
-        "summary": "InicializaÁ„o do envio de pix",
+        "summary": "Inicializa√ß√£o do envio de pix",
         "requestBody": {
           "description": "",
           "content": {
@@ -96,7 +96,7 @@
         "tags": [
           "Pix"
         ],
-        "summary": "Confirmar envio de pix atravÈs do idempotencyId",
+        "summary": "Confirmar envio de pix atrav√©s do idempotencyId",
         "requestBody": {
           "description": "",
           "content": {
@@ -266,7 +266,7 @@
         "tags": [
           "Pix"
         ],
-        "summary": "Consulta de Callback - Registro disponÌvel por duas horas",
+        "summary": "Consulta de Callback - Registro dispon√≠vel por duas horas",
         "parameters": [
           {
             "name": "endToEndId",
@@ -320,7 +320,7 @@
         "tags": [
           "Pix"
         ],
-        "summary": "DevoluÁ„o de PIX",
+        "summary": "Devolu√ß√£o de PIX",
         "requestBody": {
           "description": "",
           "content": {
@@ -449,7 +449,7 @@
         "tags": [
           "Pix"
         ],
-        "summary": "Gerar comprovante DevoluÁ„o PIX",
+        "summary": "Gerar comprovante Devolu√ß√£o PIX",
         "parameters": [
           {
             "name": "endToEndId",
@@ -638,7 +638,7 @@
         "tags": [
           "Pix"
         ],
-        "summary": "Gerar Qrcode Din‚mico",
+        "summary": "Gerar Qrcode Din√¢mico",
         "requestBody": {
           "description": "",
           "content": {
