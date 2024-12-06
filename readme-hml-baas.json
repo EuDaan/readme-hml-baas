@@ -16,7 +16,7 @@
     "version": "1.0"
   },
   "paths": {
-    "/v1/pix/send/TESTE_ALTERAÇÃO": {
+    "/v1/pix/send/teste-assentuacao": {
       "post": {
         "tags": [
           "Pix"
