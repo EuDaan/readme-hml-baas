@@ -13,7 +13,7 @@
       "name": "Genial Investimentos",
       "url": "https://www.genialinvestimentos.com.br/"
     },
-    "version": "v1"
+    "version": "1.0"
   },
   "paths": {
     "/v1/authentication": {
