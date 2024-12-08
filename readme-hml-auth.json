@@ -34,7 +34,10 @@
             "name": "x-origem",
             "in": "header",
             "required": true,
-            "example": "Company name"
+            "schema": {
+              "type": "string",
+              "example": "Company name"
+            }
           }
         ],
         "responses": {
