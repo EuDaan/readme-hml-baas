@@ -1,0 +1,567 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Genial.Arquitetura.BaaS",
+    "description": "API Banking Services",
+    "contact": {
+      "name": "Genial Investimentos",
+      "url": "https://www.genialinvestimentos.com.br/"
+    },
+    "version": "2.0"
+  },
+  "paths": {
+    "/v2/pix/key-account-partner/{agency}/{account}/{key}": {
+      "get": {
+        "tags": [
+          "PixDict"
+        ],
+        "summary": "Consultar chave PIX para parceiros",
+        "parameters": [
+          {
+            "name": "agency",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "account",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "key",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "includeStatistics",
+            "in": "query",
+            "description": "",
+            "schema": {
+              "type": "boolean",
+              "default": false
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PixFindEntityWrapper"
+                }
+              }
+            }
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ObjectMateraErrorResponseIEnumerableWrapper"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ValidationErrorsModel"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "AccountAdditionalInformation": {
+        "type": "object",
+        "properties": {
+          "branch": {
+            "type": "string",
+            "nullable": true
+          },
+          "accountNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "accountType": {
+            "type": "string",
+            "nullable": true
+          },
+          "openingDate": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CheckedKey": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string",
+            "nullable": true
+          },
+          "hasEntry": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "CheckedKeyResponse": {
+        "type": "object",
+        "properties": {
+          "responseTime": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "correlationId": {
+            "type": "string",
+            "nullable": true
+          },
+          "keys": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CheckedKey"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CheckedKeyResponseWrapper": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/CheckedKeyResponse"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Entries": {
+        "type": "object",
+        "properties": {
+          "watermark": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "registeredAccounts": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "distinctAccounts": {
+            "$ref": "#/components/schemas/Statistic"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ErrorMessage": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "exception": {
+            "type": "string",
+            "nullable": true
+          },
+          "stackTrace": {
+            "type": "string",
+            "nullable": true
+          },
+          "data": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
+      "FraudMarkers": {
+        "type": "object",
+        "properties": {
+          "watermark": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "applicationFrauds": {
+            "$ref": "#/components/schemas/Statistic"
+          },
+          "muleAccounts": {
+            "$ref": "#/components/schemas/Statistic"
+          },
+          "scammerAccounts": {
+            "$ref": "#/components/schemas/Statistic"
+          },
+          "otherFrauds": {
+            "$ref": "#/components/schemas/Statistic"
+          },
+          "totalFrauds": {
+            "$ref": "#/components/schemas/Statistic"
+          },
+          "totalFraudTransactionAmount": {
+            "$ref": "#/components/schemas/Statistic"
+          },
+          "distinctFraudReporters": {
+            "$ref": "#/components/schemas/Statistic"
+          }
+        },
+        "additionalProperties": false
+      },
+      "InfractionReports": {
+        "type": "object",
+        "properties": {
+          "watermark": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "openReports": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "openReportsDistinctReporters": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "rejectedReports": {
+            "$ref": "#/components/schemas/Statistic"
+          }
+        },
+        "additionalProperties": false
+      },
+      "JwtDataModel": {
+        "type": "object",
+        "properties": {
+          "username": {
+            "type": "string",
+            "nullable": true
+          },
+          "cnpj": {
+            "type": "string",
+            "nullable": true
+          },
+          "agency": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "account": {
+            "type": "string",
+            "nullable": true
+          },
+          "customerName": {
+            "type": "string",
+            "nullable": true
+          },
+          "audiences": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "KeyStatistics": {
+        "type": "object",
+        "properties": {
+          "spi": {
+            "$ref": "#/components/schemas/Spi"
+          },
+          "fraudMarkers": {
+            "$ref": "#/components/schemas/FraudMarkers"
+          },
+          "infractionReports": {
+            "$ref": "#/components/schemas/InfractionReports"
+          },
+          "entries": {
+            "$ref": "#/components/schemas/Entries"
+          }
+        },
+        "additionalProperties": false
+      },
+      "MateraErrorResponse": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "nullable": true
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ObjectMateraErrorResponseIEnumerableWrapper": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "nullable": true
+          },
+          "error": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MateraErrorResponse"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "PersonStatistics": {
+        "type": "object",
+        "properties": {
+          "spi": {
+            "$ref": "#/components/schemas/Spi"
+          },
+          "fraudMarkers": {
+            "$ref": "#/components/schemas/FraudMarkers"
+          },
+          "infractionReports": {
+            "$ref": "#/components/schemas/InfractionReports"
+          },
+          "entries": {
+            "$ref": "#/components/schemas/Entries"
+          }
+        },
+        "additionalProperties": false
+      },
+      "PixAddressingKeyPotabilitStatusResponse": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string",
+            "nullable": true
+          },
+          "keyType": {
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "type": "string",
+            "nullable": true
+          },
+          "clearingDelayMilliseconds": {
+            "type": "integer",
+            "format": "int64"
+          }
+        },
+        "additionalProperties": false
+      },
+      "PixAddressingKeyPotabilitStatusResponseWrapper": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/PixAddressingKeyPotabilitStatusResponse"
+          }
+        },
+        "additionalProperties": false
+      },
+      "PixCreateAccountHolderEntity": {
+        "type": "object",
+        "properties": {
+          "taxId": {
+            "type": "string",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "PixFindEntity": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string",
+            "nullable": true
+          },
+          "keyType": {
+            "type": "string",
+            "nullable": true
+          },
+          "id": {
+            "type": "string",
+            "nullable": true
+          },
+          "pspIdentification": {
+            "type": "string",
+            "nullable": true
+          },
+          "accountHolder": {
+            "$ref": "#/components/schemas/PixCreateAccountHolderEntity"
+          },
+          "status": {
+            "type": "string",
+            "nullable": true
+          },
+          "accountAdditionalInformation": {
+            "$ref": "#/components/schemas/AccountAdditionalInformation"
+          },
+          "creationDate": {
+            "type": "string",
+            "nullable": true
+          },
+          "keyLocallyActive": {
+            "type": "string",
+            "nullable": true
+          },
+          "endToEndId": {
+            "type": "string",
+            "nullable": true
+          },
+          "personStatistics": {
+            "$ref": "#/components/schemas/PersonStatistics"
+          },
+          "keyStatistics": {
+            "$ref": "#/components/schemas/KeyStatistics"
+          },
+          "jwtData": {
+            "$ref": "#/components/schemas/JwtDataModel"
+          }
+        },
+        "additionalProperties": false
+      },
+      "PixFindEntityWrapper": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/PixFindEntity"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Reason": {
+        "enum": [
+          "FRAUD",
+          "USER_REQUESTED",
+          "ACCOUNT_CLOSURE",
+          "DEFAULT_OPERATION",
+          "RECONCILIATION"
+        ],
+        "type": "string"
+      },
+      "Spi": {
+        "type": "object",
+        "properties": {
+          "watermark": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "settlements": {
+            "$ref": "#/components/schemas/Statistic"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Statistic": {
+        "type": "object",
+        "properties": {
+          "d90": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "m12": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "m60": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "StatisticsKeyResponse": {
+        "type": "object",
+        "properties": {
+          "responseTime": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "correlationId": {
+            "type": "string",
+            "nullable": true
+          },
+          "key": {
+            "type": "string",
+            "nullable": true
+          },
+          "personStatistics": {
+            "$ref": "#/components/schemas/PersonStatistics"
+          },
+          "keyStatistics": {
+            "$ref": "#/components/schemas/KeyStatistics"
+          }
+        },
+        "additionalProperties": false
+      },
+      "StatisticsKeyResponseWrapper": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/StatisticsKeyResponse"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ValidationErrorsModel": {
+        "type": "object",
+        "properties": {
+          "mensagem": {
+            "type": "string",
+            "nullable": true
+          },
+          "data": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "securitySchemes": {
+      "Bearer": {
+        "type": "apiKey",
+        "description": "JWT Authorization header using the Bearer scheme. \\r\\n\\r\\n \n                      Enter 'Bearer' [space] and then your token in the text input below.\n                      \\r\\n\\r\\nExample: 'Bearer 12345abcdef'",
+        "name": "Authorization",
+        "in": "header"
+      }
+    }
+  },
+  "security": [
+    {
+      "Bearer": []
+    }
+  ]
+}
