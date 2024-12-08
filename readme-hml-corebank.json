@@ -1,5 +1,11 @@
 {
   "openapi": "3.0.1",
+  "servers": [
+    {
+      "url": "https://genial-arquitetura-corebank.homolog.api.genial.systems",
+      "description": "Homolog server"
+    }
+  ],
   "info": {
     "title": "Genial.Arquitetura.Corebank",
     "description": "API Banking Services",
