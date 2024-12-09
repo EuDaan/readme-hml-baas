@@ -2,7 +2,7 @@
   "openapi": "3.0.1",
   "servers": [
     {
-      "url": "https://genial-arquitetura-authentication.ingress-homolog-internal-sp.genial.systems",
+      "url": "https://genial-arquitetura-authentication.homolog.api.genial.systems",
       "description": "Homolog server"
     }
   ],
