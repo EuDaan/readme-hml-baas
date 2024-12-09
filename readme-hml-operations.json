@@ -2,7 +2,7 @@
   "openapi": "3.0.1",
   "servers": [
     {
-      "url": "https://genial-baas-operations.ingress-homolog-internal-sp.genial.systems",
+      "url": "https://genial-baas-operations.homolog.api.genial.systems",
       "description": "Homolog server"
     }
   ],
