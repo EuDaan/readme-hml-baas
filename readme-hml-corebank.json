@@ -266,8 +266,8 @@
         "tags": [
           "Realizar Pagamentos"
         ],
-        "summary": "Valida se uma data é dia útil.",
-        "description": "Se sim, devolve ela mesmo, senão devolve o próximo dia útil",
+        "summary": "Valida dia útil.",
+        "description": "Valida dia útil, se sim, devolve ela mesmo, senão devolve o próximo dia útil",
         "parameters": [
           {
             "name": "date",
@@ -344,7 +344,7 @@
         "tags": [
           "Operações"
         ],
-        "summary": "Consultar Operações Cashin TED e TEF",
+        "summary": "Consultar Operações de Depósitos TED e TEF",
         "description": "Através do número da conta e data do lançamento (apenas TED e TEF)",
         "parameters": [
           {
@@ -443,7 +443,7 @@
         "tags": [
           "Operações"
         ],
-        "summary": "Consultar Status Cashout TED",
+        "summary": "Consultar Status de Saques TED",
         "description": "Buscar status de operação através do ID Liquidacao",
         "parameters": [
           {
@@ -548,7 +548,7 @@
         "tags": [
           "Operações"
         ],
-        "summary": "Consultar Status Cashout TED",
+        "summary": "Consultar Status de Saques TED",
         "description": "Buscar lista de status de operações por tipo de operação e data",
         "parameters": [
           {
@@ -765,7 +765,7 @@
         "tags": [
           "Realizar Pagamentos"
         ],
-        "summary": "Realizar Pagamento Darf",
+        "summary": "Realizar Pagamento DARF",
         "requestBody": {
           "description": "",
           "content": {

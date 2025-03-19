@@ -940,7 +940,7 @@
         "tags": [
           "Operações"
         ],
-        "summary": "Consultar Cashout - Registro disponível por duas horas",
+        "summary": "Consultar Saque - Registro disponível por duas horas",
         "parameters": [
           {
             "name": "endToEndId",
