@@ -21,7 +21,7 @@
         "tags": [
           "Authentication"
         ],
-        "summary": "Authentication user",
+        "summary": "Autenticação",
         "parameters": [
           {
             "name": "basic",
