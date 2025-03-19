@@ -21,7 +21,7 @@
         "tags": [
           "Autenticação"
         ],
-        "summary": "Autenticação",
+        "summary": "Autenticação API Banking",
         "parameters": [
           {
             "name": "basic",
