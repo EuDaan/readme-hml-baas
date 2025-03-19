@@ -329,7 +329,7 @@
     "/v1/pix/qrcode-decode": {
       "get": {
         "tags": [
-          "Receber PIX - QR Code"
+          "Enviar PIX"
         ],
         "summary": "Decodificar QR Code",
         "parameters": [
@@ -792,7 +792,7 @@
         "tags": [
           "Chave PIX"
         ],
-        "summary": "Listar chaves PIX",
+        "summary": "Listar chave PIX de sua conta",
         "parameters": [
           {
             "name": "agency",
@@ -940,7 +940,7 @@
         "tags": [
           "Operações"
         ],
-        "summary": "Consulta de Callback - Registro disponível por duas horas",
+        "summary": "Consultar Cashout - Registro disponível por duas horas",
         "parameters": [
           {
             "name": "endToEndId",
