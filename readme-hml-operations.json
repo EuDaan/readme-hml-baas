@@ -981,7 +981,7 @@
     "/v1/dict/pix/white-list/{key}/{keyType}": {
       "get": {
         "tags": [
-          "Chaves PIX"
+          "Chave PIX - WhiteList Genial"
         ],
         "summary": "Consultar Chave PIX na White List Genial",
         "parameters": [
