@@ -7,7 +7,7 @@
     }
   ],
   "info": {
-    "title": "Autenticação",
+    "title": "Autenticação API Banking",
     "description": "API Services",
     "contact": {
       "name": "Genial Investimentos",
@@ -18,10 +18,10 @@
   "paths": {
     "/v1/authentication": {
       "post": {
-        //"tags": [
-          //"Autenticação"
-        //],
-        "summary": "Autenticação API Banking",
+        "tags": [
+          "Autenticação"
+        ],
+        "summary": "Autenticação JWT",
         "parameters": [
           {
             "name": "basic",
