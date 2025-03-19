@@ -7,7 +7,7 @@
     }
   ],
   "info": {
-    "title": "Genial.Arquitetura.BaaS",
+    "title": "Arquitetura Banking",
     "description": "API Banking Services",
     "contact": {
       "name": "Genial Investimentos",
@@ -19,9 +19,9 @@
     "/v1/pix/send/initialization": {
       "post": {
         "tags": [
-          "Pix"
+          "Enviar PIX"
         ],
-        "summary": "Inicialização do envio de pix",
+        "summary": "Inicializar envio de PIX",
         "requestBody": {
           "description": "",
           "content": {
@@ -94,9 +94,9 @@
     "/v1/pix/send/confirmed": {
       "post": {
         "tags": [
-          "Pix"
+          "Enviar PIX"
         ],
-        "summary": "Confirmar envio de pix através do idempotencyId",
+        "summary": "Confirmar envio de PIX",
         "requestBody": {
           "description": "",
           "content": {
@@ -179,9 +179,9 @@
     "/v1/pix/send/manual": {
       "post": {
         "tags": [
-          "Pix"
+          "Enviar PIX"
         ],
-        "summary": "Envio de pix manual",
+        "summary": "Envio de PIX manual",
         "requestBody": {
           "description": "",
           "content": {
@@ -264,7 +264,7 @@
     "/v1/pix/status-callback/{endToEndId}": {
       "get": {
         "tags": [
-          "Pix"
+          "Operations"
         ],
         "summary": "Consulta de Callback - Registro disponível por duas horas",
         "parameters": [
@@ -318,9 +318,9 @@
     "/v1/pix/return": {
       "post": {
         "tags": [
-          "Pix"
+          "Devolução de PIX"
         ],
-        "summary": "Devolução de PIX",
+        "summary": "Devolver PIX",
         "requestBody": {
           "description": "",
           "content": {
@@ -383,9 +383,9 @@
     "/v1/pix/receipt/{endToEndId}": {
       "get": {
         "tags": [
-          "Pix"
+          "Comprovantes"
         ],
-        "summary": "Gerar comprovante PIX",
+        "summary": "Gerar comprovante envio de PIX",
         "parameters": [
           {
             "name": "endToEndId",
@@ -447,9 +447,9 @@
     "/v1/pix/receipt-return/{endToEndId}": {
       "get": {
         "tags": [
-          "Pix"
+          "Comprovantes"
         ],
-        "summary": "Gerar comprovante Devolução PIX",
+        "summary": "Gerar comprovante devolução PIX",
         "parameters": [
           {
             "name": "endToEndId",
@@ -511,9 +511,9 @@
     "/v1/pix/qrcode-static": {
       "post": {
         "tags": [
-          "Pix"
+          "Receber PIX - QR Code"
         ],
-        "summary": "Gerar Qrcode",
+        "summary": "Gerar QR Code Estático",
         "requestBody": {
           "description": "",
           "content": {
@@ -576,9 +576,9 @@
     "/v1/pix/qrcode-decode": {
       "get": {
         "tags": [
-          "Pix"
+          "Receber PIX - QR Code"
         ],
-        "summary": "Decode Qrcode",
+        "summary": "Decodificar QR Code",
         "parameters": [
           {
             "name": "qrcode",
@@ -633,12 +633,12 @@
         }
       }
     },
-    "/v1/pix/qrcode-dynamic": {
+    "/v2/qrcode/dynamic": {
       "post": {
         "tags": [
-          "Pix"
+          "Receber PIX - QR Code"
         ],
-        "summary": "Gerar Qrcode Dinâmico",
+        "summary": "Gerar QR Code Dinâmico",
         "requestBody": {
           "description": "",
           "content": {
@@ -701,7 +701,7 @@
     "/v1/pix/copy-paste": {
       "post": {
         "tags": [
-          "Pix"
+          "Enviar PIX"
         ],
         "summary": "Copy Paste - Pagamento QR Codes",
         "requestBody": {
@@ -766,7 +766,7 @@
     "/v1/pix/key": {
       "post": {
         "tags": [
-          "PixDict"
+          "Chave PIX"
         ],
         "summary": "Registrar chave PIX",
         "requestBody": {
@@ -844,7 +844,7 @@
     "/v1/pix/key-list/{agency}/{account}": {
       "get": {
         "tags": [
-          "PixDict"
+          "Chave PIX"
         ],
         "summary": "Listar chaves PIX",
         "parameters": [
@@ -907,9 +907,9 @@
     "/v2/pix/key-account-partner/{agency}/{account}/{key}": {
       "get": {
         "tags": [
-          "PixDict"
+          "Chave PIX"
         ],
-        "summary": "Consultar chave PIX para parceiros",
+        "summary": "Consultar chave PIX",
         "parameters": [
           {
             "name": "agency",
