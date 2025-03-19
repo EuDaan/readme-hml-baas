@@ -19,7 +19,7 @@
     "/v1/authentication": {
       "post": {
         "tags": [
-          "Authentication"
+          "Autenticação"
         ],
         "summary": "Autenticação",
         "parameters": [
