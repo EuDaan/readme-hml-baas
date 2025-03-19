@@ -454,7 +454,7 @@
     "/v1/pix/return": {
       "post": {
         "tags": [
-          "Devolução de PIX"
+          "Devolver PIX"
         ],
         "summary": "Devolver PIX",
         "requestBody": {

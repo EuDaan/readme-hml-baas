@@ -21,7 +21,7 @@
         "tags": [
           "Realizar Pagamentos"
         ],
-        "summary": "Realizar TEF",
+        "summary": "Realizar Pagamento TEF",
         "description": "Responsável por realizar TEFs de débitos ou créditos internos GENIAL.",
         "requestBody": {
           "description": "",
