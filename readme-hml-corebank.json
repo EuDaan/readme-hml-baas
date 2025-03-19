@@ -443,7 +443,7 @@
         "tags": [
           "Operações"
         ],
-        "summary": "Consultar Status de Saques TED",
+        "summary": "Consultar Status de Saques TED - ID",
         "description": "Buscar status de operação através do ID Liquidacao",
         "parameters": [
           {
@@ -548,7 +548,7 @@
         "tags": [
           "Operações"
         ],
-        "summary": "Consultar Status de Saques TED",
+        "summary": "Consultar Status de Saques TED - Tipo",
         "description": "Buscar lista de status de operações por tipo de operação e data",
         "parameters": [
           {
