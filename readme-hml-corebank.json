@@ -21,7 +21,8 @@
         "tags": [
           "Realizar Pagamentos"
         ],
-        "summary": "Responsável por realizar TEFs de débitos ou créditos internos GENIAL.",
+        "summary": "Realizar TEF",
+        "description": "Responsável por realizar TEFs de débitos ou créditos internos GENIAL.",
         "requestBody": {
           "description": "",
           "content": {
@@ -177,7 +178,8 @@
         "tags": [
           "Saldo Bancário"
         ],
-        "summary": "Consulta de saldos de uma conta corrente.",
+        "summary": "Consultar Saldo Bancário",
+        "description": "Consulta de saldos de uma conta corrente.",
         "parameters": [
           {
             "name": "agency",
@@ -264,8 +266,8 @@
         "tags": [
           "Realizar Pagamentos"
         ],
-        "summary": "Valida se uma data é dia útil. Se sim, devolve ela mesmo, senão devolve o próximo dia útil",
-        "description": "Aqui vai o texto com formatação Markdown.",
+        "summary": "Valida se uma data é dia útil.",
+        "description": "Se sim, devolve ela mesmo, senão devolve o próximo dia útil",
         "parameters": [
           {
             "name": "date",
@@ -342,8 +344,8 @@
         "tags": [
           "Operações"
         ],
-        "summary": "Consulta de operações cashin através do número da conta e data do lançamento (apenas DOC, TED e TEF)",
-        "description": "Aqui vai o texto com formatação Markdown.",
+        "summary": "Consultar Operações Cashin TED e TEF",
+        "description": "Através do número da conta e data do lançamento (apenas TED e TEF)",
         "parameters": [
           {
             "name": "agency",
@@ -441,7 +443,8 @@
         "tags": [
           "Operações"
         ],
-        "summary": "Buscar status de operação através do ID Liquidacao",
+        "summary": "Consultar Status Cashout TED",
+        "description": "Buscar status de operação através do ID Liquidacao",
         "parameters": [
           {
             "name": "agency",
@@ -545,7 +548,8 @@
         "tags": [
           "Operações"
         ],
-        "summary": "Buscar lista de status de operações por tipo de operação e data",
+        "summary": "Consultar Status Cashout TED",
+        "description": "Buscar lista de status de operações por tipo de operação e data",
         "parameters": [
           {
             "name": "agency",
@@ -661,7 +665,8 @@
         "tags": [
           "Operações"
         ],
-        "summary": "Buscar registros de Tefs de crédito ou débito de uma agência/conta referente a data informada.",
+        "summary": "Consultar Operações IN e OUT - TEF",
+        "description": "Buscar registros de Tefs de crédito ou débito de uma agência/conta referente a data informada.",
         "parameters": [
           {
             "name": "agency",
@@ -760,7 +765,7 @@
         "tags": [
           "Realizar Pagamentos"
         ],
-        "summary": "Realizar pagamento darf",
+        "summary": "Realizar Pagamento Darf",
         "requestBody": {
           "description": "",
           "content": {
@@ -839,7 +844,7 @@
         "tags": [
           "Realizar Pagamentos"
         ],
-        "summary": "Realizar pagamento DARF manual",
+        "summary": "Realizar Pagamento DARF Manual",
         "requestBody": {
           "description": "",
           "content": {
@@ -924,7 +929,8 @@
         "tags": [
           "Realizar Pagamentos"
         ],
-        "summary": "Consulta status do pagamento de DARF manual através do ID Pagamento",
+        "summary": "Consultar Operações DARF manual",
+        "description": "Consulta status do pagamento de DARF manual através do ID Pagamento",
         "parameters": [
           {
             "name": "idPayment",
@@ -992,9 +998,10 @@
     "/v1/payment/darf-manual/{idPayment}/receipt": {
       "get": {
         "tags": [
-          "Realizar Pagamentos"
+          "Comprovantes"
         ],
-        "summary": "Gera comprovante de um pagamento de DARF manual através do ID Pagamento",
+        "summary": "Gerar comprovante DARF manual",
+        "description": "Gera comprovante de um pagamento de DARF manual através do ID Pagamento",
         "parameters": [
           {
             "name": "idPayment",
@@ -1125,7 +1132,7 @@
         "tags": [
           "Realizar Pagamentos"
         ],
-        "summary": "Consulta de boletos de consumo",
+        "summary": "Consultar Boletos Consumo",
         "parameters": [
           {
             "name": "identificador",
@@ -1208,7 +1215,7 @@
         "tags": [
           "Realizar Pagamentos"
         ],
-        "summary": "Realizar pagamento de boletos em geral",
+        "summary": "Realizar Pagamento Boletos",
         "requestBody": {
           "description": "",
           "content": {
@@ -1306,7 +1313,8 @@
         "tags": [
           "Realizar Pagamentos"
         ],
-        "summary": "Consulta status do pagamento de boletos através do ID Pagamento",
+        "summary": "Consultar Status Boleto",
+        "description": "Consulta status do pagamento de boletos através do ID Pagamento",
         "parameters": [
           {
             "name": "idPayment",
@@ -1387,9 +1395,10 @@
     "/v1/payment/bankslip/{idPayment}/receipt": {
       "get": {
         "tags": [
-          "Realizar Pagamentos"
+          "Comprovantes"
         ],
-        "summary": "Gera comprovante de um pagamento de boleto através do ID Pagamento",
+        "summary": "Gerar Comprovante Boleto",
+        "description": "Gera comprovante de um pagamento de boleto através do ID Pagamento",
         "parameters": [
           {
             "name": "idPayment",
@@ -1472,7 +1481,7 @@
         "tags": [
           "Operações"
         ],
-        "summary": "Buscar as transações Ted no Mongo",
+        "summary": "Buscar Transação TED",
         "parameters": [
           {
             "name": "idLiquidacao",
@@ -1549,7 +1558,7 @@
         "tags": [
           "Realizar Pagamentos"
         ],
-        "summary": "Realizar pagamento ted",
+        "summary": "Realizar Pagamento TED",
         "requestBody": {
           "description": "",
           "content": {
