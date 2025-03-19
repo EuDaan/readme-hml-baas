@@ -7,7 +7,7 @@
     }
   ],
   "info": {
-    "title": "Arquitetura Banking",
+    "title": "Banking Service PIX",
     "description": "API Banking Services",
     "contact": {
       "name": "Genial Investimentos",
@@ -261,18 +261,82 @@
         }
       }
     },
-    "/v1/pix/status-callback/{endToEndId}": {
+    "/v1/pix/qrcode-static": {
+      "post": {
+        "tags": [
+          "Receber PIX - QR Code"
+        ],
+        "summary": "Gerar QR Code Estático",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/QrcodeModelRequest"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/QrcodeModelRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/QrcodeModelRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/QrcodeModelRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PixQrcodeEntityWrapper"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/pix/qrcode-decode": {
       "get": {
         "tags": [
-          "Operations"
+          "Receber PIX - QR Code"
         ],
-        "summary": "Consulta de Callback - Registro disponível por duas horas",
+        "summary": "Decodificar QR Code",
         "parameters": [
           {
-            "name": "endToEndId",
-            "in": "path",
+            "name": "qrcode",
+            "in": "query",
             "description": "",
-            "required": true,
             "schema": {
               "type": "string"
             }
@@ -284,13 +348,85 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/PixStatusResponse"
+                  "$ref": "#/components/schemas/PixQrcodeDecodeEntityMateraErrorResponseIEnumerableWrapper"
                 }
               }
             }
           },
-          "204": {
-            "description": "No Content"
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ObjectMateraErrorResponseIEnumerableWrapper"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v2/qrcode/dynamic": {
+      "post": {
+        "tags": [
+          "Receber PIX - QR Code"
+        ],
+        "summary": "Gerar QR Code Dinâmico",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/QrcodeDynamicModelRequest"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/QrcodeDynamicModelRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/QrcodeDynamicModelRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/QrcodeDynamicModelRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PixQrcodeDynamicEntityResponse"
+                }
+              }
+            }
           },
           "404": {
             "description": "Not Found",
@@ -481,196 +617,6 @@
                   "items": {
                     "$ref": "#/components/schemas/ValidationErrorsModel"
                   }
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorMessage"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/v1/pix/qrcode-static": {
-      "post": {
-        "tags": [
-          "Receber PIX - QR Code"
-        ],
-        "summary": "Gerar QR Code Estático",
-        "requestBody": {
-          "description": "",
-          "content": {
-            "application/json-patch+json": {
-              "schema": {
-                "$ref": "#/components/schemas/QrcodeModelRequest"
-              }
-            },
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/QrcodeModelRequest"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/QrcodeModelRequest"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/QrcodeModelRequest"
-              }
-            }
-          }
-        },
-        "responses": {
-          "201": {
-            "description": "Created",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/PixQrcodeEntityWrapper"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorMessage"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/v1/pix/qrcode-decode": {
-      "get": {
-        "tags": [
-          "Receber PIX - QR Code"
-        ],
-        "summary": "Decodificar QR Code",
-        "parameters": [
-          {
-            "name": "qrcode",
-            "in": "query",
-            "description": "",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/PixQrcodeDecodeEntityMateraErrorResponseIEnumerableWrapper"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ObjectMateraErrorResponseIEnumerableWrapper"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorMessage"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/v2/qrcode/dynamic": {
-      "post": {
-        "tags": [
-          "Receber PIX - QR Code"
-        ],
-        "summary": "Gerar QR Code Dinâmico",
-        "requestBody": {
-          "description": "",
-          "content": {
-            "application/json-patch+json": {
-              "schema": {
-                "$ref": "#/components/schemas/QrcodeDynamicModelRequest"
-              }
-            },
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/QrcodeDynamicModelRequest"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/QrcodeDynamicModelRequest"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/QrcodeDynamicModelRequest"
-              }
-            }
-          }
-        },
-        "responses": {
-          "201": {
-            "description": "Created",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/PixQrcodeDynamicEntityResponse"
                 }
               }
             }
@@ -988,7 +934,62 @@
           }
         }
       }
+    },
+    "/v1/pix/status-callback/{endToEndId}": {
+      "get": {
+        "tags": [
+          "Operações"
+        ],
+        "summary": "Consulta de Callback - Registro disponível por duas horas",
+        "parameters": [
+          {
+            "name": "endToEndId",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PixStatusResponse"
+                }
+              }
+            }
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
+          }
+        }
+      }
     }
+   
   },
   "components": {
     "schemas": {
