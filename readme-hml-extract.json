@@ -38,8 +38,7 @@
             "description": "",
             "required": true,
             "schema": {
-              "type": "string",
-              //"format": "date-time"
+              "type": "string"
             }
           }
         ],
