@@ -19,9 +19,9 @@
     "/v1/files/extrato/{account}/{date}/link": {
       "get": {
         "tags": [
-          "File"
+          "Gerar Extrato"
         ],
-        "summary": "Download do extrato de contas através de link",
+        "summary": "Download de extrato",
         "parameters": [
           {
             "name": "account",
