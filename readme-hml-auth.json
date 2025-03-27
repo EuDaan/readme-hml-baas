@@ -7,7 +7,7 @@
     }
   ],
   "info": {
-    "title": "Genial.Arquitetura.Authentication",
+    "title": "Autenticação",
     "description": "API Services",
     "contact": {
       "name": "Genial Investimentos",
@@ -19,9 +19,9 @@
     "/v1/authentication": {
       "post": {
         "tags": [
-          "Authentication"
+          "Autenticação"
         ],
-        "summary": "Authentication user",
+        "summary": "Autenticação JWT",
         "parameters": [
           {
             "name": "basic",

@@ -7,7 +7,7 @@
     }
   ],
   "info": {
-    "title": "Genial.Arquitetura.BaaS",
+    "title": "Serviços Bancários PIX",
     "description": "API Banking Services",
     "contact": {
       "name": "Genial Investimentos",
@@ -19,9 +19,9 @@
     "/v1/pix/send/initialization": {
       "post": {
         "tags": [
-          "Pix"
+          "Enviar PIX"
         ],
-        "summary": "Inicialização do envio de pix",
+        "summary": "Inicializar envio de PIX",
         "requestBody": {
           "description": "",
           "content": {
@@ -94,9 +94,9 @@
     "/v1/pix/send/confirmed": {
       "post": {
         "tags": [
-          "Pix"
+          "Enviar PIX"
         ],
-        "summary": "Confirmar envio de pix através do idempotencyId",
+        "summary": "Confirmar envio de PIX",
         "requestBody": {
           "description": "",
           "content": {
@@ -179,9 +179,9 @@
     "/v1/pix/send/manual": {
       "post": {
         "tags": [
-          "Pix"
+          "Enviar PIX"
         ],
-        "summary": "Envio de pix manual",
+        "summary": "Envio de PIX manual",
         "requestBody": {
           "description": "",
           "content": {
@@ -261,259 +261,12 @@
         }
       }
     },
-    "/v1/pix/status-callback/{endToEndId}": {
-      "get": {
-        "tags": [
-          "Pix"
-        ],
-        "summary": "Consulta de Callback - Registro disponível por duas horas",
-        "parameters": [
-          {
-            "name": "endToEndId",
-            "in": "path",
-            "description": "",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/PixStatusResponse"
-                }
-              }
-            }
-          },
-          "204": {
-            "description": "No Content"
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorMessage"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/v1/pix/return": {
-      "post": {
-        "tags": [
-          "Pix"
-        ],
-        "summary": "Devolução de PIX",
-        "requestBody": {
-          "description": "",
-          "content": {
-            "application/json-patch+json": {
-              "schema": {
-                "$ref": "#/components/schemas/PixReturnRequest"
-              }
-            },
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/PixReturnRequest"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/PixReturnRequest"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/PixReturnRequest"
-              }
-            }
-          }
-        },
-        "responses": {
-          "201": {
-            "description": "Created",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/PixReturnResponseMateraErrorResponseIEnumerableWrapper"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorMessage"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/v1/pix/receipt/{endToEndId}": {
-      "get": {
-        "tags": [
-          "Pix"
-        ],
-        "summary": "Gerar comprovante PIX",
-        "parameters": [
-          {
-            "name": "endToEndId",
-            "in": "path",
-            "description": "",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/PixReceiptResponse"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/ValidationErrorsModel"
-                  }
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorMessage"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/v1/pix/receipt-return/{endToEndId}": {
-      "get": {
-        "tags": [
-          "Pix"
-        ],
-        "summary": "Gerar comprovante Devolução PIX",
-        "parameters": [
-          {
-            "name": "endToEndId",
-            "in": "path",
-            "description": "",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/PixReceiptResponse"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/ValidationErrorsModel"
-                  }
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorMessage"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
     "/v1/pix/qrcode-static": {
       "post": {
         "tags": [
-          "Pix"
+          "Receber PIX - QR Code"
         ],
-        "summary": "Gerar Qrcode",
+        "summary": "Gerar QR Code Estático",
         "requestBody": {
           "description": "",
           "content": {
@@ -576,9 +329,9 @@
     "/v1/pix/qrcode-decode": {
       "get": {
         "tags": [
-          "Pix"
+          "Enviar PIX"
         ],
-        "summary": "Decode Qrcode",
+        "summary": "Decodificar QR Code",
         "parameters": [
           {
             "name": "qrcode",
@@ -633,12 +386,12 @@
         }
       }
     },
-    "/v1/pix/qrcode-dynamic": {
+    "/v2/qrcode/dynamic": {
       "post": {
         "tags": [
-          "Pix"
+          "Receber PIX - QR Code"
         ],
-        "summary": "Gerar Qrcode Dinâmico",
+        "summary": "Gerar QR Code Dinâmico",
         "requestBody": {
           "description": "",
           "content": {
@@ -698,10 +451,203 @@
         }
       }
     },
+    "/v1/pix/return": {
+      "post": {
+        "tags": [
+          "Devolver PIX"
+        ],
+        "summary": "Devolver PIX",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PixReturnRequest"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PixReturnRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PixReturnRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PixReturnRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PixReturnResponseMateraErrorResponseIEnumerableWrapper"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/pix/receipt/{endToEndId}": {
+      "get": {
+        "tags": [
+          "Comprovantes"
+        ],
+        "summary": "Gerar comprovante envio de PIX",
+        "parameters": [
+          {
+            "name": "endToEndId",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PixReceiptResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ValidationErrorsModel"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/pix/receipt-return/{endToEndId}": {
+      "get": {
+        "tags": [
+          "Comprovantes"
+        ],
+        "summary": "Gerar comprovante devolução PIX",
+        "parameters": [
+          {
+            "name": "endToEndId",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PixReceiptResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ValidationErrorsModel"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v1/pix/copy-paste": {
       "post": {
         "tags": [
-          "Pix"
+          "Enviar PIX"
         ],
         "summary": "Copy Paste - Pagamento QR Codes",
         "requestBody": {
@@ -766,7 +712,7 @@
     "/v1/pix/key": {
       "post": {
         "tags": [
-          "PixDict"
+          "Chave PIX"
         ],
         "summary": "Registrar chave PIX",
         "requestBody": {
@@ -844,9 +790,9 @@
     "/v1/pix/key-list/{agency}/{account}": {
       "get": {
         "tags": [
-          "PixDict"
+          "Chave PIX"
         ],
-        "summary": "Listar chaves PIX",
+        "summary": "Listar chave PIX de sua conta",
         "parameters": [
           {
             "name": "agency",
@@ -907,9 +853,9 @@
     "/v2/pix/key-account-partner/{agency}/{account}/{key}": {
       "get": {
         "tags": [
-          "PixDict"
+          "Chave PIX"
         ],
-        "summary": "Consultar chave PIX para parceiros",
+        "summary": "Consultar chave PIX",
         "parameters": [
           {
             "name": "agency",
@@ -988,7 +934,62 @@
           }
         }
       }
+    },
+    "/v1/pix/status-callback/{endToEndId}": {
+      "get": {
+        "tags": [
+          "Operações"
+        ],
+        "summary": "Consultar Saque - Registro disponível por duas horas",
+        "parameters": [
+          {
+            "name": "endToEndId",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PixStatusResponse"
+                }
+              }
+            }
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
+          }
+        }
+      }
     }
+   
   },
   "components": {
     "schemas": {

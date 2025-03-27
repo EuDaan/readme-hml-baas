@@ -7,7 +7,7 @@
     }
   ],
   "info": {
-    "title": "Genial.Arquitetura.Corebank",
+    "title": "Serviços Corebank",
     "description": "API Banking Services",
     "contact": {
       "name": "Genial Investimentos",
@@ -19,9 +19,10 @@
     "/v1/account/tef": {
       "post": {
         "tags": [
-          "Account"
+          "Realizar Pagamentos"
         ],
-        "summary": "Responsável por realizar débitos ou créditos na conta corrente informada.",
+        "summary": "Realizar Pagamento TEF",
+        "description": "Responsável por realizar TEFs de débitos ou créditos internos GENIAL.",
         "requestBody": {
           "description": "",
           "content": {
@@ -114,7 +115,7 @@
     "/v1/account/receipt-tef/{idDebit}": {
       "get": {
         "tags": [
-          "Account"
+          "Comprovantes"
         ],
         "summary": "Gerar comprovante TEF",
         "parameters": [
@@ -175,9 +176,10 @@
     "/v1/core-banking/balance/{agency}/{account}": {
       "get": {
         "tags": [
-          "CoreBanking"
+          "Saldo Bancário"
         ],
-        "summary": "Consulta de saldos de uma conta corrente.",
+        "summary": "Consultar Saldo Bancário",
+        "description": "Consulta de saldos de uma conta corrente.",
         "parameters": [
           {
             "name": "agency",
@@ -262,9 +264,10 @@
     "/v1/core-banking/business-day/{date}": {
       "get": {
         "tags": [
-          "CoreBanking"
+          "Realizar Pagamentos"
         ],
-        "summary": "Valida se uma data é dia útil. Se sim, devolve ela mesmo, senão devolve o próximo dia útil",
+        "summary": "Valida dia útil.",
+        "description": "Valida dia útil, se sim, devolve ela mesmo, senão devolve o próximo dia útil",
         "parameters": [
           {
             "name": "date",
@@ -339,9 +342,10 @@
     "/v1/operations/cash-in/{agency}/{account}/{launchDate}": {
       "get": {
         "tags": [
-          "Operations"
+          "Operações"
         ],
-        "summary": "Consulta de operações cashin através do número da conta e data do lançamento (apenas DOC, TED e TEF)",
+        "summary": "Consultar Operações de Depósitos TED e TEF",
+        "description": "Através do número da conta e data do lançamento (apenas TED e TEF)",
         "parameters": [
           {
             "name": "agency",
@@ -437,9 +441,10 @@
     "/v1/operations/status/{agency}/{account}/{idLiquidacao}": {
       "get": {
         "tags": [
-          "Operations"
+          "Operações"
         ],
-        "summary": "Buscar status de operação através do ID Liquidacao",
+        "summary": "Consultar Status de Saques TED - ID",
+        "description": "Buscar status de operação através do ID Liquidacao",
         "parameters": [
           {
             "name": "agency",
@@ -541,9 +546,10 @@
     "/v1/operations/status/{agency}/{account}/{date}/{type}": {
       "get": {
         "tags": [
-          "Operations"
+          "Operações"
         ],
-        "summary": "Buscar lista de status de operações por tipo de operação e data",
+        "summary": "Consultar Status de Saques TED - Tipo",
+        "description": "Buscar lista de status de operações por tipo de operação e data",
         "parameters": [
           {
             "name": "agency",
@@ -657,9 +663,10 @@
     "/v1/operations/tef/{agency}/{account}/{date}/{launchType}": {
       "get": {
         "tags": [
-          "Operations"
+          "Operações"
         ],
-        "summary": "Buscar registros de Tefs de crédito ou débito de uma agência/conta referente a data informada.",
+        "summary": "Consultar Operações IN e OUT - TEF",
+        "description": "Buscar registros de Tefs de crédito ou débito de uma agência/conta referente a data informada.",
         "parameters": [
           {
             "name": "agency",
@@ -756,9 +763,9 @@
     "/v1/payment/darf": {
       "post": {
         "tags": [
-          "Payment"
+          "Realizar Pagamentos"
         ],
-        "summary": "Realizar pagamento darf",
+        "summary": "Realizar Pagamento DARF",
         "requestBody": {
           "description": "",
           "content": {
@@ -835,9 +842,9 @@
     "/v1/payment/darf-manual": {
       "post": {
         "tags": [
-          "Payment"
+          "Realizar Pagamentos"
         ],
-        "summary": "Realizar pagamento DARF manual",
+        "summary": "Realizar Pagamento DARF Manual",
         "requestBody": {
           "description": "",
           "content": {
@@ -920,9 +927,10 @@
     "/v1/payment/darf-manual/{idPayment}/status": {
       "get": {
         "tags": [
-          "Payment"
+          "Realizar Pagamentos"
         ],
-        "summary": "Consulta status do pagamento de DARF manual através do ID Pagamento",
+        "summary": "Consultar Operações DARF manual",
+        "description": "Consulta status do pagamento de DARF manual através do ID Pagamento",
         "parameters": [
           {
             "name": "idPayment",
@@ -990,9 +998,10 @@
     "/v1/payment/darf-manual/{idPayment}/receipt": {
       "get": {
         "tags": [
-          "Payment"
+          "Comprovantes"
         ],
-        "summary": "Gera comprovante de um pagamento de DARF manual através do ID Pagamento",
+        "summary": "Gerar comprovante DARF manual",
+        "description": "Gera comprovante de um pagamento de DARF manual através do ID Pagamento",
         "parameters": [
           {
             "name": "idPayment",
@@ -1060,7 +1069,7 @@
     "/v1/payment/receipt-ted/{idLiquidacao}": {
       "get": {
         "tags": [
-          "Payment"
+          "Comprovantes"
         ],
         "summary": "Gerar comprovante TED",
         "parameters": [
@@ -1121,9 +1130,9 @@
     "/v1/payment/bankslip-consumption/{identificador}": {
       "get": {
         "tags": [
-          "Payment"
+          "Realizar Pagamentos"
         ],
-        "summary": "Consulta de boletos de consumo",
+        "summary": "Consultar Boletos Consumo",
         "parameters": [
           {
             "name": "identificador",
@@ -1204,9 +1213,9 @@
     "/v1/payment/bankslip": {
       "post": {
         "tags": [
-          "Payment"
+          "Realizar Pagamentos"
         ],
-        "summary": "Realizar pagamento de boletos em geral",
+        "summary": "Realizar Pagamento Boletos",
         "requestBody": {
           "description": "",
           "content": {
@@ -1302,9 +1311,10 @@
     "/v1/payment/bankslip/{idPayment}/status": {
       "get": {
         "tags": [
-          "Payment"
+          "Realizar Pagamentos"
         ],
-        "summary": "Consulta status do pagamento de boletos através do ID Pagamento",
+        "summary": "Consultar Status Boleto",
+        "description": "Consulta status do pagamento de boletos através do ID Pagamento",
         "parameters": [
           {
             "name": "idPayment",
@@ -1385,9 +1395,10 @@
     "/v1/payment/bankslip/{idPayment}/receipt": {
       "get": {
         "tags": [
-          "Payment"
+          "Comprovantes"
         ],
-        "summary": "Gera comprovante de um pagamento de boleto através do ID Pagamento",
+        "summary": "Gerar Comprovante Boleto",
+        "description": "Gera comprovante de um pagamento de boleto através do ID Pagamento",
         "parameters": [
           {
             "name": "idPayment",
@@ -1468,9 +1479,9 @@
     "/v2/operations/ted/{idLiquidacao}": {
       "get": {
         "tags": [
-          "Operations"
+          "Operações"
         ],
-        "summary": "Buscar as transações Ted no Mongo",
+        "summary": "Buscar Transação TED",
         "parameters": [
           {
             "name": "idLiquidacao",
@@ -1545,9 +1556,9 @@
     "/v2/payment/ted": {
       "post": {
         "tags": [
-          "Payment"
+          "Realizar Pagamentos"
         ],
-        "summary": "Realizar pagamento ted",
+        "summary": "Realizar Pagamento TED",
         "requestBody": {
           "description": "",
           "content": {
