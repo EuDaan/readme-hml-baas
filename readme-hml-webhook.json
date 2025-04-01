@@ -1,0 +1,80 @@
+{
+    "openapi": "3.0.1",
+    "servers": [
+        {
+            "description": "Homolog server"
+        }
+    ],
+    "info": {
+        "title": "Webhook",
+        "description": "API Services",
+        "contact": {
+            "name": "Genial Investimentos",
+            "url": "https://www.genialinvestimentos.com.br/"
+        },
+        "version": "1.0"
+    },
+    "paths": {
+        "Webhook": {
+            "post": {
+                "tags": [
+                    "Webhook"
+                ],
+                "summary": "Callback - Webhook Cashin (Depósito)"
+            }
+        },
+        "data": {
+            "instantPaymentId": "0190a840-1a0f-fb7e-d6a8-103a83d568f5",
+            "endToEndId": "E45246410202407121841N1w6avgC9R5",
+            "timestampUTC": "2024-07-12T18:41:31.659",
+            "settlementId": "163450200604939705912683897279343423918",
+            "receiverReconciliationIdentifier": "",
+            "value": 10,
+            "receiver": {
+                "psp": {
+                    "ispb": "45246410",
+                    "name": "BANCO GENIAL"
+                },
+                "taxId": "48002662000127",
+                "addressKey": null,
+                "account": {
+                    "accountNumber": "960429093",
+                    "accountType": "CACC",
+                    "branch": "1"
+                }
+            },
+            "payer": {
+                "psp": {
+                    "ispb": "45246410",
+                    "name": "BANCO GENIAL"
+                },
+                "taxId": "48002662000127",
+                "name": "Account2-DANILOGENIAL",
+                "account": {
+                    "accountNumber": "960429107",
+                    "accountType": "CACC",
+                    "branch": "1"
+                }
+            },
+            "spiTimestampUTC": "2024-07-12T18:41:32.025",
+            "customerInitiationTimestampUTC": "2024-07-12T18:41:31.475",
+            "remittanceInformation": "ENVIOPIX_ADDI20240712123701",
+            "mipTransactionType": "INTRA_PSP",
+            "eventType": {
+                "code": 2,
+                "description": "Receipt"
+            },
+            "eventStatus": {
+                "code": 3,
+                "description": "Success"
+            },
+            "instructionType": "PAGPRI",
+            "initiationForm": "MANU",
+            "transactionPurpose": "IPAY",
+            "instructionPriority": "HIGH",
+            "isRigthsAndObligationSettlement": false,
+            "return": null
+        }
+    }
+}
+
