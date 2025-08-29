@@ -3093,17 +3093,21 @@
       "PixConfirmationRequest": {
         "type": "object",
         "properties": {
-          "idempotencyId": {
-            "type": "string",
-            "nullable": true
-          },
-          "ignorePaymentDuplication": {
-            "type": "boolean"
-          },
-          "additionalInformation": {
-            "type": "string",
-            "nullable": true
-          }
+            "idempotencyId": {
+                "type": "string",
+                "nullable": true
+            },
+            "ignorePaymentDuplication": {
+                "type": "boolean"
+            },
+            "additionalInformation": {
+                "type": "string",
+                "nullable": true
+            },
+            "historicComplement": {
+                "type": "string",
+                "nullable": true
+            }
         },
         "additionalProperties": false
       },
