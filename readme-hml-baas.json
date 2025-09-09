@@ -15,982 +15,1043 @@
     },
     "version": "1.0"
   },
-  "paths": {
-    "/v1/pix/send/initialization": {
-      "post": {
-        "tags": [
-          "Enviar PIX"
-        ],
-        "summary": "Inicializar envio de PIX",
-        "requestBody": {
-          "description": "",
-          "content": {
-            "application/json-patch+json": {
-              "schema": {
-                "$ref": "#/components/schemas/PixInitializationRequest"
-              }
-            },
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/PixInitializationRequest"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/PixInitializationRequest"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/PixInitializationRequest"
-              }
+    "paths": {
+        "/v1/pix/send/initialization": {
+            "post": {
+                "tags": [
+                    "Enviar PIX"
+                ],
+                "summary": "Inicializar envio de PIX",
+                "requestBody": {
+                    "description": "",
+                    "content": {
+                        "application/json-patch+json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PixInitializationRequest"
+                            }
+                        },
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PixInitializationRequest"
+                            }
+                        },
+                        "text/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PixInitializationRequest"
+                            }
+                        },
+                        "application/*+json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PixInitializationRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PixInitializationResponseMateraErrorResponseIEnumerableWrapper"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ObjectMateraErrorResponseIEnumerableWrapper"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ObjectValidationErrorsModelIEnumerableWrapper"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ObjectValidationErrorsModelIEnumerableWrapper"
+                                }
+                            }
+                        }
+                    }
+                }
             }
-          }
         },
-        "responses": {
-          "201": {
-            "description": "Created",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/PixInitializationResponseMateraErrorResponseIEnumerableWrapper"
+        "/v1/pix/send/confirmed": {
+            "post": {
+                "tags": [
+                    "Enviar PIX"
+                ],
+                "summary": "Confirmar envio de PIX",
+                "requestBody": {
+                    "description": "",
+                    "content": {
+                        "application/json-patch+json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PixConfirmationRequest"
+                            }
+                        },
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PixConfirmationRequest"
+                            }
+                        },
+                        "text/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PixConfirmationRequest"
+                            }
+                        },
+                        "application/*+json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PixConfirmationRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PixConfirmationResponseMateraErrorResponseIEnumerableWrapper"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ObjectMateraErrorResponseIEnumerableWrapper"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ObjectValidationErrorsModelIEnumerableWrapper"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ObjectValidationErrorsModelIEnumerableWrapper"
+                                }
+                            }
+                        }
+                    },
+                    "412": {
+                        "description": "Client Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ObjectMateraErrorResponseIEnumerableWrapper"
+                                }
+                            }
+                        }
+                    }
                 }
-              }
             }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ObjectMateraErrorResponseIEnumerableWrapper"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ObjectValidationErrorsModelIEnumerableWrapper"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ObjectValidationErrorsModelIEnumerableWrapper"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/v1/pix/send/confirmed": {
-      "post": {
-        "tags": [
-          "Enviar PIX"
-        ],
-        "summary": "Confirmar envio de PIX",
-        "requestBody": {
-          "description": "",
-          "content": {
-            "application/json-patch+json": {
-              "schema": {
-                "$ref": "#/components/schemas/PixConfirmationRequest"
-              }
-            },
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/PixConfirmationRequest"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/PixConfirmationRequest"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/PixConfirmationRequest"
-              }
-            }
-          }
         },
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/PixConfirmationResponseMateraErrorResponseIEnumerableWrapper"
+        "/v1/pix/send/manual": {
+            "post": {
+                "tags": [
+                    "Enviar PIX"
+                ],
+                "summary": "Envio de PIX manual",
+                "requestBody": {
+                    "description": "",
+                    "content": {
+                        "application/json-patch+json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PixManualRequest"
+                            }
+                        },
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PixManualRequest"
+                            }
+                        },
+                        "text/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PixManualRequest"
+                            }
+                        },
+                        "application/*+json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PixManualRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PixConfirmationResponseMateraErrorResponseIEnumerableWrapper"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ObjectMateraErrorResponseIEnumerableWrapper"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ObjectValidationErrorsModelIEnumerableWrapper"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ObjectValidationErrorsModelIEnumerableWrapper"
+                                }
+                            }
+                        }
+                    },
+                    "412": {
+                        "description": "Client Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ObjectMateraErrorResponseIEnumerableWrapper"
+                                }
+                            }
+                        }
+                    }
                 }
-              }
             }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ObjectMateraErrorResponseIEnumerableWrapper"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ObjectValidationErrorsModelIEnumerableWrapper"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ObjectValidationErrorsModelIEnumerableWrapper"
-                }
-              }
-            }
-          },
-          "412": {
-            "description": "Client Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ObjectMateraErrorResponseIEnumerableWrapper"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/v1/pix/send/manual": {
-      "post": {
-        "tags": [
-          "Enviar PIX"
-        ],
-        "summary": "Envio de PIX manual",
-        "requestBody": {
-          "description": "",
-          "content": {
-            "application/json-patch+json": {
-              "schema": {
-                "$ref": "#/components/schemas/PixManualRequest"
-              }
-            },
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/PixManualRequest"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/PixManualRequest"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/PixManualRequest"
-              }
-            }
-          }
         },
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/PixConfirmationResponseMateraErrorResponseIEnumerableWrapper"
+        "/v1/pix/qrcode-static": {
+            "post": {
+                "tags": [
+                    "Receber PIX - QR Code"
+                ],
+                "summary": "Gerar QR Code Estático",
+                "requestBody": {
+                    "description": "",
+                    "content": {
+                        "application/json-patch+json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/QrcodeModelRequest"
+                            }
+                        },
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/QrcodeModelRequest"
+                            }
+                        },
+                        "text/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/QrcodeModelRequest"
+                            }
+                        },
+                        "application/*+json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/QrcodeModelRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PixQrcodeEntityWrapper"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProblemDetails"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorMessage"
+                                }
+                            }
+                        }
+                    }
                 }
-              }
             }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ObjectMateraErrorResponseIEnumerableWrapper"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ObjectValidationErrorsModelIEnumerableWrapper"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ObjectValidationErrorsModelIEnumerableWrapper"
-                }
-              }
-            }
-          },
-          "412": {
-            "description": "Client Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ObjectMateraErrorResponseIEnumerableWrapper"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/v1/pix/qrcode-static": {
-      "post": {
-        "tags": [
-          "Receber PIX - QR Code"
-        ],
-        "summary": "Gerar QR Code Estático",
-        "requestBody": {
-          "description": "",
-          "content": {
-            "application/json-patch+json": {
-              "schema": {
-                "$ref": "#/components/schemas/QrcodeModelRequest"
-              }
-            },
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/QrcodeModelRequest"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/QrcodeModelRequest"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/QrcodeModelRequest"
-              }
-            }
-          }
         },
-        "responses": {
-          "201": {
-            "description": "Created",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/PixQrcodeEntityWrapper"
+        "/v1/pix/qrcode-decode": {
+            "get": {
+                "tags": [
+                    "Enviar PIX"
+                ],
+                "summary": "Decodificar QR Code",
+                "parameters": [
+                    {
+                        "name": "qrcode",
+                        "in": "query",
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PixQrcodeDecodeEntityMateraErrorResponseIEnumerableWrapper"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ObjectMateraErrorResponseIEnumerableWrapper"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProblemDetails"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorMessage"
+                                }
+                            }
+                        }
+                    }
                 }
-              }
             }
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorMessage"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/v1/pix/qrcode-decode": {
-      "get": {
-        "tags": [
-          "Enviar PIX"
-        ],
-        "summary": "Decodificar QR Code",
-        "parameters": [
-          {
-            "name": "qrcode",
-            "in": "query",
-            "description": "",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/PixQrcodeDecodeEntityMateraErrorResponseIEnumerableWrapper"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ObjectMateraErrorResponseIEnumerableWrapper"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorMessage"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/v2/qrcode/dynamic": {
-      "post": {
-        "tags": [
-          "Receber PIX - QR Code"
-        ],
-        "summary": "Gerar QR Code Dinâmico",
-        "requestBody": {
-          "description": "",
-          "content": {
-            "application/json-patch+json": {
-              "schema": {
-                "$ref": "#/components/schemas/QrcodeDynamicModelRequest"
-              }
-            },
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/QrcodeDynamicModelRequest"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/QrcodeDynamicModelRequest"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/QrcodeDynamicModelRequest"
-              }
-            }
-          }
         },
-        "responses": {
-          "201": {
-            "description": "Created",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/PixQrcodeDynamicEntityResponse"
+        "/v2/qrcode/dynamic": {
+            "post": {
+                "tags": [
+                    "Receber PIX - QR Code"
+                ],
+                "summary": "Gerar QR Code Dinâmico",
+                "requestBody": {
+                    "description": "",
+                    "content": {
+                        "application/json-patch+json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/QrcodeDynamicModelRequest"
+                            }
+                        },
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/QrcodeDynamicModelRequest"
+                            }
+                        },
+                        "text/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/QrcodeDynamicModelRequest"
+                            }
+                        },
+                        "application/*+json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/QrcodeDynamicModelRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PixQrcodeDynamicEntityResponse"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProblemDetails"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorMessage"
+                                }
+                            }
+                        }
+                    }
                 }
-              }
             }
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorMessage"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/v1/pix/return": {
-      "post": {
-        "tags": [
-          "Devolver PIX"
-        ],
-        "summary": "Devolver PIX",
-        "requestBody": {
-          "description": "",
-          "content": {
-            "application/json-patch+json": {
-              "schema": {
-                "$ref": "#/components/schemas/PixReturnRequest"
-              }
-            },
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/PixReturnRequest"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/PixReturnRequest"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/PixReturnRequest"
-              }
-            }
-          }
         },
-        "responses": {
-          "201": {
-            "description": "Created",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/PixReturnResponseMateraErrorResponseIEnumerableWrapper"
+        "/v1/pix/return": {
+            "post": {
+                "tags": [
+                    "Devolver PIX"
+                ],
+                "summary": "Devolver PIX",
+                "requestBody": {
+                    "description": "",
+                    "content": {
+                        "application/json-patch+json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PixReturnRequest"
+                            }
+                        },
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PixReturnRequest"
+                            }
+                        },
+                        "text/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PixReturnRequest"
+                            }
+                        },
+                        "application/*+json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PixReturnRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PixReturnResponseMateraErrorResponseIEnumerableWrapper"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProblemDetails"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorMessage"
+                                }
+                            }
+                        }
+                    }
                 }
-              }
             }
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorMessage"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/v1/pix/receipt/{endToEndId}": {
-      "get": {
-        "tags": [
-          "Comprovantes"
-        ],
-        "summary": "Gerar comprovante envio de PIX",
-        "parameters": [
-          {
-            "name": "endToEndId",
-            "in": "path",
-            "description": "",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/PixReceiptResponse"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/ValidationErrorsModel"
-                  }
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorMessage"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/v1/pix/receipt-return/{endToEndId}": {
-      "get": {
-        "tags": [
-          "Comprovantes"
-        ],
-        "summary": "Gerar comprovante devolução PIX",
-        "parameters": [
-          {
-            "name": "endToEndId",
-            "in": "path",
-            "description": "",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/PixReceiptResponse"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/ValidationErrorsModel"
-                  }
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorMessage"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/v1/pix/copy-paste": {
-      "post": {
-        "tags": [
-          "Enviar PIX"
-        ],
-        "summary": "Copy Paste - Pagamento QR Codes",
-        "requestBody": {
-          "description": "",
-          "content": {
-            "application/json-patch+json": {
-              "schema": {
-                "$ref": "#/components/schemas/QrcodeModelCopyPasteRequest"
-              }
-            },
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/QrcodeModelCopyPasteRequest"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/QrcodeModelCopyPasteRequest"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/QrcodeModelCopyPasteRequest"
-              }
-            }
-          }
         },
-        "responses": {
-          "201": {
-            "description": "Created",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/PixSendEntityMateraErrorResponseIEnumerableWrapper"
+        "/v1/pix/receipt/{endToEndId}": {
+            "get": {
+                "tags": [
+                    "Comprovantes"
+                ],
+                "summary": "Gerar comprovante envio de PIX",
+                "parameters": [
+                    {
+                        "name": "endToEndId",
+                        "in": "path",
+                        "description": "",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PixReceiptResponse"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/ValidationErrorsModel"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProblemDetails"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorMessage"
+                                }
+                            }
+                        }
+                    }
                 }
-              }
             }
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorMessage"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/v1/pix/key": {
-      "post": {
-        "tags": [
-          "Chave PIX"
-        ],
-        "summary": "Registrar chave PIX",
-        "requestBody": {
-          "description": "",
-          "content": {
-            "application/json-patch+json": {
-              "schema": {
-                "$ref": "#/components/schemas/PixInsertKeyRequest"
-              }
-            },
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/PixInsertKeyRequest"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/PixInsertKeyRequest"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/PixInsertKeyRequest"
-              }
-            }
-          }
         },
-        "responses": {
-          "201": {
-            "description": "Created",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/PixInsertKeyResponseMateraErrorResponseIEnumerableWrapper"
+        "/v1/pix/receipt-return/{endToEndId}": {
+            "get": {
+                "tags": [
+                    "Comprovantes"
+                ],
+                "summary": "Gerar comprovante devolução PIX",
+                "parameters": [
+                    {
+                        "name": "endToEndId",
+                        "in": "path",
+                        "description": "",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PixReceiptResponse"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/ValidationErrorsModel"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProblemDetails"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorMessage"
+                                }
+                            }
+                        }
+                    }
                 }
-              }
             }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/ValidationErrorsModel"
-                  }
+        },
+        "/v1/pix/copy-paste": {
+            "post": {
+                "tags": [
+                    "Enviar PIX"
+                ],
+                "summary": "Copy Paste - Pagamento QR Codes",
+                "requestBody": {
+                    "description": "",
+                    "content": {
+                        "application/json-patch+json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/QrcodeModelCopyPasteRequest"
+                            }
+                        },
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/QrcodeModelCopyPasteRequest"
+                            }
+                        },
+                        "text/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/QrcodeModelCopyPasteRequest"
+                            }
+                        },
+                        "application/*+json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/QrcodeModelCopyPasteRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PixSendEntityMateraErrorResponseIEnumerableWrapper"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProblemDetails"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorMessage"
+                                }
+                            }
+                        }
+                    }
                 }
-              }
             }
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
+        },
+        "/v1/pix/key": {
+            "post": {
+                "tags": [
+                    "Chave PIX"
+                ],
+                "summary": "Registrar chave PIX",
+                "requestBody": {
+                    "description": "",
+                    "content": {
+                        "application/json-patch+json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PixInsertKeyRequest"
+                            }
+                        },
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PixInsertKeyRequest"
+                            }
+                        },
+                        "text/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PixInsertKeyRequest"
+                            }
+                        },
+                        "application/*+json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PixInsertKeyRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PixInsertKeyResponseMateraErrorResponseIEnumerableWrapper"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/ValidationErrorsModel"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProblemDetails"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorMessage"
+                                }
+                            }
+                        }
+                    }
                 }
-              }
             }
-          },
-          "500": {
-            "description": "Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorMessage"
+        },
+        "/v1/pix/key-list/{agency}/{account}": {
+            "get": {
+                "tags": [
+                    "Chave PIX"
+                ],
+                "summary": "Listar chave PIX de sua conta",
+                "parameters": [
+                    {
+                        "name": "agency",
+                        "in": "path",
+                        "description": "",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "account",
+                        "in": "path",
+                        "description": "",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PixFindEntitiesWrapper"
+                                }
+                            }
+                        }
+                    },
+                    "204": {
+                        "description": "No Content"
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ObjectMateraErrorResponseIEnumerableWrapper"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorMessage"
+                                }
+                            }
+                        }
+                    }
                 }
-              }
             }
-          }
+        },
+        "/v2/pix/key-account-partner/{agency}/{account}/{key}": {
+            "get": {
+                "tags": [
+                    "Chave PIX"
+                ],
+                "summary": "Consultar chave PIX",
+                "parameters": [
+                    {
+                        "name": "agency",
+                        "in": "path",
+                        "description": "",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "account",
+                        "in": "path",
+                        "description": "",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "key",
+                        "in": "path",
+                        "description": "",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "includeStatistics",
+                        "in": "query",
+                        "description": "",
+                        "schema": {
+                            "type": "boolean",
+                            "default": false
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PixFindEntityWrapper"
+                                }
+                            }
+                        }
+                    },
+                    "204": {
+                        "description": "No Content"
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ObjectMateraErrorResponseIEnumerableWrapper"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/ValidationErrorsModel"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/pix/status-callback/{endToEndId}": {
+            "get": {
+                "tags": [
+                    "Operações"
+                ],
+                "summary": "Consultar Saque - Registro disponível por duas horas",
+                "parameters": [
+                    {
+                        "name": "endToEndId",
+                        "in": "path",
+                        "description": "",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PixStatusResponse"
+                                }
+                            }
+                        }
+                    },
+                    "204": {
+                        "description": "No Content"
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProblemDetails"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorMessage"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/core-banking/bank": {
+            "get": {
+                "tags": [
+                    "Participantes PIX"
+                ],
+                "summary": "Retorna lista de PSP",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PixBankParticipantsResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/core-banking/bank/{ispb}": {
+            "get": {
+                "tags": [
+                    "Participantes PIX"
+                ],
+                "summary": "Retorna PSP através do ISPB",
+                "parameters": [
+                    {
+                        "name": "ispb",
+                        "in": "path",
+                        "description": "",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PixBankResponse"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/MateraErrorResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
-      }
     },
-    "/v1/pix/key-list/{agency}/{account}": {
-      "get": {
-        "tags": [
-          "Chave PIX"
-        ],
-        "summary": "Listar chave PIX de sua conta",
-        "parameters": [
-          {
-            "name": "agency",
-            "in": "path",
-            "description": "",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "account",
-            "in": "path",
-            "description": "",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/PixFindEntitiesWrapper"
-                }
-              }
-            }
-          },
-          "204": {
-            "description": "No Content"
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ObjectMateraErrorResponseIEnumerableWrapper"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorMessage"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/v2/pix/key-account-partner/{agency}/{account}/{key}": {
-      "get": {
-        "tags": [
-          "Chave PIX"
-        ],
-        "summary": "Consultar chave PIX",
-        "parameters": [
-          {
-            "name": "agency",
-            "in": "path",
-            "description": "",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          },
-          {
-            "name": "account",
-            "in": "path",
-            "description": "",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "key",
-            "in": "path",
-            "description": "",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "includeStatistics",
-            "in": "query",
-            "description": "",
-            "schema": {
-              "type": "boolean",
-              "default": false
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/PixFindEntityWrapper"
-                }
-              }
-            }
-          },
-          "204": {
-            "description": "No Content"
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ObjectMateraErrorResponseIEnumerableWrapper"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/ValidationErrorsModel"
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/v1/pix/status-callback/{endToEndId}": {
-      "get": {
-        "tags": [
-          "Operações"
-        ],
-        "summary": "Consultar Saque - Registro disponível por duas horas",
-        "parameters": [
-          {
-            "name": "endToEndId",
-            "in": "path",
-            "description": "",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/PixStatusResponse"
-                }
-              }
-            }
-          },
-          "204": {
-            "description": "No Content"
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorMessage"
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-   
-  },
   "components": {
     "schemas": {
       "Account": {
