@@ -938,7 +938,7 @@
         "/v1/pix/status-callback/{endToEndId}": {
             "get": {
                 "tags": [
-                    "Operações"
+                    "Consultar Saques"
                 ],
                 "summary": "Consultar Saque - Registro disponível por duas horas",
                 "parameters": [

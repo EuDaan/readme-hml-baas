@@ -6,15 +6,15 @@
       "description": "Homolog server"
     }
   ],
-  "info": {
-    "title": "Consultas de Operações PIX",
-    "version": "1.0"
-  },
+    "info": {
+        "title": "Serviços Bancários PIX",
+        "version": "1.0"
+    },
     "paths": {
         "/v1/cashin/instant-payment-id/{id}": {
             "get": {
                 "tags": [
-                    "Depósitos"
+                    "Consultar Depósitos"
                 ],
                 "summary": "Consultar Depósito por InstantPaymentId",
                 "parameters": [
@@ -110,7 +110,7 @@
         "/v1/cashin/end-to-end-id/{id}": {
             "get": {
                 "tags": [
-                    "Depósitos"
+                    "Consultar Depósitos"
                 ],
                 "summary": "Consultar Depósitos por EndToEndId",
                 "parameters": [
@@ -206,7 +206,7 @@
         "/v1/cashin/receiver-reconciliation/{id}": {
             "get": {
                 "tags": [
-                    "Depósitos"
+                    "Consultar Depósitos"
                 ],
                 "summary": "Consultar Depósitos por Receiver Reconciliation",
                 "parameters": [
@@ -302,7 +302,7 @@
         "/v1/cashin/callback-fail/{agency}/{account}": {
             "get": {
                 "tags": [
-                    "Depósitos"
+                    "Consultar Depósitos"
                 ],
                 "summary": "Consultar Falhas de Depósitos WEBHOOK",
                 "description": "Consultar Depósitos com falha no envio, por agência, conta de crédito e período",
@@ -432,7 +432,7 @@
         "/v1/cashin/pix-return/{endToEnd}/{periodo}": {
             "get": {
                 "tags": [
-                    "Depósitos"
+                    "Consultar Depósitos"
                 ],
                 "summary": "Consultar Depósitos de Devolução",
                 "description": "Consultar Depósitos de Devolução por OriginalEndToEndId e Período (Busca somente por um dia)",
@@ -538,7 +538,7 @@
         "/v1/cashin/{agency}/{account}": {
             "get": {
                 "tags": [
-                    "Depósitos"
+                    "Consultar Depósitos"
                 ],
                 "summary": "Consultar Depósitos por Período",
                 "description": "Consultar Depósitos por Agência, conta e Período",
@@ -683,7 +683,7 @@
         "/v1/cashout/{endToEndId}": {
             "get": {
                 "tags": [
-                    "Saques"
+                    "Consultar Saques"
                 ],
                 "summary": "Consultar Cashout por EndToEndId",
                 "parameters": [
@@ -779,7 +779,7 @@
         "/v1/cashout/pix-send/instant-payment-id/{id}": {
             "get": {
                 "tags": [
-                    "Saques"
+                    "Consultar Saques"
                 ],
                 "summary": "Consultar Saques por InstantPaymentId",
                 "parameters": [
@@ -885,7 +885,7 @@
         "/v1/cashout/pix-return/end-to-end-id/{id}": {
             "get": {
                 "tags": [
-                    "Saques"
+                    "Consultar Saques"
                 ],
                 "summary": "Consultar Saques de Devolução PIX por EndToEndId",
                 "parameters": [
@@ -981,9 +981,9 @@
         "/v1/dict/pix/white-list/{key}/{keyType}": {
             "get": {
                 "tags": [
-                    "Chave PIX - WhiteList Genial"
+                    "Chave PIX"
                 ],
-                "summary": "Consultar Chave PIX na White List Genial",
+                "summary": "Consultar Chave PIX White List Genial",
                 "parameters": [
                     {
                         "name": "key",
