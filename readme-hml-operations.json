@@ -683,7 +683,7 @@
         "/v1/cashout/{endToEndId}": {
             "get": {
                 "tags": [
-                    "Cashout"
+                    "Saques"
                 ],
                 "summary": "Consultar Cashout por EndToEndId",
                 "parameters": [
