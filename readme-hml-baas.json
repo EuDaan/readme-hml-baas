@@ -792,7 +792,7 @@
                 "tags": [
                     "Chave PIX"
                 ],
-                "summary": "Listar chave PIX de sua conta",
+                "summary": "Listar Minhas Chaves PIX",
                 "parameters": [
                     {
                         "name": "agency",
@@ -855,7 +855,7 @@
                 "tags": [
                     "Chave PIX"
                 ],
-                "summary": "Consultar chave PIX",
+                "summary": "Consultar Chave PIX",
                 "parameters": [
                     {
                         "name": "agency",
@@ -928,6 +928,57 @@
                                     "items": {
                                         "$ref": "#/components/schemas/ValidationErrorsModel"
                                     }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v2/pix/key-account/key-statistics/key/{key}": {
+            "post": {
+                "tags": [
+                    "Chave PIX"
+                ],
+                "summary": "Consultar Estatísticas Chave PIX",
+                "parameters": [
+                    {
+                        "name": "key",
+                        "in": "path",
+                        "description": "",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/StatisticsKeyResponseWrapper"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ObjectMateraErrorResponseIEnumerableWrapper"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorMessage"
                                 }
                             }
                         }

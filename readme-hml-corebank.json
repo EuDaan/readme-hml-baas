@@ -19,9 +19,9 @@
     "/v1/account/tef": {
       "post": {
         "tags": [
-          "Realizar Pagamentos"
+            "Transferências"
         ],
-        "summary": "Realizar Pagamento TEF",
+        "summary": "Transferência TEF",
         "description": "Responsável por realizar TEFs de débitos ou créditos internos GENIAL.",
         "requestBody": {
           "description": "",
@@ -763,9 +763,9 @@
     "/v1/payment/darf": {
       "post": {
         "tags": [
-          "Realizar Pagamentos"
+            "Pagamentos"
         ],
-        "summary": "Realizar Pagamento DARF",
+        "summary": "Pagamento DARF",
         "requestBody": {
           "description": "",
           "content": {
@@ -842,9 +842,9 @@
     "/v1/payment/darf-manual": {
       "post": {
         "tags": [
-          "Realizar Pagamentos"
+            "Pagamentos"
         ],
-        "summary": "Realizar Pagamento DARF Manual",
+        "summary": "Pagamento DARF Manual",
         "requestBody": {
           "description": "",
           "content": {
@@ -1213,9 +1213,9 @@
     "/v1/payment/bankslip": {
       "post": {
         "tags": [
-          "Realizar Pagamentos"
+          "Pagamentos"
         ],
-        "summary": "Realizar Pagamento Boletos",
+        "summary": "Pagamento Boleto",
         "requestBody": {
           "description": "",
           "content": {
@@ -1554,83 +1554,83 @@
       }
     },
     "/v2/payment/ted": {
-      "post": {
-        "tags": [
-          "Realizar Pagamentos"
-        ],
-        "summary": "Realizar Pagamento TED",
-        "requestBody": {
-          "description": "",
-          "content": {
-            "application/json-patch+json": {
-              "schema": {
-                "$ref": "#/components/schemas/PaymentTedSimplificadoRequest"
-              }
+        "post": {
+            "tags": [
+                "Transferências"
+            ],
+            "summary": "Transferência TED",
+            "requestBody": {
+                "description": "",
+                "content": {
+                    "application/json-patch+json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/PaymentTedSimplificadoRequest"
+                        }
+                    },
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/PaymentTedSimplificadoRequest"
+                        }
+                    },
+                    "text/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/PaymentTedSimplificadoRequest"
+                        }
+                    },
+                    "application/*+json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/PaymentTedSimplificadoRequest"
+                        }
+                    }
+                },
+                "required": true
             },
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/PaymentTedSimplificadoRequest"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/PaymentTedSimplificadoRequest"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/PaymentTedSimplificadoRequest"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/PaymentDarfResponseMateraErrorResponseListWrapper"
+            "responses": {
+                "200": {
+                    "description": "OK",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PaymentDarfResponseMateraErrorResponseListWrapper"
+                            }
+                        }
+                    }
+                },
+                "400": {
+                    "description": "Bad Request",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ObjectMateraErrorResponseListWrapper"
+                            }
+                        }
+                    }
+                },
+                "401": {
+                    "description": "Unauthorized",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/ValidationErrorModel"
+                                }
+                            }
+                        }
+                    }
+                },
+                "500": {
+                    "description": "Internal Server Error",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ErrorMessage"
+                            }
+                        }
+                    }
                 }
-              }
             }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ObjectMateraErrorResponseListWrapper"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/ValidationErrorModel"
-                  }
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorMessage"
-                }
-              }
-            }
-          }
         }
-      }
     }
   },
   "components": {
