@@ -1105,6 +1105,48 @@
     },
   "components": {
     "schemas": {
+        "Statistic": {
+            "type": "object",
+            "properties": {
+                "d90": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "m12": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "m60": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            },
+            "additionalProperties": false
+        },
+        "StatisticsKeyResponse": {
+            "type": "object",
+            "properties": {
+                "responseTime": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "correlationId": {
+                    "type": "string",
+                    "nullable": true
+                },
+                "key": {
+                    "type": "string",
+                    "nullable": true
+                },
+                "personStatistics": {
+                    "$ref": "#/components/schemas/PersonStatistics"
+                },
+                "keyStatistics": {
+                    "$ref": "#/components/schemas/KeyStatistics"
+                }
+            },
+            "additionalProperties": false
+        },
         "ErrorMessage": {
             "type": "object",
             "properties": {
@@ -1733,28 +1775,6 @@
                 "field": {
                     "type": "string",
                     "nullable": true
-                }
-            },
-            "additionalProperties": false
-        },
-        "ErrorMessage": {
-            "type": "object",
-            "properties": {
-                "message": {
-                    "type": "string",
-                    "nullable": true
-                },
-                "exception": {
-                    "type": "string",
-                    "nullable": true
-                },
-                "stackTrace": {
-                    "type": "string",
-                    "nullable": true
-                },
-                "data": {
-                    "type": "string",
-                    "format": "date-time"
                 }
             },
             "additionalProperties": false
@@ -2936,22 +2956,6 @@
                     "type": "string",
                     "format": "date-time",
                     "readOnly": true
-                }
-            },
-            "additionalProperties": false
-        },
-        "ObjectMateraErrorResponseIEnumerableWrapper": {
-            "type": "object",
-            "properties": {
-                "data": {
-                    "nullable": true
-                },
-                "error": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/components/schemas/MateraErrorResponse"
-                    },
-                    "nullable": true
                 }
             },
             "additionalProperties": false
@@ -5478,24 +5482,6 @@
                 "withdrawServiceProvider": {
                     "type": "string",
                     "nullable": true
-                }
-            },
-            "additionalProperties": false
-        },
-        "Statistic": {
-            "type": "object",
-            "properties": {
-                "d90": {
-                    "type": "integer",
-                    "format": "int32"
-                },
-                "m12": {
-                    "type": "integer",
-                    "format": "int32"
-                },
-                "m60": {
-                    "type": "integer",
-                    "format": "int32"
                 }
             },
             "additionalProperties": false
