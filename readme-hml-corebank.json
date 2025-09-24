@@ -266,7 +266,7 @@
         "tags": [
           "Pagamentos"
         ],
-        "summary": "Valida dia útil.",
+        "summary": "Validar dia útil.",
         "description": "Valida dia útil, se sim, devolve ela mesmo, senão devolve o próximo dia útil",
         "parameters": [
           {
@@ -1481,7 +1481,7 @@
         "tags": [
           "Operações"
         ],
-        "summary": "Buscar Transação TED",
+        "summary": "Consultar Transação TED",
         "parameters": [
           {
             "name": "idLiquidacao",
