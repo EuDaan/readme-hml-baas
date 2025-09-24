@@ -923,7 +923,7 @@
 		"/api/v1/pix-automatico/qrcode/recorrencia/{idRec}": {
 			"get": {
 				"tags": [
-					"QRCode de Recorrencia"
+					"QRCode de Recorrência"
 				],
 				"summary": "Buscar recorrência de cobrança",
 				"parameters": [
@@ -1003,7 +1003,7 @@
 		"/api/v1/pix-automatico/qrcode/qrcode-assinado/{id}": {
 			"get": {
 				"tags": [
-					"QRCode de Recorrencia"
+					"QRCode de Recorrência"
 				],
 				"summary": "Retorna QRCode de cobrança assinado.",
 				"parameters": [
@@ -1083,7 +1083,7 @@
 		"/api/v1/pix-automatico/qrcode/compound/qrcode": {
 			"post": {
 				"tags": [
-					"QRCode de Recorrencia"
+					"QRCode de Recorrência"
 				],
 				"summary": "Gerar código do QRCode composto.",
 				"parameters": [
