@@ -264,7 +264,7 @@
     "/v1/core-banking/business-day/{date}": {
       "get": {
         "tags": [
-          "Realizar Pagamentos"
+          "Pagamentos"
         ],
         "summary": "Valida dia útil.",
         "description": "Valida dia útil, se sim, devolve ela mesmo, senão devolve o próximo dia útil",
@@ -927,7 +927,7 @@
     "/v1/payment/darf-manual/{idPayment}/status": {
       "get": {
         "tags": [
-          "Realizar Pagamentos"
+            "Operações"
         ],
         "summary": "Consultar Operações DARF manual",
         "description": "Consulta status do pagamento de DARF manual através do ID Pagamento",
@@ -1130,7 +1130,7 @@
     "/v1/payment/bankslip-consumption/{identificador}": {
       "get": {
         "tags": [
-          "Realizar Pagamentos"
+            "Operações"
         ],
         "summary": "Consultar Boletos Consumo",
         "parameters": [
@@ -1311,7 +1311,7 @@
     "/v1/payment/bankslip/{idPayment}/status": {
       "get": {
         "tags": [
-          "Realizar Pagamentos"
+            "Operações"
         ],
         "summary": "Consultar Status Boleto",
         "description": "Consulta status do pagamento de boletos através do ID Pagamento",
