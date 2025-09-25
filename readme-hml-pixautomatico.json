@@ -28,6 +28,24 @@
 						"application/json": {
 							"schema": {
 								"$ref": "#/components/schemas/BillingCancelationRecurrenceRequest"
+							},
+							"example": {
+									"billing": {
+										"receiver": {
+											"ispb": "12345678"
+										},
+										"payer": {
+											"ispb": "87654321"
+										},
+										"txId": "TX123456789",
+										"endToEndId": "E1234567890123456789012345"
+									},
+									"cancellation": {
+										"requesterTaxId": "12345678901",
+										"updateDateTime": "2025-09-25T18:18:33.639Z",
+										"stakeholder": "payer",
+										"reasonCode": "ACCL"
+									}
 							}
 						}
 					}
@@ -351,7 +369,7 @@
 				"tags": [
 					"Cancelamento da Recorrência"
 				],
-				"summary": "Cancelamentar recorrência",
+				"summary": "Cancelar recorrência",
 				"requestBody": {
 					"description": "",
 					"content": {
