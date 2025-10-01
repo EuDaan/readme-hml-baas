@@ -392,6 +392,28 @@
                     "Receber PIX - QR Code"
                 ],
                 "summary": "Gerar QR Code Dinâmico",
+                "parameters": [
+                    {
+                        "name": "agency",
+                        "in": "query",
+                        "description": "",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "account",
+                        "in": "query",
+                        "description": "",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
                 "requestBody": {
                     "description": "",
                     "content": {
