@@ -21,7 +21,7 @@
                 "tags": [
                     "Receber PIX - QR Code"
                 ],
-                "summary": "Gerar Qrcode Dinâmico",
+                "summary": "Gerar QR Code Dinâmico",
                 "parameters": [
                     {
                         "name": "agency",
