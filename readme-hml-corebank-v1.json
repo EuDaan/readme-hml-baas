@@ -1670,7 +1670,7 @@
             },
             "put": {
                 "tags": [
-                    "Charge"
+                    "Pagamentos"
                 ],
                 "summary": "Atualização de boleto individual",
                 "parameters": [
