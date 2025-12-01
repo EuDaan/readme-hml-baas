@@ -41,8 +41,8 @@
           }
         ],
         "responses": {
-          "201": {
-            "description": "Created"
+          "200": {
+            "description": "Success"
           },
           "400": {
             "description": "Bad Request",
@@ -108,499 +108,499 @@
       }
     }
   },
-  "components": {
-    "schemas": {
-      "AccountBagInsertRequest": {
-        "type": "object",
-        "properties": {
-          "userId": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "serviceId": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "agency": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "account": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "checkBalance": {
-            "type": "boolean"
-          },
-          "principalAccount": {
-            "type": "boolean"
-          },
-          "ativo": {
-            "type": "boolean"
-          },
-          "pix": {
-            "$ref": "#/components/schemas/LimitValuePixRequest"
-          },
-          "ted": {
-            "$ref": "#/components/schemas/LimitValuesRequest"
-          }
-        },
-        "additionalProperties": false
-      },
-      "AccountBagRequest": {
-        "type": "object",
-        "properties": {
-          "userId": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "serviceId": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "agency": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "account": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "checkBalance": {
-            "type": "boolean"
-          },
-          "principalAccount": {
-            "type": "boolean"
-          },
-          "ativo": {
-            "type": "boolean"
-          }
-        },
-        "additionalProperties": false
-      },
-      "AccountBagResponse": {
-        "type": "object",
-        "properties": {
-          "userId": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "serviceId": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "agency": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "account": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "checkBalance": {
-            "type": "boolean"
-          },
-          "principalAccount": {
-            "type": "boolean"
-          }
-        },
-        "additionalProperties": false
-      },
-      "AccountIndividualRequest": {
-        "type": "object",
-        "properties": {
-          "userId": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "agency": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "account": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "cpf": {
-            "type": "string",
-            "nullable": true
-          },
-          "userLogin": {
-            "type": "string",
-            "nullable": true
-          },
-          "pix": {
-            "$ref": "#/components/schemas/LimitValuePixRequest"
-          },
-          "ted": {
-            "$ref": "#/components/schemas/LimitValuesRequest"
-          }
-        },
-        "additionalProperties": false
-      },
-      "AccountIndividualResponse": {
-        "type": "object",
-        "properties": {
-          "userId": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "agency": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "account": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "cpf": {
-            "type": "string",
-            "nullable": true
-          },
-          "userLogin": {
-            "type": "string",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "AccountUpdateModelRequest": {
-        "type": "object",
-        "properties": {
-          "agency": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "account": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "ativo": {
-            "type": "boolean"
-          }
-        },
-        "additionalProperties": false
-      },
-      "BlacklistModelRequest": {
-        "type": "object",
-        "properties": {
-          "username": {
-            "type": "string",
-            "nullable": true
-          },
-          "expireDate": {
-            "type": "string",
-            "format": "date-time"
-          }
-        },
-        "additionalProperties": false
-      },
-      "ErrorMessage": {
-        "type": "object",
-        "properties": {
-          "message": {
-            "type": "string",
-            "nullable": true
-          },
-          "exception": {
-            "type": "string",
-            "nullable": true
-          },
-          "stackTrace": {
-            "type": "string",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "GaaSUsersDocument": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "$ref": "#/components/schemas/ObjectId"
-          },
-          "createDate": {
-            "type": "string",
-            "format": "date-time",
-            "readOnly": true
-          },
-          "updateDate": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "iaaSUser": {
-            "type": "string",
-            "nullable": true
-          },
-          "baaSUser": {
-            "type": "string",
-            "nullable": true
-          },
-          "basic": {
-            "type": "string",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "GaaSUsersRequest": {
-        "type": "object",
-        "properties": {
-          "iaaSUser": {
-            "type": "string",
-            "nullable": true
-          },
-          "baaSUser": {
-            "type": "string",
-            "nullable": true
-          },
-          "basic": {
-            "type": "string",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "GaaSUsersResponse": {
-        "type": "object",
-        "properties": {
-          "iaaSUser": {
-            "type": "string",
-            "nullable": true
-          },
-          "baaSUser": {
-            "type": "string",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "GaasUsersCollection": {
-        "type": "object",
-        "properties": {
-          "iaaSUser": {
-            "type": "string",
-            "nullable": true
-          },
-          "baaSUser": {
-            "type": "string",
-            "nullable": true
-          },
-          "token": {
-            "type": "string",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "LimitValuePixRequest": {
-        "type": "object",
-        "properties": {
-          "limiteDiurno": {
-            "type": "number",
-            "format": "double",
-            "nullable": true
-          },
-          "horarioDiurno": {
-            "type": "string",
-            "nullable": true
-          },
-          "horarioNoturno": {
-            "type": "string",
-            "nullable": true
-          },
-          "limiteNoturno": {
-            "type": "number",
-            "format": "double",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "LimitValuesRequest": {
-        "type": "object",
-        "properties": {
-          "limiteDiurno": {
-            "type": "number",
-            "format": "double",
-            "nullable": true
-          },
-          "horarioDiurno": {
-            "type": "string",
-            "nullable": true
-          },
-          "horarioNoturno": {
-            "type": "string",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "ObjectId": {
-        "type": "object",
-        "properties": {
-          "timestamp": {
-            "type": "integer",
-            "format": "int32",
-            "readOnly": true
-          },
-          "machine": {
-            "type": "integer",
-            "format": "int32",
-            "readOnly": true,
-            "deprecated": true
-          },
-          "pid": {
-            "type": "integer",
-            "format": "int32",
-            "readOnly": true,
-            "deprecated": true
-          },
-          "increment": {
-            "type": "integer",
-            "format": "int32",
-            "readOnly": true,
-            "deprecated": true
-          },
-          "creationTime": {
-            "type": "string",
-            "format": "date-time",
-            "readOnly": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "RateLimitResponse": {
-        "type": "object",
-        "properties": {
-          "key": {
-            "type": "string",
-            "nullable": true
-          },
-          "calls": {
-            "type": "integer",
-            "format": "int64"
-          }
-        },
-        "additionalProperties": false
-      },
-      "ServiceCreateRequest": {
-        "type": "object",
-        "properties": {
-          "idServico": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "idUsuario": {
-            "type": "integer",
-            "format": "int32"
-          }
-        },
-        "additionalProperties": false
-      },
-      "ServiceModel": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "name": {
-            "type": "string",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "TokenModel": {
-        "type": "object",
-        "properties": {
-          "token": {
-            "type": "string",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "UserCreateRequest": {
-        "type": "object",
-        "properties": {
-          "username": {
-            "type": "string",
-            "nullable": true
-          },
-          "password": {
-            "type": "string",
-            "nullable": true
-          },
-          "cnpj": {
-            "type": "string",
-            "nullable": true
-          },
-          "callbackCashin": {
-            "type": "string",
-            "nullable": true
-          },
-          "callbackCashOut": {
-            "type": "string",
-            "nullable": true
-          },
-          "nmEmpresa": {
-            "type": "string",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "UserUpdateRequest": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "username": {
-            "type": "string",
-            "nullable": true
-          },
-          "password": {
-            "type": "string",
-            "nullable": true
-          },
-          "cnpj": {
-            "type": "string",
-            "nullable": true
-          },
-          "callbackCashin": {
-            "type": "string",
-            "nullable": true
-          },
-          "callbackCashOut": {
-            "type": "string",
-            "nullable": true
-          },
-          "nmEmpresa": {
-            "type": "string",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "ValidationErrorModel": {
-        "type": "object",
-        "properties": {
-          "mensagem": {
-            "type": "string",
-            "nullable": true
-          },
-          "data": {
-            "type": "string",
-            "format": "date-time"
-          }
-        },
-        "additionalProperties": false
-      }
-    },
+    "components": {
+        "schemas": {
+            "AccountBagInsertRequest": {
+                "type": "object",
+                "properties": {
+                    "userId": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "serviceId": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "agency": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "account": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "checkBalance": {
+                        "type": "boolean"
+                    },
+                    "principalAccount": {
+                        "type": "boolean"
+                    },
+                    "ativo": {
+                        "type": "boolean"
+                    },
+                    "pix": {
+                        "$ref": "#/components/schemas/LimitValuePixRequest"
+                    },
+                    "ted": {
+                        "$ref": "#/components/schemas/LimitValuesRequest"
+                    }
+                },
+                "additionalProperties": false
+            },
+            "AccountBagRequest": {
+                "type": "object",
+                "properties": {
+                    "userId": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "serviceId": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "agency": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "account": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "checkBalance": {
+                        "type": "boolean"
+                    },
+                    "principalAccount": {
+                        "type": "boolean"
+                    },
+                    "ativo": {
+                        "type": "boolean"
+                    }
+                },
+                "additionalProperties": false
+            },
+            "AccountBagResponse": {
+                "type": "object",
+                "properties": {
+                    "userId": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "serviceId": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "agency": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "account": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "checkBalance": {
+                        "type": "boolean"
+                    },
+                    "principalAccount": {
+                        "type": "boolean"
+                    }
+                },
+                "additionalProperties": false
+            },
+            "AccountIndividualRequest": {
+                "type": "object",
+                "properties": {
+                    "userId": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "agency": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "account": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "cpf": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "userLogin": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "pix": {
+                        "$ref": "#/components/schemas/LimitValuePixRequest"
+                    },
+                    "ted": {
+                        "$ref": "#/components/schemas/LimitValuesRequest"
+                    }
+                },
+                "additionalProperties": false
+            },
+            "AccountIndividualResponse": {
+                "type": "object",
+                "properties": {
+                    "userId": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "agency": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "account": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "cpf": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "userLogin": {
+                        "type": "string",
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "AccountUpdateModelRequest": {
+                "type": "object",
+                "properties": {
+                    "agency": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "account": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "ativo": {
+                        "type": "boolean"
+                    }
+                },
+                "additionalProperties": false
+            },
+            "BlacklistModelRequest": {
+                "type": "object",
+                "properties": {
+                    "username": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "expireDate": {
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                },
+                "additionalProperties": false
+            },
+            "ErrorMessage": {
+                "type": "object",
+                "properties": {
+                    "message": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "exception": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "stackTrace": {
+                        "type": "string",
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "GaaSUsersDocument": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "$ref": "#/components/schemas/ObjectId"
+                    },
+                    "createDate": {
+                        "type": "string",
+                        "format": "date-time",
+                        "readOnly": true
+                    },
+                    "updateDate": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "iaaSUser": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "baaSUser": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "basic": {
+                        "type": "string",
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "GaaSUsersRequest": {
+                "type": "object",
+                "properties": {
+                    "iaaSUser": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "baaSUser": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "basic": {
+                        "type": "string",
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "GaaSUsersResponse": {
+                "type": "object",
+                "properties": {
+                    "iaaSUser": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "baaSUser": {
+                        "type": "string",
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "GaasUsersCollection": {
+                "type": "object",
+                "properties": {
+                    "iaaSUser": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "baaSUser": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "token": {
+                        "type": "string",
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "LimitValuePixRequest": {
+                "type": "object",
+                "properties": {
+                    "limiteDiurno": {
+                        "type": "number",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "horarioDiurno": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "horarioNoturno": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "limiteNoturno": {
+                        "type": "number",
+                        "format": "double",
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "LimitValuesRequest": {
+                "type": "object",
+                "properties": {
+                    "limiteDiurno": {
+                        "type": "number",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "horarioDiurno": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "horarioNoturno": {
+                        "type": "string",
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "ObjectId": {
+                "type": "object",
+                "properties": {
+                    "timestamp": {
+                        "type": "integer",
+                        "format": "int32",
+                        "readOnly": true
+                    },
+                    "machine": {
+                        "type": "integer",
+                        "format": "int32",
+                        "readOnly": true,
+                        "deprecated": true
+                    },
+                    "pid": {
+                        "type": "integer",
+                        "format": "int32",
+                        "readOnly": true,
+                        "deprecated": true
+                    },
+                    "increment": {
+                        "type": "integer",
+                        "format": "int32",
+                        "readOnly": true,
+                        "deprecated": true
+                    },
+                    "creationTime": {
+                        "type": "string",
+                        "format": "date-time",
+                        "readOnly": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "RateLimitResponse": {
+                "type": "object",
+                "properties": {
+                    "key": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "calls": {
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                },
+                "additionalProperties": false
+            },
+            "ServiceCreateRequest": {
+                "type": "object",
+                "properties": {
+                    "idServico": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "idUsuario": {
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                },
+                "additionalProperties": false
+            },
+            "ServiceModel": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "name": {
+                        "type": "string",
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "TokenModel": {
+                "type": "object",
+                "properties": {
+                    "token": {
+                        "type": "string",
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "UserCreateRequest": {
+                "type": "object",
+                "properties": {
+                    "username": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "password": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "cnpj": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "callbackCashin": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "callbackCashOut": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "nmEmpresa": {
+                        "type": "string",
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "UserUpdateRequest": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "username": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "password": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "cnpj": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "callbackCashin": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "callbackCashOut": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "nmEmpresa": {
+                        "type": "string",
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "ValidationErrorModel": {
+                "type": "object",
+                "properties": {
+                    "mensagem": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "data": {
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                },
+                "additionalProperties": false
+            }
+        } /*,
     "securitySchemes": {
       "Bearer": {
         "type": "apiKey",
@@ -608,8 +608,8 @@
         "name": "Authorization",
         "in": "header"
       }
-    }
-  },
+    }*/
+    },
   "security": [
     {
       "Bearer": []
