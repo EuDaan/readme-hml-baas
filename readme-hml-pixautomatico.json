@@ -21,7 +21,7 @@
                 "tags": [
                     "PIX Recebedor - Jornada 2"
                 ],
-                "summary": "4º - Autorizar Recorrência - (Pagador)",
+                "summary": "3º - Autorizar Recorrência - (Pagador)",
                 "requestBody": {
                     "description": "",
                     "content": {
@@ -598,7 +598,7 @@
                 "tags": [
                     "PIX Recebedor - Jornada 2"
                 ],
-                "summary": "5º - Enviar Fatura Recorrência - (Recebedor)",
+                "summary": "4º - Enviar Fatura Recorrência - (Recebedor)",
                 "requestBody": {
                     "description": "",
                     "content": {
@@ -1040,7 +1040,7 @@
                 "tags": [
                     "PIX Recebedor - Jornada 2"
                 ],
-                "summary": "2º - Criar QR Code Recorrência - (Recebedor)",
+                "summary": "1º - Criar QR Code Recorrência - (Recebedor)",
                 "requestBody": {
                     "description": "",
                     "content": {
@@ -1199,7 +1199,7 @@
                 "tags": [
                     "PIX Recebedor - Jornada 2"
                 ],
-                "summary": "3º - Gerar QR Code Composto - (Recebedor)",
+                "summary": "2º - Gerar QR Code Composto - (Recebedor)",
                 "parameters": [
                     {
                         "name": "txId",
