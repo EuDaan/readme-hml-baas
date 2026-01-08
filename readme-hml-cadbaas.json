@@ -1,0 +1,1190 @@
+{
+    "openapi": "3.0.1",
+    "servers": [
+        {
+            "url": "https://genial-cadastroconta-baas.ingress-homolog-internal-sp.genial.systems",
+            "description": "Homolog server"
+        }
+    ],
+    "info": {
+        "title": "Cadastro Conta Individual PF",
+        "description": "API Cadastro Conta",
+        "version": "1.0"
+    },
+    "paths": {
+        "/api/v1/cadastro-conta/individual-pf": {
+            "post": {
+                "tags": [
+                    "Conta Individual"
+                ],
+                "summary": "Cadastrar Conta Individual Pessoa Física",
+                "requestBody": {
+                    "description": "",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ContaIndividualPFRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/LoggerActionErrorResponse"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/LoggerActionErrorResponse"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/LoggerActionErrorResponse"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/LoggerActionExceptionHandlerResponse"
+                                }
+                            }
+                        }
+                    },
+                    "201": {
+                        "description": "Created",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IMessage"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/status-cadastro/{idempotency}": {
+            "get": {
+                "tags": [
+                    "Conta Individual"
+                ],
+                "summary": "Buscar Status Cadastro",
+                "parameters": [
+                    {
+                        "name": "idempotency",
+                        "in": "path",
+                        "description": "",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/LoggerActionErrorResponse"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/LoggerActionErrorResponse"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/LoggerActionErrorResponse"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/LoggerActionExceptionHandlerResponse"
+                                }
+                            }
+                        }
+                    },
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/StatusCadastroResponse"
+                                }
+                            }
+                        }
+                    },
+                    "204": {
+                        "description": "No Content"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "BloqueioAtivoResponse": {
+                "type": "object",
+                "properties": {
+                    "agencia": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "conta": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "motivosBloqueios": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ContaBloqueioAtivoRazaoResponse"
+                        },
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "Conta": {
+                "type": "object",
+                "properties": {
+                    "agencia": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "numConta": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "gerente": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "tipoConta": {
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                },
+                "additionalProperties": false
+            },
+            "ContaBloqueioAtivoRazaoResponse": {
+                "type": "object",
+                "properties": {
+                    "idMotivoBloqueio": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "descricaoMotivoBloqueio": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "dataInicio": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "numeroDiasBloqueado": {
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                },
+                "additionalProperties": false
+            },
+            "ContaBloqueioAtivoResponse": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "$ref": "#/components/schemas/BloqueioAtivoResponse"
+                    }
+                },
+                "additionalProperties": false
+            },
+            "ContaBloqueioRazaoResponse": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/RazoesResponse"
+                        },
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "ContaCadastroResponse": {
+                "type": "object",
+                "properties": {
+                    "userId": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "tipoConta": {
+                        "$ref": "#/components/schemas/TipoConta"
+                    },
+                    "tipoContaDescricao": {
+                        "type": "string",
+                        "nullable": true,
+                        "readOnly": true
+                    },
+                    "tipoContaBaaS": {
+                        "$ref": "#/components/schemas/TipoContaBaaS"
+                    },
+                    "tipoContaBaaSDescricao": {
+                        "type": "string",
+                        "nullable": true,
+                        "readOnly": true
+                    },
+                    "codigoGerente": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "agencia": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "numConta": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "contaBCBCriada": {
+                        "type": "boolean"
+                    },
+                    "contaBaaSCriada": {
+                        "type": "boolean"
+                    },
+                    "ativo": {
+                        "type": "boolean"
+                    }
+                },
+                "additionalProperties": false
+            },
+            "ContaIndividualPFRequest": {
+                "type": "object",
+                "properties": {
+                    "pessoaFisica": {
+                        "$ref": "#/components/schemas/PessoaFisicaMateraRequest"
+                    },
+                    "contaIndividual": {
+                        "$ref": "#/components/schemas/ContaIndividualRequest"
+                    },
+                    "ignoraAtualizacao": {
+                        "type": "boolean"
+                    }
+                },
+                "additionalProperties": false
+            },
+            "ContaIndividualPJRequest": {
+                "type": "object",
+                "properties": {
+                    "idempotency": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "pessoaJuridica": {
+                        "$ref": "#/components/schemas/PessoaJuridicaMateraRequest"
+                    },
+                    "contaIndividual": {
+                        "$ref": "#/components/schemas/ContaIndividualRequest"
+                    },
+                    "ignoraAtualizacao": {
+                        "type": "boolean"
+                    }
+                },
+                "additionalProperties": false
+            },
+            "ContaIndividualRequest": {
+                "type": "object",
+                "properties": {
+                    "documento": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "idempotency": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "tipoConta": {
+                        "$ref": "#/components/schemas/TipoConta"
+                    },
+                    "gerente": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "userId": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "agency": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "account": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "userLogin": {
+                        "type": "string",
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "ContaIndividualResponse": {
+                "type": "object",
+                "properties": {
+                    "cpf": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "userId": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "agency": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "account": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "active": {
+                        "type": "boolean"
+                    }
+                },
+                "additionalProperties": false
+            },
+            "ContaMateraResponse": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "$ref": "#/components/schemas/DataRet"
+                    }
+                },
+                "additionalProperties": false
+            },
+            "ContaSacoPFRequest": {
+                "type": "object",
+                "properties": {
+                    "pessoaFisica": {
+                        "$ref": "#/components/schemas/PessoaFisicaMateraRequest"
+                    },
+                    "contaSaco": {
+                        "$ref": "#/components/schemas/ContaSacoRequest"
+                    },
+                    "ignoraAtualizacao": {
+                        "type": "boolean"
+                    }
+                },
+                "additionalProperties": false
+            },
+            "ContaSacoPJRequest": {
+                "type": "object",
+                "properties": {
+                    "idempotency": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "pessoaJuridica": {
+                        "$ref": "#/components/schemas/PessoaJuridicaMateraRequest"
+                    },
+                    "contaSaco": {
+                        "$ref": "#/components/schemas/ContaSacoRequest"
+                    },
+                    "ignoraAtualizacao": {
+                        "type": "boolean"
+                    }
+                },
+                "additionalProperties": false
+            },
+            "ContaSacoRequest": {
+                "type": "object",
+                "properties": {
+                    "serviceId": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "checkBalance": {
+                        "type": "boolean"
+                    },
+                    "principalAccount": {
+                        "type": "boolean"
+                    },
+                    "idempotency": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "userId": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "agency": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "account": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "userLogin": {
+                        "type": "string",
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "ContaSacoResponse": {
+                "type": "object",
+                "properties": {
+                    "serviceId": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "checkBalance": {
+                        "type": "boolean"
+                    },
+                    "principalAccount": {
+                        "type": "boolean"
+                    },
+                    "userId": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "agency": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "account": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "active": {
+                        "type": "boolean"
+                    }
+                },
+                "additionalProperties": false
+            },
+            "ContaSalarioRequest": {
+                "type": "object",
+                "properties": {
+                    "cpfTitular": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "cnpjEmpregador": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "numContaTransfSalario": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "idConta": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "rg": {
+                        "$ref": "#/components/schemas/RgRequest"
+                    }
+                },
+                "additionalProperties": false
+            },
+            "DataRet": {
+                "type": "object",
+                "properties": {
+                    "contas": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Conta"
+                        },
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "DesativacaoRequest": {
+                "type": "object",
+                "properties": {
+                    "motivoEncerramento": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "quemChamou": {
+                        "type": "string",
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "EstadoCivil": {
+                "enum": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8
+                ],
+                "type": "integer",
+                "format": "int32"
+            },
+            "IMessage": {
+                "type": "object",
+                "properties": {
+                    "idempotency": {
+                        "type": "string",
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "LoggerActionErrorResponse": {
+                "type": "object",
+                "properties": {
+                    "mensagem": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "propriedade": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "codigo": {
+                        "type": "string",
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "LoggerActionExceptionHandlerResponse": {
+                "type": "object",
+                "properties": {
+                    "message": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "exception": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "fullException": {
+                        "type": "string",
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "MensagemResponse": {
+                "type": "object",
+                "properties": {
+                    "corpo": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "dataInicioProcessamento": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "dataFimProcessamento": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "status": {
+                        "$ref": "#/components/schemas/StatusProcessamento"
+                    },
+                    "statusDescricao": {
+                        "type": "string",
+                        "nullable": true,
+                        "readOnly": true
+                    },
+                    "sucesso": {
+                        "type": "boolean"
+                    },
+                    "erros": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "Nacionalidade": {
+                "enum": [
+                    1,
+                    2,
+                    3
+                ],
+                "type": "integer",
+                "format": "int32"
+            },
+            "PessoaFisicaMateraRequest": {
+                "type": "object",
+                "properties": {
+                    "ddi": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "ddd": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "fone": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "sexo": {
+                        "type": "string"
+                    },
+                    "dataNascimento": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "nacionalidade": {
+                        "$ref": "#/components/schemas/Nacionalidade"
+                    },
+                    "paisNascimento": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "ufNascimento": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "cidadeNascimento": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "filiacaoMae": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "estadoCivil": {
+                        "$ref": "#/components/schemas/EstadoCivil"
+                    },
+                    "nomeEntidade": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "cnpjEntidade": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "vlrPatrimonio": {
+                        "type": "number",
+                        "format": "double"
+                    },
+                    "vlrRendimentoMensal": {
+                        "type": "number",
+                        "format": "double"
+                    },
+                    "indPpe": {
+                        "type": "string"
+                    },
+                    "inscricao": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "nome": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "nomeResumido": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "email": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "cep": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "pais": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "uf": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "cidade": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "bairro": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "endereco": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "numero": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "complemento": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "tipoPessoa": {
+                        "type": "string"
+                    },
+                    "ramoAtividade": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "codEstatisticaFinanceira": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "indAtivo": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "indMantemVlrTabQdoParamNull": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "indObrigaCadCompleto": {
+                        "type": "string",
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "PessoaFisicaResponse": {
+                "type": "object",
+                "properties": {
+                    "ddi": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "ddd": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "fone": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "sexo": {
+                        "type": "string"
+                    },
+                    "dataNascimento": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "nacionalidade": {
+                        "$ref": "#/components/schemas/Nacionalidade"
+                    },
+                    "paisNascimento": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "ufNascimento": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "cidadeNascimento": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "filiacaoMae": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "estadoCivil": {
+                        "$ref": "#/components/schemas/EstadoCivil"
+                    },
+                    "nomeEntidade": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "cnpjEntidade": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "vlrPatrimonio": {
+                        "type": "number",
+                        "format": "double"
+                    },
+                    "vlrRendimentoMensal": {
+                        "type": "number",
+                        "format": "double"
+                    },
+                    "indPpe": {
+                        "type": "string"
+                    }
+                },
+                "additionalProperties": false
+            },
+            "PessoaJuridicaMateraRequest": {
+                "type": "object",
+                "properties": {
+                    "dataAbertura": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "inscricao": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "nome": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "nomeResumido": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "email": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "cep": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "pais": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "uf": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "cidade": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "bairro": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "endereco": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "numero": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "complemento": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "tipoPessoa": {
+                        "type": "string"
+                    },
+                    "ramoAtividade": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "codEstatisticaFinanceira": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "indAtivo": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "indMantemVlrTabQdoParamNull": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "indObrigaCadCompleto": {
+                        "type": "string",
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "PessoaResponse": {
+                "type": "object",
+                "properties": {
+                    "idPessoa": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "inscricao": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "nome": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "nomeResumido": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "email": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "cep": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "pais": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "uf": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "cidade": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "bairro": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "endereco": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "numero": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "complemento": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "ramoAtividade": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "codEstatisticaFinanceira": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "tipoPessoa": {
+                        "type": "string"
+                    },
+                    "pessoaFisica": {
+                        "$ref": "#/components/schemas/PessoaFisicaResponse"
+                    },
+                    "contas": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ContaCadastroResponse"
+                        },
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "RazoesResponse": {
+                "type": "object",
+                "properties": {
+                    "idMotivoBloqueio": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "descricao": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "bloqueiaDebito": {
+                        "type": "boolean"
+                    },
+                    "bloqueiaCredito": {
+                        "type": "boolean"
+                    },
+                    "bloqueiaTalao": {
+                        "type": "boolean"
+                    }
+                },
+                "additionalProperties": false
+            },
+            "RgRequest": {
+                "type": "object",
+                "properties": {
+                    "rg": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "orgaoExpedidor": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "rgUf": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "dataExpedicao": {
+                        "type": "string",
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "StatusCadastroResponse": {
+                "type": "object",
+                "properties": {
+                    "idempotency": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "statusOperacao": {
+                        "$ref": "#/components/schemas/StatusProcessamento"
+                    },
+                    "statusOperacaoDescricao": {
+                        "type": "string",
+                        "nullable": true,
+                        "readOnly": true
+                    },
+                    "dataInicioCadastro": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "conta": {
+                        "$ref": "#/components/schemas/ContaCadastroResponse"
+                    },
+                    "mensagens": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/MensagemResponse"
+                        },
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "StatusProcessamento": {
+                "enum": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8
+                ],
+                "type": "integer",
+                "format": "int32"
+            },
+            "TipoConta": {
+                "enum": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8,
+                    9,
+                    10,
+                    11,
+                    12,
+                    13,
+                    14,
+                    20,
+                    22,
+                    23,
+                    25,
+                    26,
+                    27,
+                    28,
+                    29,
+                    30,
+                    31,
+                    34,
+                    38,
+                    40
+                ],
+                "type": "integer",
+                "format": "int32"
+            },
+            "TipoContaBaaS": {
+                "enum": [
+                    0,
+                    1,
+                    2
+                ],
+                "type": "integer",
+                "format": "int32"
+            }
+        },
+        "securitySchemes": {
+            "Bearer": {
+                "type": "apiKey",
+                "description": "JWT Authorization header using the Bearer scheme. \\r\\n\\r\\n \n                      Enter 'Bearer' [space] and then your token in the text input below.\n                      \\r\\n\\r\\nExample: 'Bearer 12345abcdef'",
+                "name": "Authorization",
+                "in": "header"
+            }
+        }
+    },
+    "security": [
+        {
+            "Bearer": []
+        }
+    ]
+}
