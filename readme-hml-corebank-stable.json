@@ -7,7 +7,7 @@
         }
     ],
     "info": {
-        "title": "ServiÃ§os Corebank",
+        "title": "Serviços Corebank v1",
         "description": "API Banking Services",
         "contact": {
             "name": "Genial Investimentos",
@@ -19,10 +19,10 @@
         "/v1/account/tef": {
             "post": {
                 "tags": [
-                    "TransferÃªncias"
+                    "Transferências"
                 ],
-                "summary": "TransferÃªncia TEF",
-                "description": "ResponsÃ¡vel por realizar TEFs de dÃ©bitos ou crÃ©ditos internos GENIAL.",
+                "summary": "Transferência TEF",
+                "description": "Responsável por realizar TEFs de débitos ou créditos internos GENIAL.",
                 "requestBody": {
                     "description": "",
                     "content": {
@@ -173,139 +173,12 @@
                 }
             }
         },
-        "/v1/account/statement/{agency}/{account}/{date}/{historic}": {
-            "get": {
-                "tags": [
-                    "OperaÃ§Ãµes"
-                ],
-                "summary": "Retorna o histÃ³rico por data de lanÃ§amento",
-                "parameters": [
-                    {
-                        "name": "agency",
-                        "in": "path",
-                        "description": "Agencia",
-                        "required": true,
-                        "schema": {
-                            "type": "integer",
-                            "format": "int32"
-                        }
-                    },
-                    {
-                        "name": "account",
-                        "in": "path",
-                        "description": "Conta",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "date",
-                        "in": "path",
-                        "description": "Data de LanÃ§amento",
-                        "required": true,
-                        "schema": {
-                            "type": "string",
-                            "format": "date-time"
-                        }
-                    },
-                    {
-                        "name": "historic",
-                        "in": "path",
-                        "description": "CÃ³digo do histÃ³rico",
-                        "required": true,
-                        "schema": {
-                            "type": "integer",
-                            "format": "int32"
-                        }
-                    },
-                    {
-                        "name": "page",
-                        "in": "query",
-                        "description": "PÃ¡gina Atual",
-                        "schema": {
-                            "type": "integer",
-                            "format": "int32",
-                            "default": 0
-                        }
-                    },
-                    {
-                        "name": "size",
-                        "in": "query",
-                        "description": "Total por pÃ¡gina - padrÃ£o 20",
-                        "schema": {
-                            "type": "integer",
-                            "format": "int32",
-                            "default": 20
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/HistoricalDataExtractResponsePagedResponse"
-                                }
-                            }
-                        }
-                    },
-                    "400": {
-                        "description": "Bad Request",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/ObjectMateraErrorResponseWrapper"
-                                }
-                            }
-                        }
-                    },
-                    "401": {
-                        "description": "Unauthorized",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/components/schemas/ValidationErrorModel"
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    "403": {
-                        "description": "Forbidden",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/components/schemas/ValidationErrorModel"
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    "500": {
-                        "description": "Internal Server Error",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/ErrorMessage"
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        },
         "/v1/core-banking/balance/{agency}/{account}": {
             "get": {
                 "tags": [
-                    "Saldo BancÃ¡rio"
+                    "Saldo Bancário"
                 ],
-                "summary": "Consultar Saldo BancÃ¡rio",
+                "summary": "Consultar Saldo Bancário",
                 "description": "Consulta de saldos de uma conta corrente.",
                 "parameters": [
                     {
@@ -393,8 +266,8 @@
                 "tags": [
                     "Pagamentos"
                 ],
-                "summary": "Validar dia Ãºtil.",
-                "description": "Valida dia Ãºtil, se sim, devolve ela mesmo, senÃ£o devolve o prÃ³ximo dia Ãºtil",
+                "summary": "Validar dia útil.",
+                "description": "Valida dia útil, se sim, devolve ela mesmo, senão devolve o próximo dia útil",
                 "parameters": [
                     {
                         "name": "date",
@@ -469,10 +342,10 @@
         "/v1/operations/cash-in/{agency}/{account}/{launchDate}": {
             "get": {
                 "tags": [
-                    "OperaÃ§Ãµes"
+                    "Operações"
                 ],
-                "summary": "Consultar OperaÃ§Ãµes de DepÃ³sitos TED e TEF",
-                "description": "AtravÃ©s do nÃºmero da conta e data do lanÃ§amento (apenas TED e TEF)",
+                "summary": "Consultar Operações de Depósitos TED e TEF",
+                "description": "Através do número da conta e data do lançamento (apenas TED e TEF)",
                 "parameters": [
                     {
                         "name": "agency",
@@ -568,10 +441,10 @@
         "/v1/operations/status/{agency}/{account}/{idLiquidacao}": {
             "get": {
                 "tags": [
-                    "OperaÃ§Ãµes"
+                    "Operações"
                 ],
                 "summary": "Consultar Status de Saques TED - ID",
-                "description": "Buscar status de operaÃ§Ã£o atravÃ©s do ID Liquidacao",
+                "description": "Buscar status de operação através do ID Liquidacao",
                 "parameters": [
                     {
                         "name": "agency",
@@ -673,10 +546,10 @@
         "/v1/operations/status/{agency}/{account}/{date}/{type}": {
             "get": {
                 "tags": [
-                    "OperaÃ§Ãµes"
+                    "Operações"
                 ],
                 "summary": "Consultar Status de Saques TED - Tipo",
-                "description": "Buscar lista de status de operaÃ§Ãµes por tipo de operaÃ§Ã£o e data",
+                "description": "Buscar lista de status de operações por tipo de operação e data",
                 "parameters": [
                     {
                         "name": "agency",
@@ -790,10 +663,10 @@
         "/v1/operations/tef/{agency}/{account}/{date}/{launchType}": {
             "get": {
                 "tags": [
-                    "OperaÃ§Ãµes"
+                    "Operações"
                 ],
-                "summary": "Consultar OperaÃ§Ãµes IN e OUT - TEF",
-                "description": "Buscar registros de Tefs de crÃ©dito ou dÃ©bito de uma agÃªncia/conta referente a data informada.",
+                "summary": "Consultar Operações IN e OUT - TEF",
+                "description": "Buscar registros de Tefs de crédito ou débito de uma agência/conta referente a data informada.",
                 "parameters": [
                     {
                         "name": "agency",
@@ -1054,10 +927,10 @@
         "/v1/payment/darf-manual/{idPayment}/status": {
             "get": {
                 "tags": [
-                    "OperaÃ§Ãµes"
+                    "Operações"
                 ],
-                "summary": "Consultar OperaÃ§Ãµes DARF manual",
-                "description": "Consulta status do pagamento de DARF manual atravÃ©s do ID Pagamento",
+                "summary": "Consultar Operações DARF manual",
+                "description": "Consulta status do pagamento de DARF manual através do ID Pagamento",
                 "parameters": [
                     {
                         "name": "idPayment",
@@ -1128,7 +1001,7 @@
                     "Comprovantes"
                 ],
                 "summary": "Gerar comprovante DARF manual",
-                "description": "Gera comprovante de um pagamento de DARF manual atravÃ©s do ID Pagamento",
+                "description": "Gera comprovante de um pagamento de DARF manual através do ID Pagamento",
                 "parameters": [
                     {
                         "name": "idPayment",
@@ -1257,7 +1130,7 @@
         "/v1/payment/bankslip-consumption/{identificador}": {
             "get": {
                 "tags": [
-                    "OperaÃ§Ãµes"
+                    "Operações"
                 ],
                 "summary": "Consultar Boletos Consumo",
                 "parameters": [
@@ -1438,10 +1311,10 @@
         "/v1/payment/bankslip/{idPayment}/status": {
             "get": {
                 "tags": [
-                    "OperaÃ§Ãµes"
+                    "Operações"
                 ],
                 "summary": "Consultar Status Boleto",
-                "description": "Consulta status do pagamento de boletos atravÃ©s do ID Pagamento",
+                "description": "Consulta status do pagamento de boletos através do ID Pagamento",
                 "parameters": [
                     {
                         "name": "idPayment",
@@ -1525,7 +1398,7 @@
                     "Comprovantes"
                 ],
                 "summary": "Gerar Comprovante Boleto",
-                "description": "Gera comprovante de um pagamento de boleto atravÃ©s do ID Pagamento",
+                "description": "Gera comprovante de um pagamento de boleto através do ID Pagamento",
                 "parameters": [
                     {
                         "name": "idPayment",
@@ -1608,7 +1481,7 @@
                 "tags": [
                     "Pagamentos"
                 ],
-                "summary": "GeraÃ§Ã£o de novos boletos individuais",
+                "summary": "Geração de novos boletos individuais",
                 "parameters": [
                     {
                         "name": "agency",
@@ -1799,7 +1672,7 @@
                 "tags": [
                     "Pagamentos"
                 ],
-                "summary": "AtualizaÃ§Ã£o de boleto individual",
+                "summary": "Atualização de boleto individual",
                 "parameters": [
                     {
                         "name": "agency",
@@ -2061,7 +1934,7 @@
                 "properties": {
                     "tipoAgencia": {
                         "type": "string",
-                        "description": "Tipo de AgÃªncia. FÃ­sica (F), Virtual (V)",
+                        "description": "Tipo de Agência. Física (F), Virtual (V)",
                         "nullable": true
                     },
                     "agencia": {
@@ -2070,7 +1943,7 @@
                     },
                     "tipoConta": {
                         "type": "string",
-                        "description": "Tipo de Conta do Pagador. Conta Corrente (CC), Conta DepÃ³sito (CD), Conta de Pagamento (PG), PoupanÃ§a (PP), Conta Garantida (CG)",
+                        "description": "Tipo de Conta do Pagador. Conta Corrente (CC), Conta Depósito (CD), Conta de Pagamento (PG), Poupança (PP), Conta Garantida (CG)",
                         "nullable": true
                     },
                     "numeroConta": {
@@ -2089,7 +1962,7 @@
                     },
                     "tipoAgencia": {
                         "type": "string",
-                        "description": "Tipo de AgÃªncia. FÃ­sica (F), Virtual (V)",
+                        "description": "Tipo de Agência. Física (F), Virtual (V)",
                         "nullable": true
                     },
                     "agencia": {
@@ -2098,7 +1971,7 @@
                     },
                     "tipoConta": {
                         "type": "string",
-                        "description": "Tipo de Conta do Pagador. Conta Corrente (CC), Conta DepÃ³sito (CD), Conta de Pagamento (PG), PoupanÃ§a (PP), Conta Garantida (CG)",
+                        "description": "Tipo de Conta do Pagador. Conta Corrente (CC), Conta Depósito (CD), Conta de Pagamento (PG), Poupança (PP), Conta Garantida (CG)",
                         "nullable": true
                     },
                     "numeroConta": {
@@ -2324,7 +2197,7 @@
                 "properties": {
                     "tipoPessoa": {
                         "type": "string",
-                        "description": "Tipo de Pessoa do Agregado. FÃ­sica (F), JurÃ­dica (J)",
+                        "description": "Tipo de Pessoa do Agregado. Física (F), Jurídica (J)",
                         "nullable": true
                     },
                     "cnpjCpfAgregado": {
@@ -2350,7 +2223,7 @@
                     },
                     "tipoPessoa": {
                         "type": "string",
-                        "description": "Tipo de Pessoa do Agregado. FÃ­sica (F), JurÃ­dica (J)",
+                        "description": "Tipo de Pessoa do Agregado. Física (F), Jurídica (J)",
                         "nullable": true
                     },
                     "cnpjCpfAgregado": {
@@ -2607,87 +2480,12 @@
                     },
                     "tipoPessoaTerceiroAutorizado": {
                         "type": "string",
-                        "description": "Tipo de Pessoa do Terceiro Autorizado. FÃ­sica (F), JurÃ­dica (J)",
+                        "description": "Tipo de Pessoa do Terceiro Autorizado. Física (F), Jurídica (J)",
                         "nullable": true
                     },
                     "indicadorExclusaoTerceiroAutorizado": {
                         "type": "boolean",
                         "nullable": true
-                    }
-                },
-                "additionalProperties": false
-            },
-            "BancoCorrespondente": {
-                "type": "object",
-                "properties": {
-                    "bancoCobranca": {
-                        "type": "integer",
-                        "format": "int32"
-                    },
-                    "contaCobranca": {
-                        "type": "integer",
-                        "format": "int64"
-                    },
-                    "dataEnvioBcoCorresp": {
-                        "type": "string",
-                        "nullable": true
-                    }
-                },
-                "additionalProperties": false
-            },
-            "Bank": {
-                "type": "object",
-                "properties": {
-                    "idBanco": {
-                        "type": "integer",
-                        "format": "int32"
-                    },
-                    "nomeBanco": {
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "cnpj": {
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "ispb": {
-                        "type": "string",
-                        "nullable": true
-                    }
-                },
-                "additionalProperties": false
-            },
-            "BankPagedResponse": {
-                "type": "object",
-                "properties": {
-                    "content": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/components/schemas/Bank"
-                        },
-                        "nullable": true
-                    },
-                    "pageNumber": {
-                        "type": "integer",
-                        "format": "int32"
-                    },
-                    "size": {
-                        "type": "integer",
-                        "format": "int32"
-                    },
-                    "totalElements": {
-                        "type": "integer",
-                        "format": "int64"
-                    },
-                    "totalPages": {
-                        "type": "integer",
-                        "format": "int32"
-                    },
-                    "hasNextPage": {
-                        "type": "boolean"
-                    },
-                    "hasPreviousPage": {
-                        "type": "boolean"
                     }
                 },
                 "additionalProperties": false
@@ -2975,7 +2773,7 @@
                     },
                     "codigoMoedaCNAB": {
                         "type": "string",
-                        "description": "CÃ³digo Moeda CNAB. RESERVADO_USO_FUTURO(\"01\"), DOLAR_AMERICANO_COMERCIAL(\"02\"), DOLAR_AMERICANO_TURISMO(\"03\"), ITRD(\"04\"), IDTR(\"05\"), UFIR_DIARIA(\"06\"), \r\nUFIR_MENSAL(\"07\"), FAJ_TR(\"08\"), REAL(\"09\"), TR(\"10\"), IGPM(\"11\"), CDI(\"12\"), PERCENTUAL_CDI(\"13\"), EURO(\"14\"), CDI_CETIP(\"15\"), CHF(\"16\"), CUB_RS_NOVO(\"17\"), \r\nCUB_RS_R8_N(\"18\"), CUB_SC_ANTIGO(\"19\"), CUBRS(\"20\"), CUB_SC_NOVO(\"21\"), GBP(\"22\"), ICC_SALVADOR(\"23\"), IGPM_A(\"24\"), IGPM_N(\"25\"), INCC(\"26\"), INCC_M(\"27\"), INPC(\"28\"), JPY(\"29\"), TJLP(\"30\")",
+                        "description": "Código Moeda CNAB. RESERVADO_USO_FUTURO(\"01\"), DOLAR_AMERICANO_COMERCIAL(\"02\"), DOLAR_AMERICANO_TURISMO(\"03\"), ITRD(\"04\"), IDTR(\"05\"), UFIR_DIARIA(\"06\"), \r\nUFIR_MENSAL(\"07\"), FAJ_TR(\"08\"), REAL(\"09\"), TR(\"10\"), IGPM(\"11\"), CDI(\"12\"), PERCENTUAL_CDI(\"13\"), EURO(\"14\"), CDI_CETIP(\"15\"), CHF(\"16\"), CUB_RS_NOVO(\"17\"), \r\nCUB_RS_R8_N(\"18\"), CUB_SC_ANTIGO(\"19\"), CUBRS(\"20\"), CUB_SC_NOVO(\"21\"), GBP(\"22\"), ICC_SALVADOR(\"23\"), IGPM_A(\"24\"), IGPM_N(\"25\"), INCC(\"26\"), INCC_M(\"27\"), INPC(\"28\"), JPY(\"29\"), TJLP(\"30\")",
                         "nullable": true
                     },
                     "numeroCodigoBarras": {
@@ -3006,7 +2804,7 @@
                     },
                     "codigoEspecieTitulo": {
                         "type": "string",
-                        "description": "CÃ³digo EspÃ©cie TÃ­tulo. CHEQUE(\"1\"), DM_DUPLICATA_MERCANTIL(\"2\"), DMI_DUPLICATA_MERCANTIL_INDICACAO(\"3\"), DS_DUPLICATA_SERVICO(\"4\") DSI_DUPLICATA_SERVICO_INDICACAO(\"5\"), \r\nDR_DUPLICATA_RURAL(\"6\"), LC_LETRA_CAMBIO(\"7\"), NCC_NOTA_CREDITO_COMERCIAL(\"8\"), NCE_NOTA_CREDITO_EXPORTACAO(\"9\"), NCI_NOTA_CREDITO_INDUSTRIAL(\"10\"), \r\nNCRP_NOTA_CREDITO_RURAL(\"11\"), NP_NOTA_PROVISSORIA(\"12\"), (\"13\"), TM_TRIPLICATA_MERCANTIL(\"14\"), TS_TRIPLICATA_SERVICO(\"15\"), NS_NOTA_SEGURO(\"16\"), \r\nRC_RECIBO(\"17\"), FAT_BLOQUETO(\"18\"), ND_NOTA_DEBITO(\"19\"), AP_APOLISE_SEGURO(\"20\"), ME_MENSALIDADE_ESCOLAR(\"21\"), PC_PARCELA_CONSORCIO(\"22\"), NF_NOTA_FISCAL(\"23\"), \r\nDD_DOCUMENTO_DIVIDA(\"24\"), CELULA_PRODUTO_RURAL(\"25\"),CARTAO_CREDITO(\"31\"), BOLETO_PROPOSTA(\"32\"), OUTROS(\"99\")",
+                        "description": "Código Espécie Título. CHEQUE(\"1\"), DM_DUPLICATA_MERCANTIL(\"2\"), DMI_DUPLICATA_MERCANTIL_INDICACAO(\"3\"), DS_DUPLICATA_SERVICO(\"4\") DSI_DUPLICATA_SERVICO_INDICACAO(\"5\"), \r\nDR_DUPLICATA_RURAL(\"6\"), LC_LETRA_CAMBIO(\"7\"), NCC_NOTA_CREDITO_COMERCIAL(\"8\"), NCE_NOTA_CREDITO_EXPORTACAO(\"9\"), NCI_NOTA_CREDITO_INDUSTRIAL(\"10\"), \r\nNCRP_NOTA_CREDITO_RURAL(\"11\"), NP_NOTA_PROVISSORIA(\"12\"), (\"13\"), TM_TRIPLICATA_MERCANTIL(\"14\"), TS_TRIPLICATA_SERVICO(\"15\"), NS_NOTA_SEGURO(\"16\"), \r\nRC_RECIBO(\"17\"), FAT_BLOQUETO(\"18\"), ND_NOTA_DEBITO(\"19\"), AP_APOLISE_SEGURO(\"20\"), ME_MENSALIDADE_ESCOLAR(\"21\"), PC_PARCELA_CONSORCIO(\"22\"), NF_NOTA_FISCAL(\"23\"), \r\nDD_DOCUMENTO_DIVIDA(\"24\"), CELULA_PRODUTO_RURAL(\"25\"),CARTAO_CREDITO(\"31\"), BOLETO_PROPOSTA(\"32\"), OUTROS(\"99\")",
                         "nullable": true
                     },
                     "dataEmissaoTitulo": {
@@ -3044,7 +2842,7 @@
                     },
                     "indicadorValorOuPercentualMinimoTitulo": {
                         "type": "string",
-                        "description": "Indicador Valor ou Percentual MÃ­nimo TÃ­tulo. PERCENTUAL(\"P\"), VALOR(\"V\")",
+                        "description": "Indicador Valor ou Percentual Mínimo Título. PERCENTUAL(\"P\"), VALOR(\"V\")",
                         "nullable": true
                     },
                     "valorOuPercentualMinimoTitulo": {
@@ -3054,7 +2852,7 @@
                     },
                     "indicadorValorOuPercentualMaximoTitulo": {
                         "type": "string",
-                        "description": "Indicador Valor ou Percentual MÃ¡ximo TÃ­tulo. PERCENTUAL(\"P\"), VALOR(\"V\")",
+                        "description": "Indicador Valor ou Percentual Máximo Título. PERCENTUAL(\"P\"), VALOR(\"V\")",
                         "nullable": true
                     },
                     "valorOuPercentualMaximoTitulo": {
@@ -3064,12 +2862,12 @@
                     },
                     "tipoModeloCalculo": {
                         "type": "string",
-                        "description": "Tipo Modelo CÃ¡lculo. RECEBEDORA_CALCULA_TITULOS_VENCER_VENCIDOS(\"01\"), RECEBEDORA_CALCULA_TITULOS_VENCIDOS_RECEBEDORA_VENCER(\"02\"), \r\nDESTINATARIA_CALCULA_TITULOS_VENCER_VENCIDOS(\"03\"), CIP_CALCULA_SALDO_PAGAMENTO_PARCIAL_TITULOS_VENCER_VENCIDOS_EM_RESPOSTA_CONSULTA(\"04\")",
+                        "description": "Tipo Modelo Cálculo. RECEBEDORA_CALCULA_TITULOS_VENCER_VENCIDOS(\"01\"), RECEBEDORA_CALCULA_TITULOS_VENCIDOS_RECEBEDORA_VENCER(\"02\"), \r\nDESTINATARIA_CALCULA_TITULOS_VENCER_VENCIDOS(\"03\"), CIP_CALCULA_SALDO_PAGAMENTO_PARCIAL_TITULOS_VENCER_VENCIDOS_EM_RESPOSTA_CONSULTA(\"04\")",
                         "nullable": true
                     },
                     "tipoAutorizacaoRecebimentoValorDivergente": {
                         "type": "string",
-                        "description": "Tipo AutorizaÃ§Ã£o Recebimento Valor Divergente. QUALQUER_VALOR(\"1\"), ENTRE_MINIMO_MAXIMO(\"2\"), NAO_ACEITAR_PAGAMENTO_COM_VALOR_DIVERGENTE(\"3\"), SOMENTE_VALOR_MINIMO(\"4\")",
+                        "description": "Tipo Autorização Recebimento Valor Divergente. QUALQUER_VALOR(\"1\"), ENTRE_MINIMO_MAXIMO(\"2\"), NAO_ACEITAR_PAGAMENTO_COM_VALOR_DIVERGENTE(\"3\"), SOMENTE_VALOR_MINIMO(\"4\")",
                         "nullable": true
                     },
                     "quantidadePagamentoParcialRegistrado": {
@@ -3084,12 +2882,12 @@
                     },
                     "situacaoTituloPagamento": {
                         "type": "string",
-                        "description": "SituaÃ§Ã£o TÃ­tulo Pagamento. BOLETO_BAIXADO(\"01\"), BOLETO_BLOQUEADO_PARA_PAGAMENTO(\"02\"), BOLETO_NA_BASE_BENEFICIARIO_INAPTO_NA_INSTITUICAO_EMISSORA(\"03\"), \r\nBOLETO_NA_BASE_BENEFICIARIO_SEM_CADASTRO(\"04\"), BOLETO_NA_BASE_BENEFICIARIO_EM_ANALISE_NA_INSTITUICAO_EMISSORA(\"05\"), BOLETO_EXCEDEU_LIMITE_PAGAMENTO_PARCIAIS(\"06\"), \r\nBAIXA_OPERACIONAL_EM_DUPLICIDADE_PARA_TITULO_QUE_NAO_PERMITE_PAGAMENTO_PARCIAL(\"07\"), BAIXA_OPERACIONAL_REGISTRADA_TITULO_NAO_PERMITE_PAGAMENTO_PARCIAL(\"08\"), \r\nBOLETO_EXECEDEU_VALOR_SALDO_PARA_PAGAMENTO_PARCIAL_PARA_TIPO_MODELO_CALCULO_04(\"09\"), BOLETO_NA_BASE_BENEFICIARIO_INAPTO_NA_INSTITUICAO_DIFERENTE_DA_EMISSORA(\"10\"), \r\nBOLETO_NA_BASE_BENEFICIARIO_EM_ANALISE_NA_INSTITUICAO_DIFERENTE_DA_EMISSORA(\"1\"), BOLETO_NA_BASE_BENEFICIARIO_APTO(\"12\")",
+                        "description": "Situação Título Pagamento. BOLETO_BAIXADO(\"01\"), BOLETO_BLOQUEADO_PARA_PAGAMENTO(\"02\"), BOLETO_NA_BASE_BENEFICIARIO_INAPTO_NA_INSTITUICAO_EMISSORA(\"03\"), \r\nBOLETO_NA_BASE_BENEFICIARIO_SEM_CADASTRO(\"04\"), BOLETO_NA_BASE_BENEFICIARIO_EM_ANALISE_NA_INSTITUICAO_EMISSORA(\"05\"), BOLETO_EXCEDEU_LIMITE_PAGAMENTO_PARCIAIS(\"06\"), \r\nBAIXA_OPERACIONAL_EM_DUPLICIDADE_PARA_TITULO_QUE_NAO_PERMITE_PAGAMENTO_PARCIAL(\"07\"), BAIXA_OPERACIONAL_REGISTRADA_TITULO_NAO_PERMITE_PAGAMENTO_PARCIAL(\"08\"), \r\nBOLETO_EXECEDEU_VALOR_SALDO_PARA_PAGAMENTO_PARCIAL_PARA_TIPO_MODELO_CALCULO_04(\"09\"), BOLETO_NA_BASE_BENEFICIARIO_INAPTO_NA_INSTITUICAO_DIFERENTE_DA_EMISSORA(\"10\"), \r\nBOLETO_NA_BASE_BENEFICIARIO_EM_ANALISE_NA_INSTITUICAO_DIFERENTE_DA_EMISSORA(\"1\"), BOLETO_NA_BASE_BENEFICIARIO_APTO(\"12\")",
                         "nullable": true
                     },
                     "situacaoTituloNoDDA": {
                         "type": "string",
-                        "description": "SituaÃ§Ã£o do TÃ­tulo no DDA. Apresentado(\"0\"), Aceito(\"1\"), Recusado(\"2\"), Agendado(\"3\"), Pago(\"4\"), Baixado(\"5\")",
+                        "description": "Situação do Título no DDA. Apresentado(\"0\"), Aceito(\"1\"), Recusado(\"2\"), Agendado(\"3\"), Pago(\"4\"), Baixado(\"5\")",
                         "nullable": true
                     }
                 },
@@ -3496,7 +3294,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "Lista de SituaÃ§Ãµes do TÃ­tulo. Apresentado(\"0\"), Aceito(\"1\"), Recusado(\"2\"), Agendado(\"3\"), Pago(\"4\"), Baixado(\"5\").",
+                        "description": "Lista de Situações do Título. Apresentado(\"0\"), Aceito(\"1\"), Recusado(\"2\"), Agendado(\"3\"), Pago(\"4\"), Baixado(\"5\").",
                         "nullable": true
                     },
                     "incluirTituloAgregados": {
@@ -3593,7 +3391,7 @@
                     },
                     "codigoMoedaCNAB": {
                         "type": "string",
-                        "description": "CÃ³digo Moeda CNAB. RESERVADO_USO_FUTURO(\"01\"), DOLAR_AMERICANO_COMERCIAL(\"02\"), DOLAR_AMERICANO_TURISMO(\"03\"), ITRD(\"04\"), IDTR(\"05\"), UFIR_DIARIA(\"06\"), \r\nUFIR_MENSAL(\"07\"), FAJ_TR(\"08\"), REAL(\"09\"), TR(\"10\"), IGPM(\"11\"), CDI(\"12\"), PERCENTUAL_CDI(\"13\"), EURO(\"14\"), CDI_CETIP(\"15\"), CHF(\"16\"), CUB_RS_NOVO(\"17\"), \r\nCUB_RS_R8_N(\"18\"), CUB_SC_ANTIGO(\"19\"), CUBRS(\"20\"), CUB_SC_NOVO(\"21\"), GBP(\"22\"), ICC_SALVADOR(\"23\"), IGPM_A(\"24\"), IGPM_N(\"25\"), INCC(\"26\"), INCC_M(\"27\"), INPC(\"28\"), JPY(\"29\"), TJLP(\"30\")",
+                        "description": "Código Moeda CNAB. RESERVADO_USO_FUTURO(\"01\"), DOLAR_AMERICANO_COMERCIAL(\"02\"), DOLAR_AMERICANO_TURISMO(\"03\"), ITRD(\"04\"), IDTR(\"05\"), UFIR_DIARIA(\"06\"), \r\nUFIR_MENSAL(\"07\"), FAJ_TR(\"08\"), REAL(\"09\"), TR(\"10\"), IGPM(\"11\"), CDI(\"12\"), PERCENTUAL_CDI(\"13\"), EURO(\"14\"), CDI_CETIP(\"15\"), CHF(\"16\"), CUB_RS_NOVO(\"17\"), \r\nCUB_RS_R8_N(\"18\"), CUB_SC_ANTIGO(\"19\"), CUBRS(\"20\"), CUB_SC_NOVO(\"21\"), GBP(\"22\"), ICC_SALVADOR(\"23\"), IGPM_A(\"24\"), IGPM_N(\"25\"), INCC(\"26\"), INCC_M(\"27\"), INPC(\"28\"), JPY(\"29\"), TJLP(\"30\")",
                         "nullable": true
                     },
                     "numeroCodigoBarras": {
@@ -3622,7 +3420,7 @@
                     },
                     "codigoEspecieTitulo": {
                         "type": "string",
-                        "description": "CÃ³digo EspÃ©cie TÃ­tulo. CHEQUE(\"1\"), DM_DUPLICATA_MERCANTIL(\"2\"), DMI_DUPLICATA_MERCANTIL_INDICACAO(\"3\"), DS_DUPLICATA_SERVICO(\"4\") DSI_DUPLICATA_SERVICO_INDICACAO(\"5\"), \r\nDR_DUPLICATA_RURAL(\"6\"), LC_LETRA_CAMBIO(\"7\"), NCC_NOTA_CREDITO_COMERCIAL(\"8\"), NCE_NOTA_CREDITO_EXPORTACAO(\"9\"), NCI_NOTA_CREDITO_INDUSTRIAL(\"10\"), \r\nNCRP_NOTA_CREDITO_RURAL(\"11\"), NP_NOTA_PROVISSORIA(\"12\"), (\"13\"), TM_TRIPLICATA_MERCANTIL(\"14\"), TS_TRIPLICATA_SERVICO(\"15\"), NS_NOTA_SEGURO(\"16\"), \r\nRC_RECIBO(\"17\"), FAT_BLOQUETO(\"18\"), ND_NOTA_DEBITO(\"19\"), AP_APOLISE_SEGURO(\"20\"), ME_MENSALIDADE_ESCOLAR(\"21\"), PC_PARCELA_CONSORCIO(\"22\"), NF_NOTA_FISCAL(\"23\"), \r\nDD_DOCUMENTO_DIVIDA(\"24\"), CELULA_PRODUTO_RURAL(\"25\"),CARTAO_CREDITO(\"31\"), BOLETO_PROPOSTA(\"32\"), OUTROS(\"99\")",
+                        "description": "Código Espécie Título. CHEQUE(\"1\"), DM_DUPLICATA_MERCANTIL(\"2\"), DMI_DUPLICATA_MERCANTIL_INDICACAO(\"3\"), DS_DUPLICATA_SERVICO(\"4\") DSI_DUPLICATA_SERVICO_INDICACAO(\"5\"), \r\nDR_DUPLICATA_RURAL(\"6\"), LC_LETRA_CAMBIO(\"7\"), NCC_NOTA_CREDITO_COMERCIAL(\"8\"), NCE_NOTA_CREDITO_EXPORTACAO(\"9\"), NCI_NOTA_CREDITO_INDUSTRIAL(\"10\"), \r\nNCRP_NOTA_CREDITO_RURAL(\"11\"), NP_NOTA_PROVISSORIA(\"12\"), (\"13\"), TM_TRIPLICATA_MERCANTIL(\"14\"), TS_TRIPLICATA_SERVICO(\"15\"), NS_NOTA_SEGURO(\"16\"), \r\nRC_RECIBO(\"17\"), FAT_BLOQUETO(\"18\"), ND_NOTA_DEBITO(\"19\"), AP_APOLISE_SEGURO(\"20\"), ME_MENSALIDADE_ESCOLAR(\"21\"), PC_PARCELA_CONSORCIO(\"22\"), NF_NOTA_FISCAL(\"23\"), \r\nDD_DOCUMENTO_DIVIDA(\"24\"), CELULA_PRODUTO_RURAL(\"25\"),CARTAO_CREDITO(\"31\"), BOLETO_PROPOSTA(\"32\"), OUTROS(\"99\")",
                         "nullable": true
                     },
                     "dataEmissaoTitulo": {
@@ -3657,7 +3455,7 @@
                     },
                     "indicadorValorOuPercentualMinimoTitulo": {
                         "type": "string",
-                        "description": "Indicador Valor ou Percentual MÃ­nimo TÃ­tulo. PERCENTUAL(\"P\"), VALOR(\"V\")",
+                        "description": "Indicador Valor ou Percentual Mínimo Título. PERCENTUAL(\"P\"), VALOR(\"V\")",
                         "nullable": true
                     },
                     "valorOuPercentualMinimoTitulo": {
@@ -3667,7 +3465,7 @@
                     },
                     "indicadorValorOuPercentualMaximoTitulo": {
                         "type": "string",
-                        "description": "Indicador Valor ou Percentual MÃ¡ximo TÃ­tulo. PERCENTUAL(\"P\"), VALOR(\"V\")",
+                        "description": "Indicador Valor ou Percentual Máximo Título. PERCENTUAL(\"P\"), VALOR(\"V\")",
                         "nullable": true
                     },
                     "valorOuPercentualMaximoTitulo": {
@@ -3677,12 +3475,12 @@
                     },
                     "tipoModeloCalculo": {
                         "type": "string",
-                        "description": "Tipo Modelo CÃ¡lculo. RECEBEDORA_CALCULA_TITULOS_VENCER_VENCIDOS(\"01\"), RECEBEDORA_CALCULA_TITULOS_VENCIDOS_RECEBEDORA_VENCER(\"02\"), \r\nDESTINATARIA_CALCULA_TITULOS_VENCER_VENCIDOS(\"03\"), CIP_CALCULA_SALDO_PAGAMENTO_PARCIAL_TITULOS_VENCER_VENCIDOS_EM_RESPOSTA_CONSULTA(\"04\")",
+                        "description": "Tipo Modelo Cálculo. RECEBEDORA_CALCULA_TITULOS_VENCER_VENCIDOS(\"01\"), RECEBEDORA_CALCULA_TITULOS_VENCIDOS_RECEBEDORA_VENCER(\"02\"), \r\nDESTINATARIA_CALCULA_TITULOS_VENCER_VENCIDOS(\"03\"), CIP_CALCULA_SALDO_PAGAMENTO_PARCIAL_TITULOS_VENCER_VENCIDOS_EM_RESPOSTA_CONSULTA(\"04\")",
                         "nullable": true
                     },
                     "tipoAutorizacaoRecebimentoValorDivergente": {
                         "type": "string",
-                        "description": "Tipo AutorizaÃ§Ã£o Recebimento Valor Divergente. QUALQUER_VALOR(\"1\"), ENTRE_MINIMO_MAXIMO(\"2\"), NAO_ACEITAR_PAGAMENTO_COM_VALOR_DIVERGENTE(\"3\"), SOMENTE_VALOR_MINIMO(\"4\")",
+                        "description": "Tipo Autorização Recebimento Valor Divergente. QUALQUER_VALOR(\"1\"), ENTRE_MINIMO_MAXIMO(\"2\"), NAO_ACEITAR_PAGAMENTO_COM_VALOR_DIVERGENTE(\"3\"), SOMENTE_VALOR_MINIMO(\"4\")",
                         "nullable": true
                     },
                     "quantidadePagamentoParcialRegistrado": {
@@ -3697,12 +3495,12 @@
                     },
                     "situacaoTituloPagamento": {
                         "type": "string",
-                        "description": "SituaÃ§Ã£o TÃ­tulo Pagamento. BOLETO_BAIXADO(\"01\"), BOLETO_BLOQUEADO_PARA_PAGAMENTO(\"02\"), BOLETO_NA_BASE_BENEFICIARIO_INAPTO_NA_INSTITUICAO_EMISSORA(\"03\"), \r\nBOLETO_NA_BASE_BENEFICIARIO_SEM_CADASTRO(\"04\"), BOLETO_NA_BASE_BENEFICIARIO_EM_ANALISE_NA_INSTITUICAO_EMISSORA(\"05\"), BOLETO_EXCEDEU_LIMITE_PAGAMENTO_PARCIAIS(\"06\"), \r\nBAIXA_OPERACIONAL_EM_DUPLICIDADE_PARA_TITULO_QUE_NAO_PERMITE_PAGAMENTO_PARCIAL(\"07\"), BAIXA_OPERACIONAL_REGISTRADA_TITULO_NAO_PERMITE_PAGAMENTO_PARCIAL(\"08\"), \r\nBOLETO_EXECEDEU_VALOR_SALDO_PARA_PAGAMENTO_PARCIAL_PARA_TIPO_MODELO_CALCULO_04(\"09\"), BOLETO_NA_BASE_BENEFICIARIO_INAPTO_NA_INSTITUICAO_DIFERENTE_DA_EMISSORA(\"10\"), \r\nBOLETO_NA_BASE_BENEFICIARIO_EM_ANALISE_NA_INSTITUICAO_DIFERENTE_DA_EMISSORA(\"1\"), BOLETO_NA_BASE_BENEFICIARIO_APTO(\"12\")",
+                        "description": "Situação Título Pagamento. BOLETO_BAIXADO(\"01\"), BOLETO_BLOQUEADO_PARA_PAGAMENTO(\"02\"), BOLETO_NA_BASE_BENEFICIARIO_INAPTO_NA_INSTITUICAO_EMISSORA(\"03\"), \r\nBOLETO_NA_BASE_BENEFICIARIO_SEM_CADASTRO(\"04\"), BOLETO_NA_BASE_BENEFICIARIO_EM_ANALISE_NA_INSTITUICAO_EMISSORA(\"05\"), BOLETO_EXCEDEU_LIMITE_PAGAMENTO_PARCIAIS(\"06\"), \r\nBAIXA_OPERACIONAL_EM_DUPLICIDADE_PARA_TITULO_QUE_NAO_PERMITE_PAGAMENTO_PARCIAL(\"07\"), BAIXA_OPERACIONAL_REGISTRADA_TITULO_NAO_PERMITE_PAGAMENTO_PARCIAL(\"08\"), \r\nBOLETO_EXECEDEU_VALOR_SALDO_PARA_PAGAMENTO_PARCIAL_PARA_TIPO_MODELO_CALCULO_04(\"09\"), BOLETO_NA_BASE_BENEFICIARIO_INAPTO_NA_INSTITUICAO_DIFERENTE_DA_EMISSORA(\"10\"), \r\nBOLETO_NA_BASE_BENEFICIARIO_EM_ANALISE_NA_INSTITUICAO_DIFERENTE_DA_EMISSORA(\"1\"), BOLETO_NA_BASE_BENEFICIARIO_APTO(\"12\")",
                         "nullable": true
                     },
                     "situacaoTituloNoDDA": {
                         "type": "string",
-                        "description": "SituaÃ§Ã£o do TÃ­tulo no DDA. Apresentado(\"0\"), Aceito(\"1\"), Recusado(\"2\"), Agendado(\"3\"), Pago(\"4\"), Baixado(\"5\")",
+                        "description": "Situação do Título no DDA. Apresentado(\"0\"), Aceito(\"1\"), Recusado(\"2\"), Agendado(\"3\"), Pago(\"4\"), Baixado(\"5\")",
                         "nullable": true
                     }
                 },
@@ -3873,28 +3671,6 @@
                     "dtValiddCalc": {
                         "type": "string",
                         "format": "date-time",
-                        "nullable": true
-                    }
-                },
-                "additionalProperties": false
-            },
-            "CallbackBoletoRendimentoRequest": {
-                "type": "object",
-                "properties": {
-                    "transacaoId": {
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "codigoControleTransacao": {
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "status": {
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "motivo": {
-                        "type": "string",
                         "nullable": true
                     }
                 },
@@ -4383,118 +4159,6 @@
                     "codMotivoContestacao": {
                         "type": "integer",
                         "format": "int64"
-                    }
-                },
-                "additionalProperties": false
-            },
-            "ConsultarBoletoResponse": {
-                "type": "object",
-                "properties": {
-                    "codigoBarras": {
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "linhaDigitavel": {
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "dataVencimento": {
-                        "type": "string",
-                        "format": "date-time",
-                        "nullable": true
-                    },
-                    "valor": {
-                        "type": "number",
-                        "format": "double"
-                    },
-                    "desconto": {
-                        "type": "number",
-                        "format": "double"
-                    },
-                    "juros": {
-                        "type": "number",
-                        "format": "double"
-                    },
-                    "multa": {
-                        "type": "number",
-                        "format": "double"
-                    },
-                    "valorPagamento": {
-                        "type": "number",
-                        "format": "double",
-                        "readOnly": true
-                    },
-                    "nomeBeneficiario": {
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "documentoBeneficiario": {
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "documentoSacado": {
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "nomeSacado": {
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "codigoBanco": {
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "nomeBanco": {
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "codigoConcessionaria": {
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "nomeConcessionaria": {
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "nomeConvenio": {
-                        "type": "string",
-                        "nullable": true
-                    }
-                },
-                "additionalProperties": false
-            },
-            "ConsultarExtratoRendResponse": {
-                "type": "object",
-                "properties": {
-                    "erroMessage": {
-                        "$ref": "#/components/schemas/ErroMessageRendimento"
-                    },
-                    "isSuccess": {
-                        "type": "boolean"
-                    },
-                    "isFailure": {
-                        "type": "boolean"
-                    },
-                    "value": {
-                        "$ref": "#/components/schemas/ExtratoRendimento"
-                    }
-                },
-                "additionalProperties": false
-            },
-            "ConsultarSaldoRendResponse": {
-                "type": "object",
-                "properties": {
-                    "erroMessage": {
-                        "$ref": "#/components/schemas/ErroMessageRendimento"
-                    },
-                    "isSuccess": {
-                        "type": "boolean"
-                    },
-                    "isFailure": {
-                        "type": "boolean"
-                    },
-                    "value": {
-                        "$ref": "#/components/schemas/SaldoRendimento"
                     }
                 },
                 "additionalProperties": false
@@ -5609,156 +5273,6 @@
                 },
                 "additionalProperties": false
             },
-            "Datum": {
-                "type": "object",
-                "properties": {
-                    "idTitulo": {
-                        "type": "integer",
-                        "format": "int64"
-                    },
-                    "idTituloCIP": {
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "codigoBarras": {
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "linhaDigitavel": {
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "situacao": {
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "idBeneficiario": {
-                        "type": "integer",
-                        "format": "int64"
-                    },
-                    "empresa": {
-                        "type": "integer",
-                        "format": "int64"
-                    },
-                    "carteira": {
-                        "type": "integer",
-                        "format": "int32"
-                    },
-                    "moeda": {
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "codigoCMC7": {
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "nossoNumero": {
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "seuNumero": {
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "usoEmpresa": {
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "tipoTitulo": {
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "valorTitulo": {
-                        "type": "number",
-                        "format": "double"
-                    },
-                    "dataVencimento": {
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "dataEmissao": {
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "valorAbatimento": {
-                        "type": "number",
-                        "format": "double"
-                    },
-                    "protestar": {
-                        "type": "boolean"
-                    },
-                    "prazoCartorio": {
-                        "type": "integer",
-                        "format": "int32"
-                    },
-                    "sacadorAvalista": {
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "baixarAutomaticamente": {
-                        "type": "boolean"
-                    },
-                    "prazoBaixaAutomatica": {
-                        "type": "integer",
-                        "format": "int32"
-                    },
-                    "tipoCobranca": {
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "garantia": {
-                        "type": "boolean"
-                    },
-                    "contratoGarantia": {
-                        "type": "number",
-                        "format": "double"
-                    },
-                    "contratoEmprestimo": {
-                        "type": "integer",
-                        "format": "int64"
-                    },
-                    "contratoEmpresa": {
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "pagamento": {
-                        "$ref": "#/components/schemas/Pagamento"
-                    },
-                    "desconto": {
-                        "$ref": "#/components/schemas/Desconto"
-                    },
-                    "juros": {
-                        "$ref": "#/components/schemas/Juros"
-                    },
-                    "multa": {
-                        "$ref": "#/components/schemas/Multa"
-                    },
-                    "emitente": {
-                        "$ref": "#/components/schemas/EmitenteRelatorio"
-                    },
-                    "pagador": {
-                        "$ref": "#/components/schemas/Pagador"
-                    },
-                    "bancoCorrespondente": {
-                        "$ref": "#/components/schemas/BancoCorrespondente"
-                    },
-                    "mensagensSistema": {
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        },
-                        "nullable": true
-                    },
-                    "mensagensUsuario": {
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        },
-                        "nullable": true
-                    }
-                },
-                "additionalProperties": false
-            },
             "DeactivationAccountRequest": {
                 "type": "object",
                 "properties": {
@@ -5844,40 +5358,6 @@
                 },
                 "additionalProperties": false
             },
-            "Desconto": {
-                "type": "object",
-                "properties": {
-                    "prazo1": {
-                        "type": "integer",
-                        "format": "int32"
-                    },
-                    "prazo2": {
-                        "type": "integer",
-                        "format": "int32"
-                    },
-                    "prazo3": {
-                        "type": "integer",
-                        "format": "int32"
-                    },
-                    "valor1": {
-                        "type": "number",
-                        "format": "double"
-                    },
-                    "valor2": {
-                        "type": "number",
-                        "format": "double"
-                    },
-                    "valor3": {
-                        "type": "number",
-                        "format": "double"
-                    },
-                    "tipoValorOuPercentual": {
-                        "type": "string",
-                        "nullable": true
-                    }
-                },
-                "additionalProperties": false
-            },
             "DetalhesJurosAmortizacao": {
                 "type": "object",
                 "additionalProperties": false
@@ -5892,7 +5372,7 @@
                     },
                     "codigoDescontoTitulo": {
                         "type": "string",
-                        "description": "CÃ³digo Desconto TÃ­tulo. ISENTO(\"0\"), VALOR_FIXO(\"1\"), PERCENTUAL(\"2\"), VALOR_ANTECIPACAO_DIA_CORRIDO(\"3\"), \r\nVALOR_ANTECIPACAO_DIA_UTIL(\"4\"), PERCENTUAL_ANTECIPACAO_DIA_CORRIDO(\"5\"), PERCENTUAL_ANTECIPACAO_DIA_UTIL(\"6\")",
+                        "description": "Código Desconto Título. ISENTO(\"0\"), VALOR_FIXO(\"1\"), PERCENTUAL(\"2\"), VALOR_ANTECIPACAO_DIA_CORRIDO(\"3\"), \r\nVALOR_ANTECIPACAO_DIA_UTIL(\"4\"), PERCENTUAL_ANTECIPACAO_DIA_CORRIDO(\"5\"), PERCENTUAL_ANTECIPACAO_DIA_UTIL(\"6\")",
                         "nullable": true
                     },
                     "valorOuPercentualDescontoTitulo": {
@@ -5923,11 +5403,10 @@
                 },
                 "additionalProperties": false
             },
-            "EBankSlipType": {
+            "EBankSlipConsumptionPartners": {
                 "enum": [
-                    "Registrado",
-                    "Consumo",
-                    "Tributo"
+                    "Fitbank",
+                    "Rendimento"
                 ],
                 "type": "string"
             },
@@ -5981,7 +5460,7 @@
                     "EM_PROCESSO_ALTERACAO"
                 ],
                 "type": "string",
-                "description": "SituaÃ§Ã£o do Pagador no DDA. PrÃ©-cadastrado (0), Ativo (1), Inativo (2) Em processo de inativaÃ§Ã£o (3) e Em processo de alteraÃ§Ã£o (4)"
+                "description": "Situação do Pagador no DDA. Pré-cadastrado (0), Ativo (1), Inativo (2) Em processo de inativação (3) e Em processo de alteração (4)"
             },
             "EGuarantorDrawer": {
                 "enum": [
@@ -5992,7 +5471,7 @@
                     "OUTROS"
                 ],
                 "type": "string",
-                "description": "Tipo IdentificaÃ§Ã£o Sacador Avalista. 0 - Isento / NÃ£o Informado, 1 - CPF, 2 - CNPJ, 3 - PIS/PASEP, 9 - Outros"
+                "description": "Tipo Identificação Sacador Avalista. 0 - Isento / Não Informado, 1 - CPF, 2 - CNPJ, 3 - PIS/PASEP, 9 - Outros"
             },
             "ELaunchOperationTypes": {
                 "enum": [
@@ -6021,13 +5500,6 @@
                 "enum": [
                     "True",
                     "False"
-                ],
-                "type": "string"
-            },
-            "EParceirosLiquidateBoleto": {
-                "enum": [
-                    "Fitbank",
-                    "Rendimento"
                 ],
                 "type": "string"
             },
@@ -6201,44 +5673,6 @@
                 },
                 "additionalProperties": false
             },
-            "EmitenteRelatorio": {
-                "type": "object",
-                "properties": {
-                    "nome": {
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "tipo": {
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "cnpjCpf": {
-                        "type": "integer",
-                        "format": "int64"
-                    },
-                    "cnpjCpfFormatado": {
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "cep": {
-                        "type": "integer",
-                        "format": "int32"
-                    },
-                    "endereco": {
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "cidade": {
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "uf": {
-                        "type": "string",
-                        "nullable": true
-                    }
-                },
-                "additionalProperties": false
-            },
             "Entry": {
                 "type": "object",
                 "properties": {
@@ -6298,27 +5732,6 @@
                         "type": "array",
                         "items": {
                             "$ref": "#/components/schemas/ErrorData"
-                        },
-                        "nullable": true
-                    }
-                },
-                "additionalProperties": false
-            },
-            "ErroMessageRendimento": {
-                "type": "object",
-                "properties": {
-                    "statusCode": {
-                        "type": "integer",
-                        "format": "int32"
-                    },
-                    "message": {
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "errors": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/components/schemas/ErrorRendimento"
                         },
                         "nullable": true
                     }
@@ -6399,24 +5812,6 @@
                         "nullable": true
                     },
                     "field": {
-                        "type": "string",
-                        "nullable": true
-                    }
-                },
-                "additionalProperties": false
-            },
-            "ErrorRendimento": {
-                "type": "object",
-                "properties": {
-                    "domain": {
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "reason": {
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "message": {
                         "type": "string",
                         "nullable": true
                     }
@@ -6525,26 +5920,6 @@
                 },
                 "additionalProperties": false
             },
-            "ExtratoRendimento": {
-                "type": "object",
-                "properties": {
-                    "cliente": {
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "resumo": {
-                        "$ref": "#/components/schemas/ResumoExtratoRendimento"
-                    },
-                    "itens": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/components/schemas/ItensExtratoRendimento"
-                        },
-                        "nullable": true
-                    }
-                },
-                "additionalProperties": false
-            },
             "Fees": {
                 "type": "object",
                 "properties": {
@@ -6555,7 +5930,7 @@
                     },
                     "codigoJurosTitulo": {
                         "type": "string",
-                        "description": "CÃ³digo Juros TÃ­tulo. VALOR_DIAS_CORRIDOS(\"1\"), PERCENTUAL_DIA_DIAS_CORRIDOS(\"2\"), PERCENTUAL_MES_DIAS_CORRIDOS(\"3\"), \r\nPERCENTUAL_ANO_DIAS_CORRIDOS(\"4\"), ISENTO(\"5\"), VALOR_DIAS_UTEIS(\"6\"), PERCENTUAL_DIA_DIAS_UTEIS(\"7\"), PERCENTUAL_MES_DIAS_UTEIS(\"8\"), PERCENTUAL_ANO_DIAS_UTEIS(\"9\")",
+                        "description": "Código Juros Título. VALOR_DIAS_CORRIDOS(\"1\"), PERCENTUAL_DIA_DIAS_CORRIDOS(\"2\"), PERCENTUAL_MES_DIAS_CORRIDOS(\"3\"), \r\nPERCENTUAL_ANO_DIAS_CORRIDOS(\"4\"), ISENTO(\"5\"), VALOR_DIAS_UTEIS(\"6\"), PERCENTUAL_DIA_DIAS_UTEIS(\"7\"), PERCENTUAL_MES_DIAS_UTEIS(\"8\"), PERCENTUAL_ANO_DIAS_UTEIS(\"9\")",
                         "nullable": true
                     },
                     "valorOuPercentualJurosTitulo": {
@@ -6641,7 +6016,7 @@
                     },
                     "tipoPessoa": {
                         "type": "string",
-                        "description": "Tipo Pessoa BeneficiÃ¡rio Final. JURIDICA(\"J\") FISICA(\"F\")",
+                        "description": "Tipo Pessoa Beneficiário Final. JURIDICA(\"J\") FISICA(\"F\")",
                         "nullable": true
                     },
                     "razaoSocial": {
@@ -7652,105 +7027,6 @@
                 },
                 "additionalProperties": false
             },
-            "HistoricalDataExtractResponse": {
-                "type": "object",
-                "properties": {
-                    "numConta": {
-                        "type": "integer",
-                        "format": "int64"
-                    },
-                    "dataLancamento": {
-                        "type": "string",
-                        "format": "date-time"
-                    },
-                    "historico": {
-                        "type": "integer",
-                        "format": "int32"
-                    },
-                    "tipoLancamento": {
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "descricao": {
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "valor": {
-                        "type": "number",
-                        "format": "double"
-                    },
-                    "complemento": {
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "referenciaMovimento": {
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "dataEntrada": {
-                        "type": "string",
-                        "format": "date-time"
-                    }
-                },
-                "additionalProperties": false
-            },
-            "HistoricalDataExtractResponsePagedResponse": {
-                "type": "object",
-                "properties": {
-                    "content": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/components/schemas/HistoricalDataExtractResponse"
-                        },
-                        "nullable": true
-                    },
-                    "pageNumber": {
-                        "type": "integer",
-                        "format": "int32"
-                    },
-                    "size": {
-                        "type": "integer",
-                        "format": "int32"
-                    },
-                    "totalElements": {
-                        "type": "integer",
-                        "format": "int64"
-                    },
-                    "totalPages": {
-                        "type": "integer",
-                        "format": "int32"
-                    },
-                    "hasNextPage": {
-                        "type": "boolean"
-                    },
-                    "hasPreviousPage": {
-                        "type": "boolean"
-                    }
-                },
-                "additionalProperties": false
-            },
-            "Historico": {
-                "type": "object",
-                "properties": {
-                    "codigo": {
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "descricao": {
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "complemento": {
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "categoria": {
-                        "type": "string",
-                        "nullable": true
-                    }
-                },
-                "additionalProperties": false
-            },
             "InformacoesAdicionaisSdConta": {
                 "type": "object",
                 "properties": {
@@ -7974,77 +7250,6 @@
                     },
                     "papel": {
                         "$ref": "#/components/schemas/Papel"
-                    }
-                },
-                "additionalProperties": false
-            },
-            "ItensExtratoRendimento": {
-                "type": "object",
-                "properties": {
-                    "historico": {
-                        "$ref": "#/components/schemas/Historico"
-                    },
-                    "natureza": {
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "dataLancto": {
-                        "type": "string",
-                        "format": "date-time"
-                    },
-                    "nrDocumento": {
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "cpfCnpj": {
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "nomeContraparte": {
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "agenciaContraparte": {
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "contaContraparte": {
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "valor": {
-                        "type": "number",
-                        "format": "float"
-                    },
-                    "saldoAtual": {
-                        "type": "number",
-                        "format": "float"
-                    },
-                    "saldoAnterior": {
-                        "type": "number",
-                        "format": "float"
-                    },
-                    "tipoOperacao": {
-                        "type": "string",
-                        "nullable": true
-                    }
-                },
-                "additionalProperties": false
-            },
-            "Juros": {
-                "type": "object",
-                "properties": {
-                    "prazo": {
-                        "type": "integer",
-                        "format": "int32"
-                    },
-                    "tipoValorOuPercentual": {
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "valorOuPercentual": {
-                        "type": "number",
-                        "format": "double"
                     }
                 },
                 "additionalProperties": false
@@ -8846,19 +8051,6 @@
                 },
                 "additionalProperties": false
             },
-            "ListInvocesResponse": {
-                "type": "object",
-                "properties": {
-                    "data": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/components/schemas/Datum"
-                        },
-                        "nullable": true
-                    }
-                },
-                "additionalProperties": false
-            },
             "LoggerActionErrorResponse": {
                 "type": "object",
                 "properties": {
@@ -8994,40 +8186,6 @@
                 },
                 "additionalProperties": false
             },
-            "LowOperationalRequest": {
-                "type": "object",
-                "properties": {
-                    "idBaixaOperacional": {
-                        "type": "integer",
-                        "format": "int64",
-                        "nullable": true
-                    },
-                    "tpBaixaOperac": {
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "vlrBaixaOperacTit": {
-                        "type": "number",
-                        "format": "double",
-                        "nullable": true
-                    },
-                    "ispbPartRecbdrBaixaOperac": {
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "canPgto": {
-                        "type": "integer",
-                        "format": "int64",
-                        "nullable": true
-                    },
-                    "meioPgto": {
-                        "type": "integer",
-                        "format": "int64",
-                        "nullable": true
-                    }
-                },
-                "additionalProperties": false
-            },
             "MateraErrorPTResponse": {
                 "type": "object",
                 "properties": {
@@ -9065,24 +8223,6 @@
                             "$ref": "#/components/schemas/MateraErrorResponse"
                         },
                         "nullable": true
-                    }
-                },
-                "additionalProperties": false
-            },
-            "Multa": {
-                "type": "object",
-                "properties": {
-                    "prazo": {
-                        "type": "integer",
-                        "format": "int32"
-                    },
-                    "tipoValorOuPercentual": {
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "valorOuPercentual": {
-                        "type": "number",
-                        "format": "double"
                     }
                 },
                 "additionalProperties": false
@@ -9431,7 +8571,7 @@
                     },
                     "tipoPessoa": {
                         "type": "string",
-                        "description": "Tipo Pessoa BeneficiÃ¡rio Original. JURIDICA(\"J\") FISICA(\"F\")",
+                        "description": "Tipo Pessoa Beneficiário Original. JURIDICA(\"J\") FISICA(\"F\")",
                         "nullable": true
                     },
                     "razaoSocial": {
@@ -9510,48 +8650,6 @@
                 },
                 "additionalProperties": false
             },
-            "Pagador": {
-                "type": "object",
-                "properties": {
-                    "nome": {
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "tipo": {
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "cnpjCpf": {
-                        "type": "integer",
-                        "format": "int64"
-                    },
-                    "cep": {
-                        "type": "integer",
-                        "format": "int32"
-                    },
-                    "endereco": {
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "cidade": {
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "uf": {
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "bairro": {
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "email": {
-                        "type": "string",
-                        "nullable": true
-                    }
-                },
-                "additionalProperties": false
-            },
             "PagadorBoleto": {
                 "type": "object",
                 "properties": {
@@ -9576,35 +8674,6 @@
                     "conta": {
                         "type": "string",
                         "nullable": true
-                    }
-                },
-                "additionalProperties": false
-            },
-            "Pagamento": {
-                "type": "object",
-                "properties": {
-                    "tipoValorPagamentoAceito": {
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "tipoFaixaValoresPagamentoAceito": {
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "valorOuPercentualMaximo": {
-                        "type": "integer",
-                        "format": "int32"
-                    },
-                    "valorOuPercentualMinimo": {
-                        "type": "integer",
-                        "format": "int32"
-                    },
-                    "aceitaPagamentoParcial": {
-                        "type": "boolean"
-                    },
-                    "numeroDePagamentosParciais": {
-                        "type": "integer",
-                        "format": "int32"
                     }
                 },
                 "additionalProperties": false
@@ -10544,7 +9613,7 @@
                 "properties": {
                     "tipoPessoaPagador": {
                         "type": "string",
-                        "description": "Tipo de Pessoa do Pagador. FÃ­sica (\"F\"), JurÃ­dica (\"J\")",
+                        "description": "Tipo de Pessoa do Pagador. Física (\"F\"), Jurídica (\"J\")",
                         "nullable": true
                     },
                     "cnpjCpfPagador": {
@@ -10584,7 +9653,7 @@
                     },
                     "tipoPagadorEletronico": {
                         "type": "string",
-                        "description": "Tipo de Pagador EletrÃ´nico. PrÃ³prio (P), Terceiro (T)",
+                        "description": "Tipo de Pagador Eletrônico. Próprio (P), Terceiro (T)",
                         "nullable": true
                     },
                     "contas": {
@@ -10669,7 +9738,7 @@
                     },
                     "tipoPessoaPagador": {
                         "type": "string",
-                        "description": "Tipo de Pessoa do Pagador. FÃ­sica (\"F\"), JurÃ­dica (\"J\")",
+                        "description": "Tipo de Pessoa do Pagador. Física (\"F\"), Jurídica (\"J\")",
                         "nullable": true
                     },
                     "cnpjCpfPagador": {
@@ -10718,7 +9787,7 @@
                 "properties": {
                     "idPagador": {
                         "type": "integer",
-                        "description": "NÃºmero de IdentificaÃ§Ã£o do Pagado EletrÃ´nico no DDA",
+                        "description": "Número de Identificação do Pagado Eletrônico no DDA",
                         "format": "int64",
                         "nullable": true
                     },
@@ -11896,7 +10965,7 @@
                     },
                     "codigoMultaTitulo": {
                         "type": "string",
-                        "description": "CÃ³digo Multa TÃ­tulo. VALOR_FIXO(\"1\"), PERCENTUAL(\"2\"), ISENTA(\"3\")",
+                        "description": "Código Multa Título. VALOR_FIXO(\"1\"), PERCENTUAL(\"2\"), ISENTA(\"3\")",
                         "nullable": true
                     },
                     "valorOuPercentualMultaTitulo": {
@@ -12118,55 +11187,6 @@
                 "properties": {
                     "data": {
                         "$ref": "#/components/schemas/PortabilitySalaryCancel"
-                    },
-                    "error": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/components/schemas/MateraErrorResponse"
-                        },
-                        "nullable": true
-                    }
-                },
-                "additionalProperties": false
-            },
-            "PortabilitySalaryDataRequest": {
-                "type": "object",
-                "properties": {
-                    "bancoTransferencia": {
-                        "type": "integer",
-                        "format": "int32",
-                        "nullable": true
-                    },
-                    "agenciaTransferencia": {
-                        "type": "integer",
-                        "format": "int32",
-                        "nullable": true
-                    },
-                    "numContaTransferencia": {
-                        "type": "integer",
-                        "format": "int64",
-                        "nullable": true
-                    },
-                    "cancelaConfiguracaoPortabilidade": {
-                        "type": "boolean"
-                    },
-                    "idTipoContaCreditada": {
-                        "type": "integer",
-                        "format": "int32",
-                        "nullable": true
-                    },
-                    "ispbIfCreditada": {
-                        "type": "string",
-                        "nullable": true
-                    }
-                },
-                "additionalProperties": false
-            },
-            "PortabilitySalaryDataRequestMateraErrorResponseIEnumerableWrapper": {
-                "type": "object",
-                "properties": {
-                    "data": {
-                        "$ref": "#/components/schemas/PortabilitySalaryDataRequest"
                     },
                     "error": {
                         "type": "array",
@@ -12435,36 +11455,6 @@
                 },
                 "additionalProperties": false
             },
-            "ResumoExtratoRendimento": {
-                "type": "object",
-                "properties": {
-                    "saldoAnterior": {
-                        "type": "number",
-                        "format": "double"
-                    },
-                    "saldoAtual": {
-                        "type": "number",
-                        "format": "double"
-                    },
-                    "saldoBloqueado": {
-                        "type": "number",
-                        "format": "double"
-                    },
-                    "saldoDisponivel": {
-                        "type": "number",
-                        "format": "double"
-                    },
-                    "valorBloqueado": {
-                        "type": "number",
-                        "format": "double"
-                    },
-                    "limite": {
-                        "type": "number",
-                        "format": "double"
-                    }
-                },
-                "additionalProperties": false
-            },
             "SacadorAvalista": {
                 "type": "object",
                 "properties": {
@@ -12526,36 +11516,6 @@
                         "format": "double"
                     },
                     "saldoInvestimento": {
-                        "type": "number",
-                        "format": "double"
-                    }
-                },
-                "additionalProperties": false
-            },
-            "SaldoRendimento": {
-                "type": "object",
-                "properties": {
-                    "nome": {
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "limite": {
-                        "type": "number",
-                        "format": "double"
-                    },
-                    "saldoBloqueado": {
-                        "type": "number",
-                        "format": "double"
-                    },
-                    "saldoDisponivel": {
-                        "type": "number",
-                        "format": "double"
-                    },
-                    "saldoTotal": {
-                        "type": "number",
-                        "format": "double"
-                    },
-                    "valorBloqueado": {
                         "type": "number",
                         "format": "double"
                     }
@@ -13006,13 +11966,6 @@
                 },
                 "additionalProperties": false
             },
-            "SomenteTitulosEmAberto": {
-                "enum": [
-                    "false",
-                    "true"
-                ],
-                "type": "string"
-            },
             "StocksQuantityResponse": {
                 "type": "object",
                 "properties": {
@@ -13423,4 +12376,3 @@
         }
     ]
 }
-
