@@ -3514,6 +3514,30 @@
         },
         "additionalProperties": false
       },
+      "StatisticsKeyResponse": {
+        "type": "object",
+        "properties": {
+          "responseTime": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "correlationId": {
+            "type": "string",
+            "nullable": true
+          },
+          "key": {
+            "type": "string",
+            "nullable": true
+          },
+          "personStatistics": {
+            "$ref": "#/components/schemas/PersonStatistics"
+          },
+          "keyStatistics": {
+            "$ref": "#/components/schemas/KeyStatistics"
+          }
+        },
+        "additionalProperties": false
+      },
       "StatisticsKeyResponseWrapper": {
         "type": "object",
         "properties": {
