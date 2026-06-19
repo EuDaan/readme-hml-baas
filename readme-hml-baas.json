@@ -3514,6 +3514,15 @@
         },
         "additionalProperties": false
       },
+      "StatisticsKeyResponseWrapper": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/StatisticsKeyResponse"
+          }
+        },
+        "additionalProperties": false
+      },
       "ObjectValidationErrorsModelIEnumerableWrapper": {
         "type": "object",
         "properties": {
