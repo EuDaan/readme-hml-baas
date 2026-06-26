@@ -13,7 +13,7 @@
             "name": "Genial Investimentos",
             "url": "https://www.genialinvestimentos.com.br/"
         },
-        "version": "2.0"
+        "version": "1.0"
     },
     "paths": {
         "/v2/qrcode/dynamic": {
