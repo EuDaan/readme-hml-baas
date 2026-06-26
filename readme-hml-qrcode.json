@@ -7,7 +7,7 @@
         }
     ],
     "info": {
-        "title": "ServiÁos Banc·rios PIX",
+        "title": "Servi√ßos Banc√°rios PIX",
         "description": "API Banking Services",
         "contact": {
             "name": "Genial Investimentos",
@@ -21,7 +21,7 @@
                 "tags": [
                     "Receber PIX - QR Code"
                 ],
-                "summary": "Gerar QR Code Din‚mico",
+                "summary": "Gerar QR Code Din√¢mico",
                 "parameters": [
                     {
                         "name": "agency",
