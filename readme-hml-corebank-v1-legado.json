@@ -887,6 +887,312 @@
         }
       }
     },
+    "/v1/payment/darf": {
+      "post": {
+        "tags": [
+          "Pagamentos"
+        ],
+        "summary": "Pagamento DARF",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PaymentDarfRequest"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PaymentDarfRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PaymentDarfRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PaymentDarfRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaymentDarfResponseMateraErrorResponseListWrapper"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ObjectMateraErrorResponseListWrapper"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ValidationErrorModel"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/payment/darf-manual": {
+      "post": {
+        "tags": [
+          "Pagamentos"
+        ],
+        "summary": "Pagamento DARF Manual",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PaymentDarfManualRequest"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PaymentDarfManualRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PaymentDarfManualRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PaymentDarfManualRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaymentDarfManualResponseValidationErrorModelIEnumerableWrapper"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ValidationErrorModel"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ValidationErrorModel"
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ValidationErrorModel"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/payment/darf-manual/{idPayment}/status": {
+      "get": {
+        "tags": [
+          "Operações"
+        ],
+        "summary": "Consultar Operações DARF manual",
+        "description": "Consulta status do pagamento de DARF manual através do ID Pagamento",
+        "parameters": [
+          {
+            "name": "idPayment",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DarfManualStatusResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ValidationErrorModel"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ValidationErrorModel"
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ValidationErrorModel"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/payment/darf-manual/{idPayment}/receipt": {
+      "get": {
+        "tags": [
+          "Comprovantes"
+        ],
+        "summary": "Gerar comprovante DARF manual",
+        "description": "Gera comprovante de um pagamento de DARF manual através do ID Pagamento",
+        "parameters": [
+          {
+            "name": "idPayment",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DarfManualReceiptResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ValidationErrorModel"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ValidationErrorModel"
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ValidationErrorModel"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v1/payment/receipt-ted/{idLiquidacao}": {
       "get": {
         "tags": [
@@ -941,6 +1247,355 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/payment/bankslip-consumption/{identificador}": {
+      "get": {
+        "tags": [
+          "Operações"
+        ],
+        "summary": "Consultar Boletos Consumo",
+        "parameters": [
+          {
+            "name": "identificador",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FindBankSlipResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ValidationErrorModel"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ValidationErrorModel"
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ValidationErrorModel"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ValidationErrorModel"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/payment/bankslip": {
+      "post": {
+        "tags": [
+          "Pagamentos"
+        ],
+        "summary": "Pagamento Boleto",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PaymentBankSlipRequest"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PaymentBankSlipRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PaymentBankSlipRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PaymentBankSlipRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaymentBankSlipResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ValidationErrorModel"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ValidationErrorModel"
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ValidationErrorModel"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ValidationErrorModel"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/payment/bankslip/{idPayment}/status": {
+      "get": {
+        "tags": [
+          "Operações"
+        ],
+        "summary": "Consultar Status Boleto",
+        "description": "Consulta status do pagamento de boletos através do ID Pagamento",
+        "parameters": [
+          {
+            "name": "idPayment",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BankSlipStatusResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ValidationErrorModel"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ValidationErrorModel"
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ValidationErrorModel"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ValidationErrorModel"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/payment/bankslip/{idPayment}/receipt": {
+      "get": {
+        "tags": [
+          "Comprovantes"
+        ],
+        "summary": "Gerar Comprovante Boleto",
+        "description": "Gera comprovante de um pagamento de boleto através do ID Pagamento",
+        "parameters": [
+          {
+            "name": "idPayment",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaymentBankSlipReceiptResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ValidationErrorModel"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ValidationErrorModel"
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ValidationErrorModel"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ValidationErrorModel"
+                  }
                 }
               }
             }
@@ -1412,990 +2067,6 @@
           }
         }
       }
-    },
-    "/v1/pagamentos/boleto-registrado": {
-      "post": {
-        "tags": [
-          "Boleto"
-        ],
-        "summary": "Pagar Boleto Registrado",
-        "requestBody": {
-          "description": "",
-          "content": {
-            "application/json-patch+json": {
-              "schema": {
-                "$ref": "#/components/schemas/PagamentoBoletoRegistradoRequest"
-              }
-            },
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/PagamentoBoletoRegistradoRequest"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/PagamentoBoletoRegistradoRequest"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/PagamentoBoletoRegistradoRequest"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/PagamentoBoletoResponse"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/ValidationErrorModel"
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/ValidationErrorModel"
-                  }
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/ValidationErrorModel"
-                  }
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/ValidationErrorModel"
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/v1/pagamentos/boleto-consumo/{identificador}": {
-      "get": {
-        "tags": [
-          "Boleto"
-        ],
-        "summary": "Consultar Boleto Consumo",
-        "parameters": [
-          {
-            "name": "identificador",
-            "in": "path",
-            "description": "",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ConsultarBoletoResponse"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/ValidationErrorModel"
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/ValidationErrorModel"
-                  }
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/ValidationErrorModel"
-                  }
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/ValidationErrorModel"
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/v1/pagamentos/boleto-consumo": {
-      "post": {
-        "tags": [
-          "Boleto"
-        ],
-        "summary": "Pagar Boleto Consumo",
-        "requestBody": {
-          "description": "",
-          "content": {
-            "application/json-patch+json": {
-              "schema": {
-                "$ref": "#/components/schemas/PagamentoBoletoConsumoRequest"
-              }
-            },
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/PagamentoBoletoConsumoRequest"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/PagamentoBoletoConsumoRequest"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/PagamentoBoletoConsumoRequest"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/PagamentoBoletoResponse"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/ValidationErrorModel"
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/ValidationErrorModel"
-                  }
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/ValidationErrorModel"
-                  }
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/ValidationErrorModel"
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/v1/pagamentos/boleto-tributo/{identificador}": {
-      "get": {
-        "tags": [
-          "Boleto"
-        ],
-        "summary": "Consultar Boleto Tributo",
-        "parameters": [
-          {
-            "name": "identificador",
-            "in": "path",
-            "description": "",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ConsultarBoletoResponse"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/ValidationErrorModel"
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/ValidationErrorModel"
-                  }
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/ValidationErrorModel"
-                  }
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/ValidationErrorModel"
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/v1/pagamentos/boleto-tributo": {
-      "post": {
-        "tags": [
-          "Boleto"
-        ],
-        "summary": "Pagar Boleto Tributo",
-        "requestBody": {
-          "description": "",
-          "content": {
-            "application/json-patch+json": {
-              "schema": {
-                "$ref": "#/components/schemas/PagamentoBoletoTributoRequest"
-              }
-            },
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/PagamentoBoletoTributoRequest"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/PagamentoBoletoTributoRequest"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/PagamentoBoletoTributoRequest"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/PagamentoBoletoResponse"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/ValidationErrorModel"
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/ValidationErrorModel"
-                  }
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/ValidationErrorModel"
-                  }
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/ValidationErrorModel"
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/v1/pagamentos/boleto/{identificador}/{idPagamento}/comprovante": {
-      "get": {
-        "tags": [
-          "Boleto"
-        ],
-        "summary": "Gerar Comprovante Pagamento Boletos",
-        "parameters": [
-          {
-            "name": "identificador",
-            "in": "path",
-            "description": "",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "idPagamento",
-            "in": "path",
-            "description": "",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ComprovantePagamentoResponse"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/ValidationErrorModel"
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/ValidationErrorModel"
-                  }
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/ValidationErrorModel"
-                  }
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/ValidationErrorModel"
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/v1/pagamentos/boleto/{identificador}/{idPagamento}/status": {
-      "get": {
-        "tags": [
-          "Boleto"
-        ],
-        "summary": "Consultar Status Pagamento Boletos",
-        "parameters": [
-          {
-            "name": "identificador",
-            "in": "path",
-            "description": "",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "idPagamento",
-            "in": "path",
-            "description": "",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/StatusPagamentoModel"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/ValidationErrorModel"
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/ValidationErrorModel"
-                  }
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/ValidationErrorModel"
-                  }
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/ValidationErrorModel"
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/v1/pagamentos/darf-manual": {
-      "post": {
-        "tags": [
-          "Boleto"
-        ],
-        "summary": "Pagar DARF Manual",
-        "requestBody": {
-          "description": "",
-          "content": {
-            "application/json-patch+json": {
-              "schema": {
-                "$ref": "#/components/schemas/PagamentoDarfManualV2Request"
-              }
-            },
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/PagamentoDarfManualV2Request"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/PagamentoDarfManualV2Request"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/PagamentoDarfManualV2Request"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/PagamentoDarfManualV2Response"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/ValidationErrorModel"
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/ValidationErrorModel"
-                  }
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/ValidationErrorModel"
-                  }
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/ValidationErrorModel"
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/v1/pagamentos/darf-manual/{idPagamento}/status": {
-      "get": {
-        "tags": [
-          "Boleto"
-        ],
-        "summary": "Consultar Status Pagamento Darf",
-        "parameters": [
-          {
-            "name": "idPagamento",
-            "in": "path",
-            "description": "",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/StatusPagamentoModel"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/ValidationErrorModel"
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/ValidationErrorModel"
-                  }
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/ValidationErrorModel"
-                  }
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/ValidationErrorModel"
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/v1/pagamentos/darf-manual/{idPagamento}/comprovante": {
-      "get": {
-        "tags": [
-          "Boleto"
-        ],
-        "summary": "Gerar Comprovante Pagamento DARF",
-        "parameters": [
-          {
-            "name": "idPagamento",
-            "in": "path",
-            "description": "",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ComprovantePagamentoResponse"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/ValidationErrorModel"
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/ValidationErrorModel"
-                  }
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/ValidationErrorModel"
-                  }
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/ValidationErrorModel"
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/v1/pagamentos/darf-manual/{idPagamento}/estorno": {
-      "post": {
-        "tags": [
-          "Boleto"
-        ],
-        "summary": "Estonar Pagamento DARF",
-        "parameters": [
-          {
-            "name": "idPagamento",
-            "in": "path",
-            "description": "",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/ValidationErrorModel"
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/ValidationErrorModel"
-                  }
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/ValidationErrorModel"
-                  }
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/ValidationErrorModel"
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
     }
   },
   "components": {
@@ -2753,8 +2424,8 @@
             "nullable": true
           },
           "cnpjCpfAgregado": {
-            "type": "string",
-            "nullable": true
+            "type": "integer",
+            "format": "int64"
           },
           "nome": {
             "type": "string",
@@ -3502,8 +3173,8 @@
             "format": "int64"
           },
           "cnpjCpfPagador": {
-            "type": "string",
-            "nullable": true
+            "type": "integer",
+            "format": "int64"
           },
           "aceitaBoleto": {
             "type": "boolean",
@@ -3851,7 +3522,8 @@
         "type": "object",
         "properties": {
           "cnpjCpfPagador": {
-            "type": "string",
+            "type": "integer",
+            "format": "int64",
             "nullable": true
           },
           "agencia": {
@@ -4491,8 +4163,8 @@
             "nullable": true
           },
           "cnpjCpf": {
-            "type": "string",
-            "nullable": true
+            "type": "integer",
+            "format": "int64"
           },
           "cep": {
             "type": "integer",
@@ -4674,6 +4346,52 @@
         },
         "additionalProperties": false
       },
+      "CnabDataResponse": {
+        "type": "object",
+        "properties": {
+          "idLote": {
+            "type": "string",
+            "nullable": true
+          },
+          "agenciaPagador": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "contaPagador": {
+            "type": "string",
+            "nullable": true
+          },
+          "nomeArquivo": {
+            "type": "string",
+            "nullable": true
+          },
+          "itens": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Item"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CnabLinesRequest": {
+        "type": "object",
+        "properties": {
+          "nomeArquivo": {
+            "type": "string",
+            "nullable": true
+          },
+          "linhasCnab": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "ComplementoCurvaVcp": {
         "type": "object",
         "properties": {
@@ -4701,7 +4419,7 @@
         },
         "additionalProperties": false
       },
-      "ComprovantePagamentoResponse": {
+      "ComprovantePagamentoBoletoResponse": {
         "type": "object",
         "properties": {
           "pdf": {
@@ -4810,14 +4528,6 @@
           },
           "nomeConvenio": {
             "type": "string",
-            "nullable": true
-          },
-          "pago": {
-            "type": "boolean"
-          },
-          "dataPagamento": {
-            "type": "string",
-            "format": "date-time",
             "nullable": true
           }
         },
@@ -5220,8 +4930,8 @@
             "nullable": true
           },
           "cpfCnpjCredito": {
-            "type": "string",
-            "nullable": true
+            "type": "integer",
+            "format": "int64"
           }
         },
         "additionalProperties": false
@@ -5428,8 +5138,8 @@
             "format": "int64"
           },
           "cpfCnpjDepositante": {
-            "type": "string",
-            "nullable": true
+            "type": "integer",
+            "format": "int64"
           },
           "nomeDepositante": {
             "type": "string",
@@ -5825,35 +5535,6 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/Error"
-            },
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "DataFileResponse": {
-        "type": "object",
-        "properties": {
-          "idLote": {
-            "type": "string",
-            "nullable": true
-          },
-          "agenciaPagador": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "contaPagador": {
-            "type": "string",
-            "nullable": true
-          },
-          "nomeArquivo": {
-            "type": "string",
-            "nullable": true
-          },
-          "itens": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Item"
             },
             "nullable": true
           }
@@ -6308,6 +5989,14 @@
         },
         "additionalProperties": false
       },
+      "EBankSlipType": {
+        "enum": [
+          "Registrado",
+          "Consumo",
+          "Tributo"
+        ],
+        "type": "string"
+      },
       "ECancelPortabilitySalary": {
         "enum": [
           "Desistencia_do_cliente",
@@ -6401,7 +6090,7 @@
         ],
         "type": "string"
       },
-      "EParceirosLiquidates": {
+      "EParceirosLiquidateBoleto": {
         "enum": [
           "Fitbank",
           "Rendimento"
@@ -6439,35 +6128,11 @@
         ],
         "type": "string"
       },
-      "EStatusPagamento": {
-        "enum": [
-          "Paid",
-          "Rejected",
-          "Processing"
-        ],
-        "type": "string"
-      },
-      "ETipoDarf": {
-        "enum": [
-          "Normal",
-          "Simples"
-        ],
-        "type": "string"
-      },
       "ETipoLimite": {
         "enum": [
           "SOMENTE_COM_SALDO",
           "SALDO_MAIS_LIMITE",
-          "SALDO_MAIS_LIMITE_MAIS_USO_EXCESSO"
-        ],
-        "type": "string"
-      },
-      "ETipoPagamento": {
-        "enum": [
-          "Registrado",
-          "Consumo",
-          "Tributo",
-          "DarfManual"
+          "INDIFERENTE"
         ],
         "type": "string"
       },
@@ -7032,28 +6697,12 @@
         },
         "additionalProperties": false
       },
-      "FileLinesRequest": {
-        "type": "object",
-        "properties": {
-          "nomeArquivo": {
-            "type": "string",
-            "nullable": true
-          },
-          "linhasArquivo": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
       "FinalBeneficiary": {
         "type": "object",
         "properties": {
           "cnpjCpf": {
-            "type": "string",
+            "type": "integer",
+            "format": "int64",
             "nullable": true
           },
           "tipoPessoa": {
@@ -7076,7 +6725,8 @@
         "type": "object",
         "properties": {
           "cnpjCpfBenfcrioFinl": {
-            "type": "string",
+            "type": "integer",
+            "format": "int64",
             "nullable": true
           },
           "tpPessoaBenfcrioFinl": {
@@ -9299,9 +8949,6 @@
           "idLote": {
             "type": "string",
             "nullable": true
-          },
-          "descontoAntecipacao": {
-            "type": "boolean"
           }
         },
         "additionalProperties": false
@@ -9844,7 +9491,8 @@
         "type": "object",
         "properties": {
           "cnpjCpf": {
-            "type": "string",
+            "type": "integer",
+            "format": "int64",
             "nullable": true
           },
           "tipoPessoa": {
@@ -9888,7 +9536,8 @@
         "type": "object",
         "properties": {
           "cnpjCpfBenfcrioOr": {
-            "type": "string",
+            "type": "integer",
+            "format": "int64",
             "nullable": true
           },
           "tpPessoaBenfcrioOr": {
@@ -9984,20 +9633,6 @@
         "additionalProperties": false
       },
       "PagadorBoletoRegistrado": {
-        "type": "object",
-        "properties": {
-          "agencia": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "conta": {
-            "type": "string",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "PagadorDarfManual": {
         "type": "object",
         "properties": {
           "agencia": {
@@ -10209,6 +9844,57 @@
         },
         "additionalProperties": false
       },
+      "PagamentoBoletoStatusModel": {
+        "type": "object",
+        "properties": {
+          "numeroDocumento": {
+            "type": "string",
+            "nullable": true
+          },
+          "codigoBarras": {
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "type": "string",
+            "nullable": true
+          },
+          "dataPagamento": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "valorPago": {
+            "type": "number",
+            "format": "double"
+          },
+          "autenticacao": {
+            "type": "string",
+            "nullable": true
+          },
+          "protocolo": {
+            "type": "string",
+            "nullable": true
+          },
+          "mensagem": {
+            "type": "string",
+            "nullable": true
+          },
+          "codigoErro": {
+            "type": "string",
+            "nullable": true
+          },
+          "mensagemErro": {
+            "type": "string",
+            "nullable": true
+          },
+          "urlComprovante": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "PagamentoBoletoTributoRequest": {
         "type": "object",
         "properties": {
@@ -10260,101 +9946,6 @@
           },
           "pagador": {
             "$ref": "#/components/schemas/PagadorBoleto"
-          }
-        },
-        "additionalProperties": false
-      },
-      "PagamentoDarfManualV2Request": {
-        "type": "object",
-        "properties": {
-          "nome": {
-            "type": "string",
-            "nullable": true
-          },
-          "cpfCnpj": {
-            "type": "string",
-            "nullable": true
-          },
-          "telefone": {
-            "type": "string",
-            "nullable": true
-          },
-          "observacao": {
-            "type": "string",
-            "nullable": true
-          },
-          "referenciaMovimento": {
-            "type": "string",
-            "nullable": true
-          },
-          "idReceitaFederal": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "numeroReferencia": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          },
-          "valorPrincipal": {
-            "type": "number",
-            "format": "double"
-          },
-          "valorMulta": {
-            "type": "number",
-            "format": "double"
-          },
-          "valorJuros": {
-            "type": "number",
-            "format": "double"
-          },
-          "valorTotal": {
-            "type": "number",
-            "format": "double"
-          },
-          "receitaAcumulada": {
-            "type": "number",
-            "format": "double"
-          },
-          "percentual": {
-            "type": "number",
-            "format": "double"
-          },
-          "periodoApuracao": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "dataVencimento": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "tipoDarf": {
-            "$ref": "#/components/schemas/ETipoDarf"
-          },
-          "pagador": {
-            "$ref": "#/components/schemas/PagadorDarfManual"
-          }
-        },
-        "additionalProperties": false
-      },
-      "PagamentoDarfManualV2Response": {
-        "type": "object",
-        "properties": {
-          "idPagamento": {
-            "type": "string",
-            "nullable": true
-          },
-          "numeroDocumento": {
-            "type": "string",
-            "nullable": true
-          },
-          "valorTotalPago": {
-            "type": "number",
-            "format": "double"
-          },
-          "parceiro": {
-            "type": "integer",
-            "format": "int32"
           }
         },
         "additionalProperties": false
@@ -10849,7 +10440,8 @@
             "nullable": true
           },
           "cnpjCpf": {
-            "type": "string",
+            "type": "integer",
+            "format": "int64",
             "nullable": true
           },
           "razaoSocial": {
@@ -11025,10 +10617,6 @@
             "type": "integer",
             "format": "int64"
           },
-          "cnpjCpfAlfaPagador": {
-            "type": "string",
-            "nullable": true
-          },
           "dataAdesao": {
             "type": "string",
             "format": "date"
@@ -11106,7 +10694,8 @@
             "nullable": true
           },
           "cnpjCpfPagdr": {
-            "type": "string",
+            "type": "integer",
+            "format": "int64",
             "nullable": true
           },
           "nomRzSocPagdr": {
@@ -11150,8 +10739,8 @@
             "nullable": true
           },
           "cnpjCpfPagador": {
-            "type": "string",
-            "nullable": true
+            "type": "integer",
+            "format": "int64"
           },
           "recebeArquivoVarredura": {
             "type": "boolean",
@@ -13489,58 +13078,6 @@
           "true"
         ],
         "type": "string"
-      },
-      "StatusPagamentoModel": {
-        "type": "object",
-        "properties": {
-          "numeroDocumento": {
-            "type": "string",
-            "nullable": true
-          },
-          "codigoBarras": {
-            "type": "string",
-            "nullable": true
-          },
-          "status": {
-            "type": "string",
-            "nullable": true
-          },
-          "dataPagamento": {
-            "type": "string",
-            "format": "date-time",
-            "nullable": true
-          },
-          "valorPago": {
-            "type": "number",
-            "format": "double",
-            "nullable": true
-          },
-          "autenticacao": {
-            "type": "string",
-            "nullable": true
-          },
-          "protocolo": {
-            "type": "string",
-            "nullable": true
-          },
-          "mensagem": {
-            "type": "string",
-            "nullable": true
-          },
-          "codigoErro": {
-            "type": "string",
-            "nullable": true
-          },
-          "mensagemErro": {
-            "type": "string",
-            "nullable": true
-          },
-          "urlComprovante": {
-            "type": "string",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
       },
       "StocksQuantityResponse": {
         "type": "object",
