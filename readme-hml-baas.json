@@ -4632,6 +4632,9 @@
           "additionalInformation": {
             "type": "string",
             "nullable": true
+          },
+          "ignorePaymentDuplication": {
+            "type": "boolean"
           }
         },
         "additionalProperties": false
