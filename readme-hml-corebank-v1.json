@@ -2400,7 +2400,7 @@
     "/v1/payment/eletronic-payer/billing-title": {
       "post": {
         "tags": [
-          "Payment"
+          "DDA - Boleto"
         ],
         "summary": "Consultar Títulos por Pagador Eletrônico",
         "requestBody": {
@@ -2479,7 +2479,7 @@
     "/v1/payment/eletronic-payer/billing-title-accept": {
       "post": {
         "tags": [
-          "Payment"
+          "DDA - Boleto"
         ],
         "summary": "Pagador informa se reconhece ou não um título",
         "requestBody": {
@@ -2549,94 +2549,6 @@
       }
     },
     "/v1/payment/eletronic-payer/{cnpjCpfPagador}": {
-      "delete": {
-        "tags": [
-          "Payment"
-        ],
-        "summary": "Inativação do Pagador Eletrônico",
-        "parameters": [
-          {
-            "name": "cnpjCpfPagador",
-            "in": "path",
-            "description": "",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "requestBody": {
-          "description": "",
-          "content": {
-            "application/json-patch+json": {
-              "schema": {
-                "$ref": "#/components/schemas/PayerDeleteRequest"
-              }
-            },
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/PayerDeleteRequest"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/PayerDeleteRequest"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/PayerDeleteRequest"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/PayerDeleteResponseMateraErrorResponseIEnumerableWrapper"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/PayerDeleteResponseMateraErrorResponseIEnumerableWrapper"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/ValidationErrorModel"
-                  }
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorMessage"
-                }
-              }
-            }
-          }
-        }
-      },
       "get": {
         "tags": [
           "Payment"
@@ -2703,9 +2615,9 @@
     "/v1/payment/eletronic-payer/billing-title/{identifier}": {
       "get": {
         "tags": [
-          "Payment"
+          "DDA - Boleto"
         ],
-        "summary": "Consulta de títulos DDA através do código de barras ou linha digitável",
+        "summary": "Consulta títulos DDA código de barras ou linha digitável",
         "parameters": [
           {
             "name": "identifier",
@@ -2783,9 +2695,9 @@
     "/v1/payment/eletronic-payer/billing-title/{identifier}/{paymentDate}": {
       "get": {
         "tags": [
-          "Payment"
+          "DDA - Boleto"
         ],
-        "summary": "Consulta de títulos DDA através da data de pagamento e código de barras/linha digitável",
+        "summary": "Consulta títulos DDA data de pagamento e código de barras/linha digitável",
         "parameters": [
           {
             "name": "identifier",
