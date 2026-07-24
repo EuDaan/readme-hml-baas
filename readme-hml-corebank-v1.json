@@ -2551,7 +2551,7 @@
     "/v1/payment/eletronic-payer/{cnpjCpfPagador}": {
       "get": {
         "tags": [
-          "Payment"
+          "DDA - Boleto"
         ],
         "summary": "Consulta Pagador Eletrônico pelo Cpf/Cnpj",
         "parameters": [
