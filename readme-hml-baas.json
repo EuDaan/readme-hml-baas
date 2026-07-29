@@ -644,7 +644,7 @@
         }
       }
     },
-    "/v1/pix/key": {
+    "/v2/pix/key": {
       "post": {
         "tags": [
           "Chave PIX"
