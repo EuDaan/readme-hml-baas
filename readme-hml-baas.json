@@ -326,25 +326,40 @@
         }
       }
     },
-    "/v1/pix/qrcode-decode": {
-      "get": {
+    "/v2/pix/qrcode-decode": {
+      "post": {
         "tags": [
           "Enviar PIX"
         ],
-        "summary": "Decodificar QR Code",
-        "parameters": [
-          {
-            "name": "qrcode",
-            "in": "query",
-            "description": "",
-            "schema": {
-              "type": "string"
+        "summary": "Decode Qrcode",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/DecodeRequest"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DecodeRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DecodeRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/DecodeRequest"
+              }
             }
           }
-        ],
+        },
         "responses": {
           "200": {
-            "description": "Success",
+            "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
@@ -374,7 +389,7 @@
             }
           },
           "500": {
-            "description": "Server Error",
+            "description": "Internal Server Error",
             "content": {
               "application/json": {
                 "schema": {
@@ -1845,6 +1860,16 @@
             "$ref": "#/components/schemas/DebitClearingReason"
           },
           "additionalRejectionDescription": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "DecodeRequest": {
+        "type": "object",
+        "properties": {
+          "qrcode": {
             "type": "string",
             "nullable": true
           }
